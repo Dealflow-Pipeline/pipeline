@@ -12,7 +12,7 @@
 	font-size: 14px;
   font-weight: bold;
   margin: 5px 0;
-  padding: 8px 30px !important;
+  padding: 8px 30px;
   line-height: 32px;
   height: auto;
   display: inline-block;
@@ -27,15 +27,15 @@
 }
 
 .btn.pill:hover {
-  color: #f8f8f8 !important;
-	background-color: #03b9a0 !important;
+  color: #f8f8f8;
+	background-color: #03b9a0;
 }
 
 .btn.btn-profile {
 	font-size: 14px;
   font-weight: bold;
   margin: 3px 0;
-  padding: 5px 10px !important;
+  padding: 5px 10px;
   line-height: 28px;
   height: auto;
   text-align: center;
@@ -51,8 +51,8 @@
 }
 
 .nav-col {
-  padding-left: 0px;
-  padding-right: 0px;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 @media (min-width: 768px) {
@@ -67,11 +67,11 @@
 
 @media (min-width: 768px) {
   .navbar-text {
-    margin-right: 0px;
+    margin-right: 0;
   }
 
   .navbar-right {
-    margin-right: 0px;
+    margin-right: 0;
   }
 
   .navbar {
@@ -91,17 +91,9 @@
   cursor: pointer;
 }
 
-/* Prevent glypicon buttons from looking like a button */
-.glyphicon-button {
-  -webkit-appearance: none;
-  outline: none;
-  border: 0;
-  background: transparent;
-}
-
 /* dashboard */
 .table-margin {
-  margin: 0px 8px;
+  margin: 0 8px;
 }
 
 /* Dashboard main panel heading */
@@ -240,7 +232,7 @@
 
 /* Pagination */
 .pagination {
-  margin: 0px;
+  margin: 0;
   float:right;
 }
 
@@ -258,7 +250,6 @@
 }
 
 .pagination-rows {
-  margin-right: 13px;
   border-radius: 3px;
   border: .08em solid #DDD;
   padding-bottom: 6px;
