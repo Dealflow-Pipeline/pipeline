@@ -31,7 +31,7 @@ var app = angular.module('pipeline', [
         templateUrl: 'profileStartup/profileStartup.html',
         controller: 'profileStartupCtrl',
       })
-      .state('new', {
+      .state('addEntry', {
         url: '/new',
         templateUrl: 'addEntry/addEntry.html',
         controller: 'addEntryCtrl',
@@ -62,6 +62,6 @@ var app = angular.module('pipeline', [
           ],
           */
       });
-    $urlRouterProvider.otherwise('home');
+    $urlRouterProvider.otherwise('/');
   },
 ]);
