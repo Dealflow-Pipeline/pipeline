@@ -1,4 +1,4 @@
-var app = angular.module('new', []);
+var app = angular.module('addEntry', []);
 
 app.controller('addEntryCtrl', [
   '$scope',
