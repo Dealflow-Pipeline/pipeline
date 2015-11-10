@@ -1,4 +1,11 @@
 var app = angular.module('pipeline', [
+  'home',
+  'about',
+  'dashboard',
+  'entrepreneur',
+  'startup',
+  'addEntry',
+  // 'auth',
   'ui.router',
 ])
 .config([
@@ -36,32 +43,29 @@ var app = angular.module('pipeline', [
         templateUrl: 'addEntry/addEntry.html',
         controller: 'addEntryCtrl',
       })
-      .state('login', {
-        url: '/login',
-        templateUrl: 'auth/login.html',
-        controller: 'authCtrl',
-        /*
-        onEnter: ['$state', 'Auth', function($state, Auth) {
-            Auth.currentUser().then(function() {
-              $state.go('home');
-            });
-          },
-          ],
-          */
-      })
-      .state('register', {
-        url: '/register',
-        templateUrl: 'auth/register.html',
-        controller: 'authCtrl',
-        /*
-        onEnter: ['$state', 'Auth', function($state, Auth) {
-            Auth.currentUser().then(function() {
-              $state.go('home');
-            });
-          },
-          ],
-          */
-      });
+      
+      //!!! we should combine these bc login & register will be the same page
+
+      // .state('login', {
+      //   url: '/login',
+      //   templateUrl: 'auth/login.html',
+      //   controller: 'authCtrl',
+      //   onEnter: ['$state', 'Auth', function($state, Auth) {
+      //       Auth.currentUser().then(function() {
+      //         $state.go('home');
+      //       });
+      //   }]
+      // })
+      // .state('register', {
+      //   url: '/register',
+      //   templateUrl: 'auth/register.html',
+      //   controller: 'authCtrl',
+      //   onEnter: ['$state', 'Auth', function($state, Auth) {
+      //       Auth.currentUser().then(function() {
+      //         $state.go('home');
+      //       });
+      //   }]
+      // });
     $urlRouterProvider.otherwise('/');
   },
 ]);
