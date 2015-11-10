@@ -21,14 +21,14 @@
 
   <body ng-app="pipeline">
     <ul>
-      <li><a href="#/">Home</a></li>
-      <li><a href="#/about">About</a></li>
-      <li><a href='#/new'>New Startup/Entrepreneur</a></li>
-      <li><a href="#/dashboard">Dashboard</a></li>
-      <li><a href="#/startup/:id/profile">Startup</a></li>
-      <li><a href="#/entrepreneur/:id/profile">Entrepreneur</a></li>
-      <li><a href="#/register">Register</a></li>
-      <li><a href="#/login">Dashboard</a></li>
+      <li><a ui-sref="/">Home</a></li>
+      <li><a ui-sref="/about">About</a></li>
+      <li><a ui-sref="/new">New Startup/Entrepreneur</a></li>
+      <li><a ui-sref="/dashboard">Dashboard</a></li>
+      <li><a ui-sref="/startup/:id/profile">Startup</a></li>
+      <li><a ui-sref="/entrepreneur/:id/profile">Entrepreneur</a></li>
+      <li><a ui-sref="/register">Register</a></li>
+      <li><a ui-sref="/login">Dashboard</a></li>
     </ul>
 
     <ui-view></ui-view>
@@ -37,9 +37,12 @@
 
     <!-- Main JS files -->
     <script src="about/about.js"></script>
+    <script src="addEntry/addEntry.js"></script>
     <script src="auth/auth.js"></script>
     <script src="dashboard/dashboard.js"></script>
     <script src="home/home.js"></script>
+    <script src="profileEntrep/profileEntrep.js"></script>
+    <script src="profileStartup/profileStartup.js"></script>
     <script src="app.js"></script>
 
   </body>

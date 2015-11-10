@@ -1,6 +1,6 @@
 var app = angular.module('new', []);
 
-app.controller('newCtrl', [
+app.controller('addEntryCtrl', [
   '$scope',
   function($scope) {
 
