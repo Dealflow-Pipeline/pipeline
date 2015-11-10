@@ -11,21 +11,27 @@
     <title>Pipeline: Track all your applications & applicants</title>
 
     <!-- Dependencies -->
-    <script src="bower_component/jquery/dist/jquery.js"></script>
-    <script src="bower_component/lodash/lodash.js"></script>
-    <script src="bower_component/angular/angular.js"></script>
-    <script src="bower_component/angular-bootstrap/ui-bootstrap.js"></script>
-    <script src="bower_component/angular-route/angular-route.js"></script>
-    <script src="bower_component/angular-ui-router.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   </head>
 
-  <body>
+  <body ng-app="pipeline">
+    <ul>
+      <li><a href="#/">Home</a></li>
+      <li><a href="#/about">About</a></li>
+      <li><a href='#/new'>New Startup/Entrepreneur</a></li>
+      <li><a href="#/dashboard">Dashboard</a></li>
+      <li><a href="#/startup/:id/profile">Startup</a></li>
+      <li><a href="#/entrepreneur/:id/profile">Entrepreneur</a></li>
+      <li><a href="#/register">Register</a></li>
+      <li><a href="#/login">Dashboard</a></li>
+    </ul>
 
-    <section>
-      <h1>Welcome to Pipeline</h1>
-      <p>A dealflow management tool for early stage ivnestors</p>
-      <p>Brought to you by Ryan & Ben</p>
-    </section>
+    <ui-view></ui-view>
 
     <footer></footer>
 
@@ -33,7 +39,7 @@
     <script src="about/about.js"></script>
     <script src="auth/auth.js"></script>
     <script src="dashboard/dashboard.js"></script>
-    <script src="home.js"></script>
+    <script src="home/home.js"></script>
     <script src="app.js"></script>
 
   </body>
