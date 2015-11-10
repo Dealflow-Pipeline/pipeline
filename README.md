@@ -7,6 +7,12 @@ https://github.com/valgaze/FILIBUSTERING-PANDA/tree/master/src
 
 https://medium.com/opinionated-angularjs/scalable-code-organization-in-angularjs-9f01b594bf06
 
+TO DO:
+* clean up directory layout
+* setup API route chart
+* add details of firebase 
+* discuss tech stack
+
 
 # Directory Layout
 
