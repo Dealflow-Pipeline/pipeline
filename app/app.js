@@ -8,7 +8,7 @@ var app = angular.module('pipeline', [
   'pipeline.profile',
   'pipeline.startup-dashboard/',
   'pipeline.startup-profile/',
-  'ui-router'
+  'ui.router'
 
 
   ])
