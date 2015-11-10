@@ -1,0 +1,29 @@
+{
+  "name": "pipeline",
+  "homepage": "https://github.com/benjaminhoffman/pipeline",
+  "authors": [
+    "Benjamin & Ryan"
+  ],
+  "description": "workflow app for early stage investors",
+  "main": "app.js",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-bootstrap": "~0.14.3",
+    "angular-route": "~1.4.7",
+    "angular-ui-router": "~0.2.15",
+    "jquery": "~2.1.4",
+    "lodash": "~3.10.1",
+    "bootstrap": "~3.3.5"
+  }
+}
