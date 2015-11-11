@@ -1,9 +1,17 @@
-<nav ng-controller="navCtrl" class="navbar navbar-default">
-  <div class="container-fluid">
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container-fluid" ng-init="currTab = 'dashboard'">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <a class="navbar-brand" href="#/home" ui-sref="home">
-        <img alt="Venture Route" class="logo" src="assets/venture-route-logo-small.png"/>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" ui-sref="home" ng-class="{active: (currTab == 'home')}" ng-click="currTab = 'home'">
+        <img src="assets/venture-route-logo-small.png" class="logo"/>
+        <!-- <span class="glyphicon glyphicon-compressed" aria-hidden="true"></span> -->
       </a>
     </div>
 
@@ -16,23 +24,51 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a ui-sref="addEntry" href="#/new">New Startup/Entrepreneur</a>
+        <li ng-class="{active: (currTab == 'dashboard')}" ng-click="currTab = 'dashboard'">
+          <a ui-sref="dashboard">
+            <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+            Dashboard
+          </a>
         </li>
-        <li>
-          <a ui-sref="dashboard" href="#/dashboard">Dashboard</a>
+        <li ng-class="{active: (currTab == 'addEntry')}" ng-click="currTab = 'addEntry'">
+          <a ui-sref="addEntry">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            Add New
+          </a>
         </li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#" uib-dropdown-toggle>Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a ui-sref="login">Login</a></li>
-            <li><a ui-sref="register">Register</a></li>
-            <li><a ui-sref="startup">Startup</a></li>
-            <li><a ui-sref="entrepreneur">Entrepreneur</a></li>
-            <li><a ui-sref="about">About</a></li>
-          </ul>
+        <li ng-class="{active: (currTab == 'startup')}" ng-click="currTab = 'startup'">
+          <a ui-sref="startup">
+            <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
+            Startup
+          </a>
+        </li>
+        <li ng-class="{active: (currTab == 'entrepreneur')}" ng-click="currTab = 'entrepreneur'">
+          <a ui-sref="entrepreneur">
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            Entrepreneur
+          </a>
+        </li>
+        <li ng-class="{active: (currTab == 'about')}" ng-click="currTab = 'about'">
+          <a ui-sref="about">
+            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+            About
+          </a>
+        </li>
+        <li ng-click="logout()">
+          <a ui-sref="login">
+            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+            Logout
+          </a>
         </li>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+  </div>
 </nav>
+
+<ul>
+
+  <li><a ui-sref="startup">Startup</a></li>
+  <li><a ui-sref="entrepreneur">Entrepreneur</a></li>
+<!--  <li><a ui-sref="register">Register</a></li>
+  <li><a ui-sref="login">Login</a></li> -->
+</ul>
