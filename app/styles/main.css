@@ -7,3 +7,32 @@
 .css-form input.ng-valid.ng-touched {
   background-color: #78FA89;
 }
+
+.logo {
+  max-width: 235px;
+  margin-top: -10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.navbar {
+  min-height: 80px;
+}
+
+.navbar-form {
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+
+.navbar-right {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.navbar-right > li {
+  font-size: 16px;
+}
+
+.nav a {
+  cursor: pointer;
+}
