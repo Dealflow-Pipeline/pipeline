@@ -1,6 +1,126 @@
 <h1>Add Entry</h1>
 
-<form id="addEntry" class="form-horizontal">
+<div ng-controller="addEntryCtrl">
+  <form novalidate class="css-form form-horizontal">
 
-  <!-- Date of entry -->
-  <div class="form-group">
+    <!-- Startup, Entrepreneur, or both -->
+    <div class="btn-group">
+      <label class="btn btn-primary" ng-model="entry.startup" uib-btn-checkbox>Startup</label>
+      <label class="btn btn-primary" ng-model="entry.entrepreneur" uib-btn-checkbox>Entrepreneur</label>
+    </div>
+
+    <!-- Date of entry -->
+    <div class="form-group">
+      <label for="date" class="col-sm-3 control-label">Date of Entry</label>
+      <div class="col-sm-9">
+        <input type="date" class="form-control"autocomplete="on" ng-model="date" autofocus required />
+      </div>
+    </div>
+
+    <!-- Funnel Step -->
+    <div class="form-group">
+      <label for="funnel" class="col-sm-3 control-label">Funnel Step</label>
+      <div class="col-sm-9">
+        <select class="form-control" ng-model="startup.funnel">
+          <option value="1" select>1. Intro</option>
+          <option value="2">2. Call</option>
+          <option value="3">3. Meeting</option>
+          <option value="4">4. Due Diligence</option>
+          <option value="5">5. Accept</option>
+          <option value="6">6. Pass</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Startup name -->
+    <div class="form-group">
+      <label for="startup-name" class="col-sm-3 control-label">Startup Name</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" ng-model="startup.name" required />
+      </div>
+    </div>
+
+    <!-- Intro Source -->
+    <div class="form-group">
+      <label for="source" class="col-sm-3 control-label">Introduction</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" ng-model="startup.source" required />
+      </div>
+    </div>
+
+    <!-- Location -->
+    <div class="form-group">
+      <label for="startup-location" class="col-sm-3 control-label">Startup Location (City, State)</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" ng-model="startup.location" required />
+      </div>
+    </div>
+
+    <!-- Tagline -->
+    <div class="form-group">
+      <label for="tagline" class="col-sm-3 control-label">Tagline</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" ng-model="startup.tagline" required />
+      </div>
+    </div>
+
+    Entrepreneur Information
+
+    <!-- Entrepreneur Name -->
+    <div class="form-group">
+      <label for="entrepreneur-name" class="col-sm-3 control-label">Entrepreneur Name</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" ng-model="entrepreneur.name" required />
+      </div>
+    </div>
+
+    <!-- Entrepreneur Email -->
+    <div class="form-group">
+      <label for="entrepreneur-email" class="col-sm-3 control-label">Entrepreneur Email</label>
+      <div class="col-sm-9">
+        <input type="email" class="form-control" ng-model="entrepreneur.email" required />
+      </div>
+    </div>
+
+    <!-- Entrepreneur Phone -->
+    <div class="form-group">
+      <label for="entrepreneur-phone" class="col-sm-3 control-label">Entrepreneur Phone</label>
+      <div class="col-sm-9">
+        <input type="number" class="form-control" ng-model="entrepreneur.phone" required />
+      </div>
+    </div>
+
+    <!-- Location -->
+    <div class="form-group">
+      <label for="entrepreneur-location" class="col-sm-3 control-label">Entrepreneur Location (City, State)</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" ng-model="entrepreneur.location" required />
+      </div>
+    </div>
+
+
+
+  <pre>startup = {{ startup | json }}</pre>
+  <pre>entrepreneur = {{ entrepreneur | json }}</pre>
+
+    <!-- Radio Button -->
+    <!-- <div class="form-group">
+      <label for="radio" class="col-sm-3 control-label">Radio</label>
+      <div class="col-sm-9">
+        <div class="radio">
+          <label>
+            <input type="radio" name="radio-name" value="male" />Male
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="radio-name" value="female" />Female
+          </label>
+        </div>
+      </div>
+    </div>
+    <div>
+      <input type="submit" ng-click="add(startup, entrepreneur)" value="Save" />
+    </div>
+  </form>
+ -->
