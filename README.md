@@ -9,10 +9,15 @@ BEN'S NOTES:
 
 TO DO HERE:
 * how to install and start server
-* clean up directory layout
+* clean up directory layout (below)
 * setup API route chart
 * add details of firebase
 * discuss tech stack
+* link to any blog post
+* screenshots of product
+* screenshots of mockups
+
+
 
 Installing Firebase & AngularFire
 * In terminal:
