@@ -7,6 +7,7 @@ var app = angular.module('pipeline', [
   'addEntry',
   // 'auth',
   'ui.router',
+  'ui.bootstrap'
 ])
 .config([
   '$stateProvider',

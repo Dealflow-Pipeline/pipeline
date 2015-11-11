@@ -1,13 +1,14 @@
 # pipeline
 Contact management tool for early stage investors
 
-http://joshdmiller.github.io/ng-boilerplate/#/home
 
-https://github.com/valgaze/FILIBUSTERING-PANDA/tree/master/src
 
-https://medium.com/opinionated-angularjs/scalable-code-organization-in-angularjs-9f01b594bf06
+BEN'S NOTES:
+* use this for addEntry... city, state: https://github.com/vskosp/vsGoogleAutocomplete
 
-TO DO:
+
+TO DO HERE:
+* how to install and start server
 * clean up directory layout
 * setup API route chart
 * add details of firebase 
