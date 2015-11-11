@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatble" content="IE=edge">
     <meta name="viewport" content="width=device-width initial-scale=1">
 
-    <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="styles/main.css">
 
     <title>Pipeline: Track all your applications & applicants</title>
 
@@ -19,18 +19,12 @@
   </head>
 
   <body ng-app="pipeline">
-    <ul>
-      <li><a ui-sref="home">Home</a></li>
-      <li><a ui-sref="about">About</a></li>
-      <li><a ui-sref="addEntry">Add New</a></li>
-      <li><a ui-sref="dashboard">Dashboard</a></li>
-      <li><a ui-sref="startup">Startup</a></li>
-      <li><a ui-sref="entrepreneur">Entrepreneur</a></li>
-<!--  <li><a ui-sref="register">Register</a></li>
-      <li><a ui-sref="login">Login</a></li> -->
-    </ul>
 
-    <ui-view></ui-view>
+    <div ng-include="'nav/nav.html'"></div>
+
+    <div class="container">
+      <div ui-view></div>
+    </div>
 
     <footer></footer>
 
@@ -42,6 +36,7 @@
     <script src="home/home.js"></script>
     <script src="profileEntrep/profileEntrep.js"></script>
     <script src="profileStartup/profileStartup.js"></script>
+    <script src="nav/nav.js"></script>
     <script src="app.js"></script>
 
 

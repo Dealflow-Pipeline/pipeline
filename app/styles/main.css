@@ -7,3 +7,34 @@
 .css-form input.ng-valid.ng-touched {
   background-color: #78FA89;
 }
+
+.logo {
+  max-width: 235px;
+  margin-top: -10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.navbar {
+  min-height: 80px;
+}
+
+.navbar-form {
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+
+/* Full height background color for active tab */
+.navbar-nav > li > a {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.navbar-right > li {
+  font-size: 16px;
+}
+
+/* Cursor override for removed href's */
+.nav a {
+  cursor: pointer;
+}
