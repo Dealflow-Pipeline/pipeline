@@ -22,7 +22,6 @@
     "angular-bootstrap": "~0.14.3",
     "angular-route": "~1.4.7",
     "angular-ui-router": "~0.2.15",
-    "jquery": "~2.1.4",
     "lodash": "~3.10.1",
     "bootstrap": "~3.3.5"
   }
