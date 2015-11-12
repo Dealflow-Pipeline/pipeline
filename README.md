@@ -68,3 +68,34 @@ Installing Firebase & AngularFire
 ├── lib
 └── test
 ```
+
+Firebase Structure:
+
+```
+// Tracking two-way relationships between users and groups
+  {
+    "startups": {
+      "unique_id": {
+        "name": "Uber",
+        // index Mary's groups in her profile
+        "groups": {
+           // the value here doesn't matter, just that the key exists
+           "unique_id": true,
+           "unique_id": true
+        }
+      },
+      ...
+    },
+    "founders": {
+      "unique_id": {
+        "name": "startup_unique_id",
+        "startups": {
+          "unique_id": true,
+          "unique_id": true
+        }
+      },
+      ...
+    }
+  }
+```
+
