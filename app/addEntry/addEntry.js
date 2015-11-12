@@ -11,7 +11,8 @@ app.controller('addEntryCtrl',
 
   // attach startup to scope and populate with today's date
   $scope.startup = {
-    "date": $scope.date
+    "date": $scope.date,
+    "entrepreneurs": {}
   };
 
   // attach entrep to scope and populate with today's date
@@ -35,7 +36,6 @@ app.controller('addEntryCtrl',
 
     // POST req here; send data to the server
     if (Object.keys($scope.entrepreneur).length > 1) {
-      addNewStartup($scope.startup);
       addNewEntrepreneur($scope.entrepreneur);
     } else {
       addNewStartup($scope.startup);
@@ -51,8 +51,9 @@ app.controller('addEntryCtrl',
     var newStartRef = startupRef.push($scope.startup);
     var startupID = newStartRef.key();
     newStartRef.on('value', function(dataSnapshot) {
-      console.log(startupID);
-      console.log('success');
+      // console.log(startupID);
+      // console.log('success');
+      // console.log($scope.entrepreneur);
     },
 
     function(error) {
@@ -66,8 +67,9 @@ app.controller('addEntryCtrl',
     var newEntreRef = entrepreneurRef.push($scope.entrepreneur);
     var entrepreneurID = newEntreRef.key();
     newEntreRef.on('value', function(dataSnapshot) {
-      console.log(entrepreneurID);
-      console.log('success');
+      // console.log(entrepreneurID);
+      // console.log('success');
+      addEntreToStartup(entrepreneurID);
     },
 
     function(error) {
@@ -75,11 +77,20 @@ app.controller('addEntryCtrl',
     });
   };
 
+  var addEntreToStartup = function(entrepreneurID) {
+    $scope.startup.entrepreneurs[entrepreneurID] = true;
+    console.log($scope.startup);
+    addNewStartup($scope.startup);
+  };
+
+  // var addEntreToStartup = function(entrepreneur, startup)
+
   $scope.clear = function() {
 
     // reset startup and entrep object
     $scope.startup = {
-      "date": $scope.date
+      "date": $scope.date,
+      "entrepreneurs": {}
     };
     $scope.entrepreneur = {
       "date": $scope.date
