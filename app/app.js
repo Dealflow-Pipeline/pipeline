@@ -5,6 +5,7 @@ var app = angular.module('pipeline', [
   'founder',
   'startup',
   'addEntry',
+  'addNote',
   // 'auth',
   'ui.router',
   'ui.bootstrap',
@@ -24,6 +25,11 @@ var app = angular.module('pipeline', [
         url: '/about',
         templateUrl: 'about/about.html',
         controller: 'aboutCtrl',
+      })
+      .state('note', {
+        url: '/note',
+        templateUrl: 'note/addNote.html',
+        controller: 'addNoteCtrl',
       })
       .state('dashboard', {
         url: '/dashboard',
