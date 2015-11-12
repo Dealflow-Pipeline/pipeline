@@ -2,12 +2,12 @@
   <h1>Add Entry</h1>
   <hr>
   <div ng-controller="addEntryCtrl">
-    <form name="addEntry" ng-submit="add(startup, entrepreneur)" novalidate class="css-form form-horizontal" id="addEntry">
+    <form name="addEntry" ng-submit="add(startup, founder)" novalidate class="css-form form-horizontal" id="addEntry">
 
       <!-- Startup, Entrepreneur, or both -->
       <div class="btn-group">
         <label class="btn btn-primary" ng-model="entry.startup" uib-btn-checkbox>Startup</label>
-        <label class="btn btn-primary" ng-model="entry.entrepreneur" uib-btn-checkbox>Entrepreneur</label>
+        <label class="btn btn-primary" ng-model="entry.founder" uib-btn-checkbox>Founder</label>
       </div>
 
       <!-- Date of entry -->
@@ -67,44 +67,44 @@
 
       <h2 ng-show="entry.entrepreneur">Entrepreneur Information</h2>
 
-      <!-- Entrepreneur Name -->
-      <div class="form-group" ng-show="entry.entrepreneur">
-        <label for="entrepreneur-name" class="col-sm-3 control-label">Entrepreneur Name</label>
+      <!-- Founder Name -->
+      <div class="form-group" ng-show="entry.founder">
+        <label for="founder-name" class="col-sm-3 control-label">Founder Name</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" ng-model="entrepreneur.name" />
+          <input type="text" class="form-control" ng-model="founder.name" />
         </div>
       </div>
 
-      <!-- Entrepreneur Email -->
-      <div class="form-group" ng-show="entry.entrepreneur">
-        <label for="entrepreneur-email" class="col-sm-3 control-label">Entrepreneur Email</label>
+      <!-- Founder Email -->
+      <div class="form-group" ng-show="entry.founder">
+        <label for="founder-email" class="col-sm-3 control-label">Founder Email</label>
         <div class="col-sm-9">
-          <input type="email" class="form-control" ng-model="entrepreneur.email" />
+          <input type="email" class="form-control" ng-model="founder.email" />
         </div>
       </div>
 
-      <!-- Entrepreneur Phone -->
-      <div class="form-group" ng-show="entry.entrepreneur">
-        <label for="entrepreneur-phone" class="col-sm-3 control-label">Entrepreneur Phone</label>
+      <!-- Founder Phone -->
+      <div class="form-group" ng-show="entry.founder">
+        <label for="founder-phone" class="col-sm-3 control-label">Founder Phone</label>
         <div class="col-sm-9">
-          <input type="number" class="form-control" ng-model="entrepreneur.phone" />
+          <input type="number" class="form-control" ng-model="founder.phone" />
         </div>
       </div>
 
       <!-- Location -->
-      <div class="form-group" ng-show="entry.entrepreneur">
-        <label for="entrepreneur-location" class="col-sm-3 control-label">Entrepreneur Location (City, State)</label>
+      <div class="form-group" ng-show="entry.founder">
+        <label for="founder-location" class="col-sm-3 control-label">Founder Location (City, State)</label>
         <div class="col-sm-9">
-          <input type="text" rows="4" class="form-control" ng-model="entrepreneur.location" />
+          <input type="text" rows="4" class="form-control" ng-model="founder.location" />
         </div>
       </div>
 
 
       <!-- Notes -->
-     <!--  <div class="form-group" ng-show="entry.entrepreneur">
-        <label for="entrepreneur-notes" class="col-sm-3 control-label">Entrepreneur Notes</label>
+     <!--  <div class="form-group" ng-show="entry.founder">
+        <label for="founder-notes" class="col-sm-3 control-label">Founder Notes</label>
         <div class="col-sm-9">
-          <textarea rows="4" class="form-control" ng-model="entrepreneur.notes" />
+          <textarea rows="4" class="form-control" ng-model="founder.notes" />
         </div>
       </div> -->
 
@@ -116,7 +116,7 @@
       </div>
 
       <pre>startup = {{ startup | json }}</pre>
-      <pre>entrepreneur = {{ entrepreneur | json }}</pre>
+      <pre>founder = {{ founder | json }}</pre>
     </form>
   </div>
 </div>
@@ -138,7 +138,7 @@
         </div>
       </div>
       <div>
-        <input type="submit" ng-click="add(startup, entrepreneur)" value="Save" />
+        <input type="submit" ng-click="add(startup, founder)" value="Save" />
       </div>
     </form>
    -->
