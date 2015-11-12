@@ -1,4 +1,6 @@
-var app = angular.module('nav', []);
+var app = angular.module('nav', [
+  'ui.bootstrap',
+]);
 
 app.controller('navCtrl', [
   '$scope',

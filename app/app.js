@@ -7,7 +7,8 @@ var app = angular.module('pipeline', [
   'addEntry',
   // 'auth',
   'ui.router',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'firebase',
 ])
 .config([
   '$stateProvider',
@@ -44,7 +45,7 @@ var app = angular.module('pipeline', [
         templateUrl: 'addEntry/addEntry.html',
         controller: 'addEntryCtrl',
       })
-      
+
       //!!! we should combine these bc login & register will be the same page
 
       // .state('login', {
