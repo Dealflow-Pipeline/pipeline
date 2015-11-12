@@ -1,11 +1,13 @@
-var app = angular.module('pipeline', []);
+var app = angular.module('pipeline.factory', [
+  'firebase',
+]);
 
-app.factory('addEntrepFactory', function($http) {
+app.factory('entrepFactory', function($http, $firebaseObject) {
+  var refEntrep = new Firebase('https://pipeline8.firebaseio.com/entrepreneur');
 
-});
+  startupRef.push($scope.startup)
+  .then(function(res) {
+    return res.data;
+  });
 
-app.factory('addStartupFactory', function($http) {
-  var submitNewStartup = function(newStartup) {
-    return $http.post('')
-  }
 });

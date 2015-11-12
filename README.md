@@ -11,8 +11,19 @@ TO DO HERE:
 * how to install and start server
 * clean up directory layout
 * setup API route chart
-* add details of firebase 
+* add details of firebase
 * discuss tech stack
+
+Installing Firebase & AngularFire
+* In terminal:
+  * `bower install firebase --save`
+  * `bowert install angularfire --save`
+* Add script dependencies:
+  * `<script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>`
+  * `<script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>`
+* Inject AngularFire services:
+  * `var app = angular.module('pipeline', ['firebase']);`
+
 
 
 # Directory Layout
