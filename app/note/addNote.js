@@ -1,12 +1,15 @@
 var app = angular.module('addNote', ['ui.bootstrap', 'firebase']);
 
-app.controller('addNoteCtrl', function($scope, $firebaseObject) {
-  var ref = new Firebase('https://pipeline8.firebaseio.com/');
+app.controller('addNoteCtrl', 
+  function($scope, $firebaseObject) {
+  var ref = new Firebase('https://pipeline8.firebaseio.com/notes');
+  console.log($scope)
+  console.log(ref)
   $scope.data = $firebaseObject(ref);
 
   $scope.note = {};
 
-  $scope.date = new Date();
+  $scope.note.date = new Date();
 
   $scope.add = function(note) {
     console.log('note added!')
@@ -35,3 +38,7 @@ app.controller('addNoteCtrl', function($scope, $firebaseObject) {
   };
 
 });
+
+
+
+
