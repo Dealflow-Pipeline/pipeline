@@ -2,7 +2,7 @@ var app = angular.module('pipeline', [
   'home',
   'about',
   'dashboard',
-  'entrepreneur',
+  'founder',
   'startup',
   'addEntry',
   // 'auth',
@@ -30,10 +30,10 @@ var app = angular.module('pipeline', [
         templateUrl: 'dashboard/dashboard.html',
         controller: 'dashboardCtrl',
       })
-      .state('entrepreneur', {
-        url: '/entrepreneur/:id/profile',
-        templateUrl: 'profileEntrep/profileEntrep.html',
-        controller: 'profileEntrepCtrl',
+      .state('founder', {
+        url: '/founder/:id/profile',
+        templateUrl: 'profileFounder/profileFounder.html',
+        controller: 'profileFounderCtrl',
       })
       .state('startup', {
         url: '/startup/:id/profile',

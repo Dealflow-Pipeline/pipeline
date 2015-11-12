@@ -12,33 +12,33 @@ app.controller('addEntryCtrl',
   // attach startup to scope and populate with today's date
   $scope.startup = {
     "date": $scope.date,
-    "entrepreneurs": {}
+    "founders": {}
   };
 
   // attach entrep to scope and populate with today's date
-  $scope.entrepreneur = {
+  $scope.founder = {
     "date": $scope.date
   };
 
   // startup form fields will display by default, entrep fields will not
   $scope.entry = {
     startup: true,
-    entrepreneur: false,
+    founder: false,
   };
 
   $scope.date = new Date();
 
   // gets invoked on form submission
-  $scope.add = function(startup, entrepreneur) {
+  $scope.add = function(startup, founder) {
     console.log('added!');
     $scope.startup = angular.copy(startup);
-    $scope.entrepreneur = angular.copy(entrepreneur);
+    $scope.founder = angular.copy(founder);
 
     // POST req here; send data to the server
-    if (Object.keys($scope.entrepreneur).length > 1) {
-      addNewEntrepreneur($scope.entrepreneur);
+    if (Object.keys($scope.founder).length > 1) {
+      newFounder($scope.founder);
     } else {
-      addNewStartup($scope.startup);
+      newStartup($scope.startup);
     }
 
     // startupRef.push($scope.startup);
@@ -46,7 +46,7 @@ app.controller('addEntryCtrl',
     $scope.clear();
   };
 
-  var addNewStartup = function(startup) {
+  var newStartup = function(startup) {
     var startupRef = new Firebase('https://pipeline8.firebaseio.com/startup');
     var newStartRef = startupRef.push($scope.startup);
     var startupID = newStartRef.key();
@@ -61,15 +61,15 @@ app.controller('addEntryCtrl',
     });
   };
 
-  var addNewEntrepreneur = function(entrepreneur) {
+  var newFounder = function(founder) {
     // TODO: Prevent new record from being created with empty form submit
-    var entrepreneurRef = new Firebase('https://pipeline8.firebaseio.com/entrepreneur');
-    var newEntreRef = entrepreneurRef.push($scope.entrepreneur);
-    var entrepreneurID = newEntreRef.key();
-    newEntreRef.on('value', function(dataSnapshot) {
+    var foudnerRef = new Firebase('https://pipeline8.firebaseio.com/founder');
+    var newFounderRef = foudnerRef.push($scope.founder);
+    var founderID = newFounderRef.key();
+    newFounderRef.on('value', function(dataSnapshot) {
       // console.log(entrepreneurID);
       // console.log('success');
-      addEntreToStartup(entrepreneurID);
+      addFounderToStartup(founderID);
     },
 
     function(error) {
@@ -77,10 +77,10 @@ app.controller('addEntryCtrl',
     });
   };
 
-  var addEntreToStartup = function(entrepreneurID) {
-    $scope.startup.entrepreneurs[entrepreneurID] = true;
+  var addFounderToStartup = function(founderID) {
+    $scope.startup.founders[founderID] = true;
     console.log($scope.startup);
-    addNewStartup($scope.startup);
+    newStartup($scope.startup);
   };
 
   // var addEntreToStartup = function(entrepreneur, startup)
@@ -92,7 +92,7 @@ app.controller('addEntryCtrl',
       "date": $scope.date,
       "entrepreneurs": {}
     };
-    $scope.entrepreneur = {
+    $scope.foudner = {
       "date": $scope.date
     };
 
