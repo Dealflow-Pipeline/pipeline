@@ -8,7 +8,7 @@ var app = angular.module('pipeline', [
   // 'auth',
   'ui.router',
   'ui.bootstrap',
-  'firebase',
+  'firebase'
 ])
 .config([
   '$stateProvider',
