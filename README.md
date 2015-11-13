@@ -75,7 +75,8 @@ Firebase Data Structure:
   {
     "startups": {
       "unique_id": {
-        "name": "Uber",
+        "startupName": "startup's name",
+        "date": "date_as_a_string",
         "founders": {
           "unique_id": true,
           "unique_id": true
@@ -85,12 +86,12 @@ Firebase Data Structure:
           "unique_id": true
         },
         ...
-      },
-      ...
+      }
     },
     "founders": {
       "unique_id": {
-        "name": "startup_unique_id",
+        "founderName": "founder's name",
+        "date": "date_as_a_string",
         "startups": {
           "unique_id": true,
           "unique_id": true
@@ -100,11 +101,12 @@ Firebase Data Structure:
           "unique_id": true
         },
         ...
-      },
+      }
     },
     "notes": {
       "unique_id": {
-        "name": "startup_unique_id",
+        "note": "text",
+        "date": "date_as_a_string",
         "startups": {
           "unique_id": true,
           "unique_id": true
