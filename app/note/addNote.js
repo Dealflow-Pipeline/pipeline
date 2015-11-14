@@ -12,7 +12,6 @@ app.controller('addNoteCtrl',
     date: new Date()
   };
 
-
   // invoke on form submission
   $scope.add = function(note) {
 
@@ -27,78 +26,50 @@ app.controller('addNoteCtrl',
         "status": note.status || null,
         "startups": {},
         "founders": {}
+      }, function () {
+
+        // once the data gets posted to server, read the data located there
+        newNoteRef.once('value', function(noteSnapshot) {
+
+          // console.log(newNoteRef.val())
+          console.log(newNoteRef.key())
+
+          // create new instance of startup and founder
+          var startupRef = new Firebase('https://pipeline8.firebaseio.com/startup');
+          var founderRef = new Firebase('https://pipeline8.firebaseio.com/founder');
+
+          // capture data inside the startup (nested) object so we can iterate over it
+          startupRef.once('value', function(startupSnapshot) {
+
+            // iterate over startup nested object so we can find a startup name match
+            startupSnapshot.forEach(function(startup) {
+
+              // if the name of the startup entered by user matches one in the database
+              if (startup.val().name === note.startup) {
+
+                // create a new object called 'notes' with the key as the notes unique id and value as true
+                console.log(startupRef.child(startup.key()));
+                
+                startupRef.child(startup.key()).child('notes').push(true);
+
+                // newNoteRef.child('startups').child(newNoteRef.key()).push(true);
+              }
+
+
+                var noteKey = noteSnapshot.key();
+                // startup.val().push({"notes": { noteKey: true }})
+
+
+                // console.log(startupSnapshot.val()[startup.key()])
+            });
+          });
+        });
       });
-      
-      // cache the startup & founder for our success callback below (searchStartups/searchFounders)
-      var startupName = note.startup;
-      var founderName = note.founder;
 
       // clear the form upon submission
       $scope.clear();
     }
-    
-    // once a new note is created
-    if (newNoteRef) {
-
-      // success/error callback
-      newNoteRef.on('value', function(dataSnapshot) {
-        console.log('note added:' + dataSnapshot.val());
-        console.log('note ID:' + newNoteRef.key());
-
-        // if the user enters a startup name, search for that startup's ID and add to note object
-        if (!!note.startup) {
-          var startupId = searchStartups(note.startup);
-          console.log('1', startupId)
-          if (startupId) {
-            console.log('2', startupId)
-            notes.newNoteRef.key().startups[startupId] = true;
-          }
-        }
-        // if the user enters a founder name, search for that founder's ID and add to note object
-        // if (!!note.founder) {
-          // var founderId = searchFounders(note.founder);
-          // if (founderId) {
-            // notes.newNoteRef.key().founders[founderId] = true;
-          // }
-        // }
-      }, function(err) {
-        console.log(err);
-      });
-    }
-  };
-
-    var test = '?';
-  var searchStartups = function(startupName) {
-    var startupRef = new Firebase('https://pipeline8.firebaseio.com/startup');
-    startupRef.once("value", function(snapshot) {
-      return snapshot.forEach(function(childSnapshot) {
-        if (childSnapshot.val().name === startupName) {
-          console.log(childSnapshot.key())
-          test = childSnapshot.key();
-        }
-        var key = childSnapshot.key();
-        // console.log(key)
-        var childSnapshot = childSnapshot.val();
-        // console.log(childSnapshot)
-      });
-      console.log(test)
-    });
-    // for debugging; this logs the entire notes object
-    // console.log($firebaseObject(startupRef));
-    // var startups = $firebaseObject(startupRef)
-    // for (var startup in startups) {
-    //   console.log(startupName)
-    //   console.log(startup)
-    //   if (startup[startupName]) {
-    //     console.log('YES!!')
-    //     console.log(note.startup)
-    //     return startup[note.startup]
-    //   }
-    // }
-    // return null;
-    console.log(test)
-    return test;
-  };
+  }
 
   $scope.clear = function() {
 
