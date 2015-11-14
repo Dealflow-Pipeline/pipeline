@@ -38,6 +38,7 @@ app.controller('addEntryCtrl',
       // Check whether we are adding both a startup and founder or a singular
       function setAddEntry() {
         if ((Object.keys(founder).length > 2) && (Object.keys(startup).length > 2)) {
+
           // newStartupAndFounder(startup, founder);
           return {
             then: function(callback) {
