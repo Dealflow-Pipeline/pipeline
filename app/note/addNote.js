@@ -46,17 +46,30 @@ app.controller('addNoteCtrl',
 
               // if the name of the startup entered by user matches one in the database
               if (startup.val().name === note.startup) {
+                
+                console.log(startup.key())
+                console.log(noteSnapshot.key())
+
+                var startupRefId = startup.key()
+                var noteId = noteSnapshot.key()
+
+                var newStartupRef = new Firebase('https://pipeline8.firebaseio.com/startup/' + startupRefId + '/notes/' + noteId);
+
+                console.log('https://pipeline8.firebaseio.com/startup/' + startupRefId + '/notes/' + noteId)
+
+                newStartupRef.set(true);
+
 
                 // create a new object called 'notes' with the key as the notes unique id and value as true
-                console.log(startupRef.child(startup.key()));
-                
-                startupRef.child(startup.key()).child('notes').push(true);
+                // console.log(startupRef.child(startup.key()));
+
+                // startupRef.child(startup.key()).child('notes').push(true);
 
                 // newNoteRef.child('startups').child(newNoteRef.key()).push(true);
               }
 
 
-                var noteKey = noteSnapshot.key();
+                // var noteKey = noteSnapshot.key();
                 // startup.val().push({"notes": { noteKey: true }})
 
 
