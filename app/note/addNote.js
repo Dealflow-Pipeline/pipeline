@@ -1,9 +1,9 @@
 var app = angular.module('addNote', ['ui.bootstrap', 'firebase']);
 
-app.controller('addNoteCtrl', 
+app.controller('addNoteCtrl',
   function($scope, $firebaseObject) {
   var noteRef = new Firebase('https://pipeline8.firebaseio.com/notes');
-  
+
   // for debugging; this logs the entire notes object
   console.log($firebaseObject(noteRef));
 
@@ -43,7 +43,7 @@ app.controller('addNoteCtrl',
 
               // if the name of the startup entered by user matches one in the database
               if ((!!note.startup) && (note.startup !== '') && startup.val().name === note.startup) {
-                
+
                 // cache the startup key and note key
                 var startupRefId = startup.key()
                 var noteId = noteSnapshot.key()
@@ -51,7 +51,7 @@ app.controller('addNoteCtrl',
                 // instantiate a reference to the nested notes object inside of startup
                 var newStartupRef = new Firebase('https://pipeline8.firebaseio.com/startup/' + startupRefId + '/notes/' + noteId);
 
-                // set the nested noteId to true 
+                // set the nested noteId to true
                 newStartupRef.set(true);
 
                 // instantiate a reference to the nested startup object inside of startup
@@ -71,7 +71,7 @@ app.controller('addNoteCtrl',
 
               // if the name of the founder entered by user matches one in the database
               if ((!!note.founder) && (note.founder !== '') && (founder.val().name === note.founder)) {
-                
+
                 // cache the founder key and note key
                 var founderRefId = founder.key()
                 var noteId = noteSnapshot.key()
@@ -79,7 +79,7 @@ app.controller('addNoteCtrl',
                 // instantiate a reference to the nested notes object inside of founder
                 var newFounderRef = new Firebase('https://pipeline8.firebaseio.com/founder/' + founderRefId + '/notes/' + noteId);
 
-                // set the nested noteId to true 
+                // set the nested noteId to true
                 newFounderRef.set(true);
 
                 // instantiate a reference to the nested founder object inside of founder
@@ -111,7 +111,3 @@ app.controller('addNoteCtrl',
   };
 
 });
-
-
-
-

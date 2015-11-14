@@ -32,16 +32,57 @@
         </div>
       </div>
     </div>
-    <div class="panel-heading">
-      <h3 class="panel-title">Founders</h3>
-    </div>
-    <div class="panel-body">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Founders</h3>
+      </div>
+      <uib-tabset class="panel-body" justified="true">
+        <uib-tab heading="Overview">Overview of Founders</uib-tab>
+        <uib-tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disable="tab.disabled">
+          {{tab.content}}
+        </uib-tab>
+      </uib-tabset>
     </div>
     <div class="panel-heading">
       <h3 class="panel-title">Notes</h3>
     </div>
-    <table class="table table-striped">
-    ...
-    </table>
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>1/01/01</td>
+            <td>New</td>
+            <td>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>1/01/01</td>
+            <td>New</td>
+            <td>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>1/01/01</td>
+            <td>New</td>
+            <td>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>1/01/01</td>
+            <td>New</td>
+            <td>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
