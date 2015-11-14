@@ -31,9 +31,6 @@ app.controller('addNoteCtrl',
         // once the data gets posted to server, read the data located there
         newNoteRef.once('value', function(noteSnapshot) {
 
-          // console.log(newNoteRef.val())
-          console.log(newNoteRef.key())
-
           // create new instance of startup and founder
           var startupRef = new Firebase('https://pipeline8.firebaseio.com/startup');
           var founderRef = new Firebase('https://pipeline8.firebaseio.com/founder');
@@ -45,35 +42,52 @@ app.controller('addNoteCtrl',
             startupSnapshot.forEach(function(startup) {
 
               // if the name of the startup entered by user matches one in the database
-              if (startup.val().name === note.startup) {
+              if ((!!note.startup) && (note.startup !== '') && startup.val().name === note.startup) {
                 
-                console.log(startup.key())
-                console.log(noteSnapshot.key())
-
+                // cache the startup key and note key
                 var startupRefId = startup.key()
                 var noteId = noteSnapshot.key()
 
+                // instantiate a reference to the nested notes object inside of startup
                 var newStartupRef = new Firebase('https://pipeline8.firebaseio.com/startup/' + startupRefId + '/notes/' + noteId);
 
-                console.log('https://pipeline8.firebaseio.com/startup/' + startupRefId + '/notes/' + noteId)
-
+                // set the nested noteId to true 
                 newStartupRef.set(true);
 
+                // instantiate a reference to the nested startup object inside of startup
+                var newNoteRef = new Firebase('https://pipeline8.firebaseio.com/notes/' + noteId + '/startups/' + startupRefId);
 
-                // create a new object called 'notes' with the key as the notes unique id and value as true
-                // console.log(startupRef.child(startup.key()));
-
-                // startupRef.child(startup.key()).child('notes').push(true);
-
-                // newNoteRef.child('startups').child(newNoteRef.key()).push(true);
+                // set the nested startupId to true
+                newNoteRef.set(true);
               }
+            });
+          });
 
+          // capture data inside the founder (nested) object so we can iterate over it
+          founderRef.once('value', function(founderSnapshot) {
 
-                // var noteKey = noteSnapshot.key();
-                // startup.val().push({"notes": { noteKey: true }})
+            // iterate over founder nested object so we can find a founder name match
+            founderSnapshot.forEach(function(founder) {
 
+              // if the name of the founder entered by user matches one in the database
+              if ((!!note.founder) && (note.founder !== '') && (founder.val().name === note.founder)) {
+                
+                // cache the founder key and note key
+                var founderRefId = founder.key()
+                var noteId = noteSnapshot.key()
 
-                // console.log(startupSnapshot.val()[startup.key()])
+                // instantiate a reference to the nested notes object inside of founder
+                var newFounderRef = new Firebase('https://pipeline8.firebaseio.com/founder/' + founderRefId + '/notes/' + noteId);
+
+                // set the nested noteId to true 
+                newFounderRef.set(true);
+
+                // instantiate a reference to the nested founder object inside of founder
+                var newNoteRef = new Firebase('https://pipeline8.firebaseio.com/notes/' + noteId + '/founders/' + founderRefId);
+
+                // set the nested founderId to true
+                newNoteRef.set(true);
+              }
             });
           });
         });
