@@ -42,15 +42,26 @@ var app = angular.module('pipeline', [
         controller: 'profileFounderCtrl',
       })
       .state('startup', {
-        url: '/startup/:id/profile',
+        url: '/startup/:startupId/profile',
         templateUrl: 'profileStartup/profileStartup.html',
         controller: 'profileStartupCtrl',
+        resolve: {
+          app: function($q, $timeout) {
+            var defer = $q.defer;
+            $timeout(function() {
+              defer.resolve();
+            },
+
+            2000);
+            return defer.promise;
+          },
+        },
       })
       .state('addEntry', {
         url: '/new',
         templateUrl: 'addEntry/addEntry.html',
         controller: 'addEntryCtrl',
-      })
+      });
 
       //!!! we should combine these bc login & register will be the same page
 

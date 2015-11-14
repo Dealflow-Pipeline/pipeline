@@ -1,7 +1,7 @@
 <div class="container">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">Startup</h3>
+      <h3 class="panel-title">{{ startup.name }}</h3>
     </div>
     <div class="panel-body">
       <div class="row">
@@ -9,25 +9,24 @@
           <img src="assets/logo_blank.svg" alt="..." class="img-thumbnail">
         </div>
         <div class="col-md-4">
-          <p>website</p>
-          <p>tagline</p>
-          <p>pipeline status</p>
-          <p>intro source</p>
-          <p>location</p>
-          <p>amount raised</p>
+          <p><strong>Tagline:</strong> {{ startup.tagline }}</p>
+          <p><strong>Industry:</strong></p>
+          <p><strong>Location:</strong> {{ startup.location }}</p>
+          <p><strong>Website:</strong></p>
+          <p><strong>Social Profiles:</strong></p>
         </div>
         <div class="col-md-4">
-          <p>launch date</p>
-          <p>size (employee count)</p>
-          <p>burn rate</p>
-          <p>founders:</p>
-          <p>social profiles:</p>
-          <p>industry</p>
+          <p><strong>Funnel Step:</strong> {{ startup.funnel }}</p>
+          <p><strong>Referral Source:</strong> {{ startup.source }}</p>
+          <p><strong>Founding Date:</strong> {{ startup.date }}</p>
+          <p><strong>Aamount Raised</strong></p>
+          <p><strong>Size(employee count):</strong></p>
+          <p><strong>Burn Rate</strong></p>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <p>description:</p>
+          <p><strong>Description:</strong></p>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         </div>
       </div>
@@ -38,8 +37,8 @@
       </div>
       <uib-tabset class="panel-body" justified="true">
         <uib-tab heading="Overview">Overview of Founders</uib-tab>
-        <uib-tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disable="tab.disabled">
-          {{tab.content}}
+        <uib-tab ng-repeat="founders in startup" heading="{{founder.name}}" active="tab.active" disable="tab.disabled">
+          {{ founder }}
         </uib-tab>
       </uib-tabset>
     </div>
@@ -86,3 +85,5 @@
     </div>
   </div>
 </div>
+
+<pre>startup = {{ username }}</pre>
