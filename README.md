@@ -9,10 +9,15 @@ BEN'S NOTES:
 
 TO DO HERE:
 * how to install and start server
-* clean up directory layout
+* clean up directory layout (below)
 * setup API route chart
 * add details of firebase
 * discuss tech stack
+* link to any blog post
+* screenshots of product
+* screenshots of mockups
+
+
 
 Installing Firebase & AngularFire
 * In terminal:
@@ -63,3 +68,56 @@ Installing Firebase & AngularFire
 ├── lib
 └── test
 ```
+
+Firebase Data Structure:
+
+```
+  {
+    "startups": {
+      "unique_id": {
+        "startupName": "startup's name",
+        "date": "date_as_a_string",
+        "founders": {
+          "unique_id": true,
+          "unique_id": true
+        },
+        "notes": {
+          "unique_id": true,
+          "unique_id": true
+        },
+        ...
+      }
+    },
+    "founders": {
+      "unique_id": {
+        "founderName": "founder's name",
+        "date": "date_as_a_string",
+        "startups": {
+          "unique_id": true,
+          "unique_id": true
+        },
+        "notes": {
+          "unique_id": true,
+          "unique_id": true
+        },
+        ...
+      }
+    },
+    "notes": {
+      "unique_id": {
+        "note": "text",
+        "date": "date_as_a_string",
+        "startups": {
+          "unique_id": true,
+          "unique_id": true
+        },
+        "founders": {
+           "unique_id": true,
+           "unique_id": true
+        },
+        ...
+      }
+    }
+  }
+```
+

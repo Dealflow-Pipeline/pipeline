@@ -1,0 +1,77 @@
+<div class="container">
+  <h1>Add Tasks</h1>
+  <div ng-controller="addNoteCtrl">
+    <form name="addNote" ng-submit="add(note)" novalidate class="css-form form-horizontal" id="addNote">
+
+      <!-- Date of entry -->
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Date of Entry</label>
+        <div class="col-sm-9">
+          <input type="date" class="form-control" autocomplete="on" ng-model="note.date" autofocus />
+        </div>
+      </div>
+
+      <!-- Startup name -->
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Startup Name</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" ng-model="note.startup" />
+        </div>
+      </div>
+
+      <!-- Startup ID (hidden) -->
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Startup ID (meant to be hidden)</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" ng-model="note.startupId" />
+        </div>
+      </div>
+
+      <!-- Founder name -->
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Founder Name</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" ng-model="note.founder" />
+        </div>
+      </div>
+
+      <!-- Founder ID (hidden) -->
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Founder ID (meant to be hidden)</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" ng-model="note.founderId" />
+        </div>
+      </div>
+
+      <!-- Status -->
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Status</label>
+        <div class="col-sm-9">
+          <select class="form-control" ng-model="note.status">
+            <option value="1" select>Completed</option>
+            <option value="2">Past Due</option>
+            <option value="3">Immediate</option>
+            <option value="4">Near Future</option>
+            <option value="5">Future</option>
+            <option value="6">Reminder</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Note -->
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Note</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" ng-model="note.text" />
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <input type="submit" class="btn btn-primary btn-lg" value="Submit" />
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
