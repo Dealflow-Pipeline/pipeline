@@ -1,9 +1,50 @@
-<h1>Dashboard</h1>
+<h1>Pipeline</h1>
+
+<!-- <div class="col-md-12"> -->
+<div class="panel">  
+  <form action="">
+    <div class="form-group">
+      <label class="sr-only" for="dashboard-filter">Filter for startup or founder</label>
+      <input type="text" class="form-control input-lg" id="dashboard-filter" placeholder="Search for startup or founder">
+    </div>
+  </form>
+</div>
+
 
 <div class="panel panel-default">
-  <div class="panel-heading">Panel Heading</div>
+  <div class="panel-heading">Startups</div>
   <div class="panel-body">
-    <p>Body Here</p>
+    <p>Below is a list of your startups</p>
+  </div>
+
+  <table class="table table-bordered table-hover">
+    <tr>
+      <th>heading1</th>
+      <th>heading2</th>
+      <th>heading3</th>
+    </tr>
+    <tr>
+      <td>r1d1</td>
+      <td>r2d2</td>
+      <td>r3d3</td>
+    </tr>
+    <tr>
+      <td>r2d1</td>
+      <td>r2d2</td>
+      <td>r2d3</td>
+    </tr>
+    <tr>
+      <td>r3d1</td>
+      <td>r3d2</td>
+      <td>r3d3</td>
+    </tr>
+  </table>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Founders</div>
+  <div class="panel-body">
+    <p>Below is a list of your founders</p>
   </div>
 
   <table class="table table-bordered table-hover">
@@ -39,4 +80,3 @@
 
 <pre>{{ data | json }}</pre>
 
-html:5
