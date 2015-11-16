@@ -10,6 +10,22 @@
   </form>
 </div>
 
+<div class="panel panel-default">
+  <div class="panel-heading">Startups</div>
+  <div class="panel-body">
+    <p>Below is a list of your startups</p>
+  </div>
+
+  <table class="table table-bordered table-hover" ng-table="tableParams" show-filter="true">
+    <tr ng-repeat="user in $data">
+      <td title="'Name'" filter="{name: 'text'}" sortable="'Name'">{{user.name}}</td>
+      <td title="'Age'" filter="{age:'number'}" sortable="'age'">{{user.age}}</td>
+    </tr>
+  </table>
+</div>
+
+
+
 
 <div class="panel panel-default">
   <div class="panel-heading">Startups</div>
@@ -23,29 +39,33 @@
       <th>heading2</th>
       <th>heading3</th>
     </tr>
-    <tr>
-      <td>r1d1</td>
-      <td>r2d2</td>
-      <td>r3d3</td>
-    </tr>
-    <tr>
-      <td>r2d1</td>
-      <td>r2d2</td>
-      <td>r2d3</td>
-    </tr>
-    <tr>
-      <td>r3d1</td>
-      <td>r3d2</td>
-      <td>r3d3</td>
-    </tr>
+    <tbody>
+      <tr ng-repeat="startup in test">
+        <td>{{startup.a}}</td>
+        <td>{{startup.a}}</td>
+      </tr>
+      <!-- <tr>
+        <td>r1d1</td>
+        <td>r2d2</td>
+        <td>r3d3</td>
+      </tr>
+      <tr>
+        <td>r2d1</td>
+        <td>r2d2</td>
+        <td>r2d3</td>
+      </tr>
+      <tr>
+        <td>r3d1</td>
+        <td>r3d2</td>
+        <td>r3d3</td>
+      </tr> -->
+    </tbody>
   </table>
 </div>
 
 <div class="panel panel-default">
   <div class="panel-heading">Founders</div>
-  <div class="panel-body">
-    <p>Below is a list of your founders</p>
-  </div>
+  <div class="panel-body"><p>Below is a list of your founders</p></div>
 
   <table class="table table-bordered table-hover">
     <tr>
@@ -70,12 +90,6 @@
     </tr>
   </table>
 </div>
-
-
-
-
-
-
 
 
 <pre>{{ data | json }}</pre>

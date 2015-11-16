@@ -9,7 +9,8 @@ var app = angular.module('pipeline', [
   // 'auth',
   'ui.router',
   'ui.bootstrap',
-  'firebase'
+  'firebase',
+  'ngTable'
 ])
 .config([
   '$stateProvider',
@@ -35,6 +36,16 @@ var app = angular.module('pipeline', [
         url: '/dashboard',
         templateUrl: 'dashboard/dashboard.html',
         controller: 'dashboardCtrl',
+        // resolve: {
+        //   app: function($q, $timeout) {
+        //     var defer = $q.defer;
+        //     $timeout(function() {
+        //       defer.resolve();
+        //     },
+        //     2000);
+        //     return defer.promise;
+        //   }
+        // }
       })
       .state('founder', {
         url: '/founder/:id/profile',
