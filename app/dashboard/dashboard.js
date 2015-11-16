@@ -1,17 +1,31 @@
-var app = angular.module('dashboard', ['firebase', 'ngTable']);
+var app = angular.module('dashboard', ['firebase']);
 
-app.controller('dashboardCtrl', function($scope, $firebaseObject, NgTableParams) {
+app.controller('dashboardCtrl', function($scope, $firebaseObject) {
   var startupRef = new Firebase('https://pipeline8.firebaseio.com/startup')
-  // $scope = $firebaseObject(startupRef);
+  var founderRef = new Firebase('https://pipeline8.firebaseio.com/founder')
 
-  var data = [{ name: 'christian', age: 21 }, { name: 'anthony', age: 88 }];
-  $scope.tableParams = new NgTableParams({}, { dataset: data});
-  console.log(data)
   
-  // startupRef.on("value", function(startupSnapshot) {
-  //   console.log(startupSnapshot.val())
-  //   $scope.startups = startupSnapshot.val();
-  // });
+  startupRef.on("value", function(startupSnapshot) {
+    $scope.$apply(function() {
+      var startups = [];
+      startupSnapshot.forEach(function(startup) {
+        startups.push(startup.val());
+      });
+      $scope.startups = startups;
+    });
+  });
+
+  founderRef.on("value", function(founderSnapshot) {
+    $scope.$apply(function() {
+      var founders = [];
+      founderSnapshot.forEach(function(founder) {
+        founders.push(founder.val());
+      });
+      $scope.founders = founders;
+  console.log($scope.founders)
+    });
+  });
+
   // console.log($scope)
 
   // $scope.startups.$loaded()

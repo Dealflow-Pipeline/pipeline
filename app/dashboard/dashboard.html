@@ -5,7 +5,7 @@
   <form action="">
     <div class="form-group">
       <label class="sr-only" for="dashboard-filter">Filter for startup or founder</label>
-      <input type="text" class="form-control input-lg" id="dashboard-filter" placeholder="Search for startup or founder">
+      <input type="search" ng-model="q" class="form-control input-lg" id="dashboard-filter" placeholder="Search for startup or founder">
     </div>
   </form>
 </div>
@@ -13,84 +13,46 @@
 <div class="panel panel-default">
   <div class="panel-heading">Startups</div>
   <div class="panel-body">
-    <p>Below is a list of your startups</p>
+    <p>You currently have {{startups.length}} in your pipeline. They are:</p>
   </div>
-
-  <table class="table table-bordered table-hover" ng-table="tableParams" show-filter="true">
-    <tr ng-repeat="user in $data">
-      <td title="'Name'" filter="{name: 'text'}" sortable="'Name'">{{user.name}}</td>
-      <td title="'Age'" filter="{age:'number'}" sortable="'age'">{{user.age}}</td>
-    </tr>
-  </table>
-</div>
-
-
-
-
-<div class="panel panel-default">
-  <div class="panel-heading">Startups</div>
-  <div class="panel-body">
-    <p>Below is a list of your startups</p>
-  </div>
-
   <table class="table table-bordered table-hover">
     <tr>
-      <th>heading1</th>
-      <th>heading2</th>
-      <th>heading3</th>
+      <th>Name</th>
+      <th>Source</th>
+      <th>Tagline</th>
+      <th>Date Entered</th>
     </tr>
     <tbody>
-      <tr ng-repeat="startup in test">
-        <td>{{startup.a}}</td>
-        <td>{{startup.a}}</td>
+      <tr ng-repeat="startup in startups | filter:q as results">
+        <td>{{startup.name}}</td>
+        <td>{{startup.source}}</td>
+        <td>{{startup.tagline}}</td>
+        <td>{{startup.date}}</td>
       </tr>
-      <!-- <tr>
-        <td>r1d1</td>
-        <td>r2d2</td>
-        <td>r3d3</td>
-      </tr>
-      <tr>
-        <td>r2d1</td>
-        <td>r2d2</td>
-        <td>r2d3</td>
-      </tr>
-      <tr>
-        <td>r3d1</td>
-        <td>r3d2</td>
-        <td>r3d3</td>
-      </tr> -->
     </tbody>
   </table>
 </div>
 
 <div class="panel panel-default">
   <div class="panel-heading">Founders</div>
-  <div class="panel-body"><p>Below is a list of your founders</p></div>
-
+  <div class="panel-body">
+    <p>You currently have {{founders.length}} in your pipeline. They are:</p>
+  </div>
   <table class="table table-bordered table-hover">
     <tr>
-      <th>heading1</th>
-      <th>heading2</th>
-      <th>heading3</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Startup</th>
+      <th>Date Entered</th>
     </tr>
-    <tr>
-      <td>r1d1</td>
-      <td>r2d2</td>
-      <td>r3d3</td>
-    </tr>
-    <tr>
-      <td>r2d1</td>
-      <td>r2d2</td>
-      <td>r2d3</td>
-    </tr>
-    <tr>
-      <td>r3d1</td>
-      <td>r3d2</td>
-      <td>r3d3</td>
-    </tr>
+    <tbody>
+      <tr ng-repeat="founder in founders | filter:q as results">
+        <td>{{founder.name}}</td>
+        <td>{{founder.email}}</td>
+        <td>{{founder.startup}}</td>
+        <td>{{founder.date}}</td>
+      </tr>
+    </tbody>
   </table>
 </div>
-
-
-<pre>{{ data | json }}</pre>
 
