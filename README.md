@@ -19,16 +19,15 @@ TO DO HERE:
 
 
 
-Installing Firebase & AngularFire
-* In terminal:
-  * `bower install firebase --save`
-  * `bowert install angularfire --save`
-* Add script dependencies:
-  * `<script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>`
-  * `<script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>`
-* Inject AngularFire services:
-  * `var app = angular.module('pipeline', ['firebase']);`
-
+Getting Startup
+* Fork the repo, in terminal:
+  * type `git clone <forked url>`
+  * type `cd <directory>`
+  * type `bower install`
+  * type `npm install http-server -g`
+  * type `http-server`
+* Head to your browser:
+  * navigate to `http://localhost:8080/app/#/dashboard`
 
 
 # Directory Layout
