@@ -36,9 +36,12 @@
         <h3 class="panel-title">Founders</h3>
       </div>
       <uib-tabset class="panel-body" justified="true">
-        <uib-tab heading="Overview">Overview of Founders</uib-tab>
-        <uib-tab ng-repeat="founders in startup" heading="{{founder.name}}" active="tab.active" disable="tab.disabled">
-          {{ founder }}
+        <!-- <uib-tab heading="Overview">Overview of Founders</uib-tab> -->
+        <uib-tab ng-repeat="founder in founders" heading="{{ founder.name }}" active="tab.active" disable="tab.disabled">
+          <p>{{ founder.name }}</p>
+          <p>{{ founder.email }}</p>
+          <p>{{ founder.phone }}</p>
+          <p>{{ founder.location }}</p>
         </uib-tab>
       </uib-tabset>
     </div>
@@ -49,41 +52,19 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>#</th>
             <th>Date</th>
             <th>Status</th>
             <th>Note</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody ng-repeat="note in notes">
           <tr>
-            <td>1</td>
-            <td>1/01/01</td>
-            <td>New</td>
-            <td>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>1/01/01</td>
-            <td>New</td>
-            <td>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>1/01/01</td>
-            <td>New</td>
-            <td>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>1/01/01</td>
-            <td>New</td>
-            <td>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
+            <td>{{ note.date }}</td>
+            <td>{{ note.status }}</td>
+            <td>{{ note.note }}</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 </div>
-
-<pre>startup = {{ username }}</pre>

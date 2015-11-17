@@ -46,15 +46,10 @@ var app = angular.module('pipeline', [
         templateUrl: 'profileStartup/profileStartup.html',
         controller: 'profileStartupCtrl',
         resolve: {
-          app: function($q, $timeout) {
-            var defer = $q.defer;
-            $timeout(function() {
-              defer.resolve();
+          loadProfile: ['$stateParams', 'profileFactory', function($stateParams, profileFactory) {
+              return profileFactory.getStartup($stateParams.startupId);
             },
-
-            2000);
-            return defer.promise;
-          },
+          ],
         },
       })
       .state('addEntry', {
