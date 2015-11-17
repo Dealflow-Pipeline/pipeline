@@ -6,6 +6,7 @@ var app = angular.module('pipeline', [
   'startup',
   'addEntry',
   'addNote',
+  'factory',
   // 'auth',
   'ui.router',
   'ui.bootstrap',
@@ -42,18 +43,24 @@ var app = angular.module('pipeline', [
         }
       })
       .state('founder', {
-        url: '/founder/:id/profile',
+        url: '/founder/:founderId/profile',
         templateUrl: 'profileFounder/profileFounder.html',
         controller: 'profileFounderCtrl',
+        resolve: {
+          founderProfile: ['$stateParams', 'founderProfileFactory', function($stateParams, founderProfileFactory) {
+            return founderProfileFactory.getFounder($stateParams.founderId);
+          },
+          ],
+        },
       })
       .state('startup', {
         url: '/startup/:startupId/profile',
         templateUrl: 'profileStartup/profileStartup.html',
         controller: 'profileStartupCtrl',
         resolve: {
-          loadProfile: ['$stateParams', 'profileFactory', function($stateParams, profileFactory) {
-              return profileFactory.getStartup($stateParams.startupId);
-            },
+          startupProfile: ['$stateParams', 'startupProfileFactory', function($stateParams, startupProfileFactory) {
+            return startupProfileFactory.getStartup($stateParams.startupId);
+          },
           ],
         },
       })
