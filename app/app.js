@@ -35,6 +35,11 @@ var app = angular.module('pipeline', [
         url: '/dashboard',
         templateUrl: 'dashboard/dashboard.html',
         controller: 'dashboardCtrl',
+        resolve: {
+          loadDashboard: ['startupFactory', function(startupFactory) {
+                      return startupFactory.getStartups();
+                    }]
+        }
       })
       .state('founder', {
         url: '/founder/:id/profile',
