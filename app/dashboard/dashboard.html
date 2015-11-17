@@ -12,7 +12,7 @@
 <div class="panel panel-default" ng-controller="dashboardCtrl">
   <div class="panel-heading">Startups</div>
   <div class="panel-body">
-    <p>You currently have {{startups.length}} in your pipeline. They are:</p>
+    <p>You currently have {{startups.length}} startups in your pipeline. They are:</p>
   </div>
   <table class="table table-bordered table-hover">
     <tr>
@@ -25,7 +25,7 @@
     <tbody ng-repeat="(key, startup) in startups | filter:q as results ">
       <tr>
         <td>{{key + 1}}</td>
-        <td>{{startup.name}}</td>
+        <td><a href="#/startup/{{startup.$id}}/profile">{{startup.name}}</a></td>
         <td>{{startup.source}}</td>
         <td>{{startup.tagline}}</td>
         <td>{{startup.date}}</td>
