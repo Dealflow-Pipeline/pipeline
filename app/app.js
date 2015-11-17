@@ -42,15 +42,21 @@ var app = angular.module('pipeline', [
         controller: 'profileFounderCtrl',
       })
       .state('startup', {
-        url: '/startup/:id/profile',
+        url: '/startup/:startupId/profile',
         templateUrl: 'profileStartup/profileStartup.html',
         controller: 'profileStartupCtrl',
+        resolve: {
+          loadProfile: ['$stateParams', 'profileFactory', function($stateParams, profileFactory) {
+              return profileFactory.getStartup($stateParams.startupId);
+            },
+          ],
+        },
       })
       .state('addEntry', {
         url: '/new',
         templateUrl: 'addEntry/addEntry.html',
         controller: 'addEntryCtrl',
-      })
+      });
 
       //!!! we should combine these bc login & register will be the same page
 
