@@ -4,7 +4,7 @@
   <form action="">
     <div class="form-group">
       <label class="sr-only" for="dashboard-filter">Filter for startup or founder</label>
-      <input type="search" ng-model="q" class="form-control input-lg" id="dashboard-filter" placeholder="Search for startup or founder">
+      <input type="search" ng-model="q" class="form-control input-lg" id="dashboard-filter" placeholder="Filter for startup or founder">
     </div>
   </form>
 </div>
@@ -47,8 +47,8 @@
       <th>Date Entered</th>
     </tr>
     <tbody>
-      <tr ng-repeat="founder in founders | filter:q as results">
-        <td>{{founder.name}}</td>
+      <tr ng-repeat="(key, founder) in founders | filter:q as results">
+        <td><a href="#/founder/{{founder.$id}}/profile">{{founder.name}}</a></td>
         <td>{{founder.email}}</td>
         <td>{{founder.startup}}</td>
         <td>{{founder.date}}</td>
