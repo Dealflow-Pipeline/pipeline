@@ -4,7 +4,8 @@ var app = angular.module('profileFactory', [
 
 app.factory('startupProfileFactory', [
   '$q',
-  function($q) {
+  '$firebaseObject',
+  function($q, $firebaseObject) {
     // Set all ref URL's
     var startupRef = new Firebase('https://pipeline8.firebaseio.com/startup/');
     var notesRef = new Firebase('https://pipeline8.firebaseio.com/notes/');
@@ -33,6 +34,7 @@ app.factory('startupProfileFactory', [
 
       getNotes: function(notes) {
         var defer = $q.defer();
+        _notesArr = [];
 
         // iterate through notesArr and add notes ID to ref URL
         notes.forEach(function(note) {
@@ -40,7 +42,7 @@ app.factory('startupProfileFactory', [
 
           // call reference URL and push response onto notesArr
           notesAll.on('value', function(data) {
-            _notesArr.push(data.val());
+            _notesArr.push($firebaseObject(notesAll));
             defer.resolve(_notesArr);
           });
 
@@ -52,6 +54,7 @@ app.factory('startupProfileFactory', [
 
       getFounders: function(founders) {
         var defer = $q.defer();
+        _foundersArr = [];
 
         // iterate through foundersArr and add founders ID to ref URL
         founders.forEach(function(founder) {
@@ -59,7 +62,7 @@ app.factory('startupProfileFactory', [
 
           // call reference URL and push response onto foundersArr
           foundersAll.on('value', function(data) {
-            _foundersArr.push(data.val());
+            _foundersArr.push($firebaseObject(foundersAll));
             defer.resolve(_foundersArr);
           });
 
@@ -74,7 +77,8 @@ app.factory('startupProfileFactory', [
 
 app.factory('founderProfileFactory', [
   '$q',
-  function($q) {
+  '$firebaseObject',
+  function($q, $firebaseObject) {
     // Set all ref URL's
     var founderRef = new Firebase('https://pipeline8.firebaseio.com/founder/');
     var notesRef = new Firebase('https://pipeline8.firebaseio.com/notes/');
@@ -103,6 +107,7 @@ app.factory('founderProfileFactory', [
 
       getNotes: function(notes) {
         var defer = $q.defer();
+        _notesArr = [];
 
         // iterate through notesArr and add notes ID to ref URL
         notes.forEach(function(note) {
@@ -110,7 +115,7 @@ app.factory('founderProfileFactory', [
 
           // call reference URL and push response onto notesArr
           notesAll.on('value', function(data) {
-            _notesArr.push(data.val());
+            _notesArr.push($firebaseObject(notesAll));
             defer.resolve(_notesArr);
           });
 
@@ -122,6 +127,7 @@ app.factory('founderProfileFactory', [
 
       getStartups: function(startups) {
         var defer = $q.defer();
+        _startupArr = [];
 
         // iterate through foundersArr and add founders ID to ref URL
         startups.forEach(function(startup) {
@@ -129,7 +135,7 @@ app.factory('founderProfileFactory', [
 
           // call reference URL and push response onto foundersArr
           startupsAll.on('value', function(data) {
-            _startupArr.push(data.val());
+            _startupArr.push($firebaseObject(startupsAll));
             defer.resolve(_startupArr);
           });
 

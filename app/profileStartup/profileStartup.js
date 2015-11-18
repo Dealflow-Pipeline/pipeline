@@ -46,10 +46,11 @@ app.controller('profileStartupCtrl', [
     $scope.getFounders = function(founders) {
       startupProfileFactory.getFounders(founders).then(function(returnedData) {
         $scope.founders = returnedData;
+        debugger;
       });
     };
 
-    // Invoke inital method to get startup info
+    // Invoke initial method to get startup info
     $scope.getProfile();
   },
 ]);

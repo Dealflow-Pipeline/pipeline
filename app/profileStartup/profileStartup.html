@@ -1,89 +1,85 @@
-<div class="container">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{ startup.name }}</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-2">
+        <img src="assets/logo_blank.svg" alt="..." class="img-thumbnail">
+      </div>
+      <div class="col-md-4">
+        <p><strong>Tagline:</strong> {{ startup.tagline }}</p>
+        <p><strong>Industry:</strong></p>
+        <p><strong>Location:</strong> {{ startup.location }}</p>
+        <p><strong>Website:</strong></p>
+        <p><strong>Social Profiles:</strong></p>
+      </div>
+      <div class="col-md-4">
+        <p><strong>Funnel Step:</strong> {{ startup.funnel }}</p>
+        <p><strong>Referral Source:</strong> {{ startup.source }}</p>
+        <p><strong>Founding Date:</strong> {{ startup.date }}</p>
+        <p><strong>Aamount Raised</strong></p>
+        <p><strong>Size(employee count):</strong></p>
+        <p><strong>Burn Rate</strong></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <p><strong>Description:</strong></p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      </div>
+    </div>
+  </div>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">{{ startup.name }}</h3>
+      <h3 class="panel-title">Founders</h3>
     </div>
     <div class="panel-body">
-      <div class="row">
-        <div class="col-md-2">
-          <img src="assets/logo_blank.svg" alt="..." class="img-thumbnail">
-        </div>
-        <div class="col-md-4">
-          <p><strong>Tagline:</strong> {{ startup.tagline }}</p>
-          <p><strong>Industry:</strong></p>
-          <p><strong>Location:</strong> {{ startup.location }}</p>
-          <p><strong>Website:</strong></p>
-          <p><strong>Social Profiles:</strong></p>
-        </div>
-        <div class="col-md-4">
-          <p><strong>Funnel Step:</strong> {{ startup.funnel }}</p>
-          <p><strong>Referral Source:</strong> {{ startup.source }}</p>
-          <p><strong>Founding Date:</strong> {{ startup.date }}</p>
-          <p><strong>Aamount Raised</strong></p>
-          <p><strong>Size(employee count):</strong></p>
-          <p><strong>Burn Rate</strong></p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <p><strong>Description:</strong></p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-      </div>
-    </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">Founders</h3>
-      </div>
-      <div class="table-responsive">
-        <table class="table table-bordered table-hover">
-          <thead>
-            <tr>
-              <th>Founder</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Location</th>
-            </tr>
-          </thead>
-          <tbody ng-repeat="founder in founders">
-            <tr>
-              <td>{{ founder.name }}</td>
-              <td>{{ founder.email }}</td>
-              <td>{{ founder.phone }}</td>
-              <td>{{ founder.location }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <!-- <uib-tabset class="panel-body" justified="true"> -->
-        <!-- <uib-tab heading="Overview">Overview of Founders</uib-tab> -->
-        <!-- <uib-tab ng-repeat="founder in founders" heading="{{ founder.name }}" active="tab.active" disable="tab.disabled">
-          <p>{{ founder.name }}</p>
-          <p>{{ founder.email }}</p>
-          <p>{{ founder.phone }}</p>
-          <p>{{ founder.location }}</p>
-        </uib-tab> -->
-      <!-- </uib-tabset> -->
-    </div>
-    <div class="panel-heading">
-      <h3 class="panel-title">Notes</h3>
+      <p>There is {{ founders.length || 0 }} founder(s) at {{ startup.name }}. They are:</p>
     </div>
     <div class="table-responsive">
       <table class="table table-bordered table-hover">
         <thead>
           <tr>
-            <th>Status</th>
-            <th>Note</th>
+            <th>Founder</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Location</th>
           </tr>
         </thead>
-        <tbody ng-repeat="note in notes">
+        <tbody ng-repeat="founder in founders">
           <tr>
-            <td>{{ note.status }}</td>
-            <td>{{ note.note }}</td>
-            <td>{{ note.date }}</td>
+            <td><a ui-sref="founder({ founderId: founder.$id })">{{ founder.name }}</a></td>
+            <td>{{ founder.email }}</td>
+            <td>{{ founder.phone }}</td>
+            <td>{{ founder.location }}</td>
           </tr>
         </tbody>
       </table>
     </div>
+  </div>
+  <div class="panel-heading">
+    <h3 class="panel-title">Notes</h3>
+  </div>
+  <div class="panel-body">
+    <p>You currently have {{ notes.length || 0 }} notes related to {{ startup.name }}. They are:</p>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Status</th>
+          <th>Note</th>
+          <th>Date Entered</th>
+        </tr>
+      </thead>
+      <tbody ng-repeat="note in notes">
+        <tr>
+          <td>{{ note.status }}</td>
+          <td>{{ note.note }}</td>
+          <td>{{ note.date }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
