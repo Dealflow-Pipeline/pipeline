@@ -8,7 +8,7 @@ app.controller('addNoteCtrl', [
   function($scope, $firebaseObject, startupFactory, entity) {
     var noteRef = new Firebase('https://pipeline8.firebaseio.com/notes');
   
-    // set our initial note object with only a date field (today's date)
+    // set our initial note object
     $scope.note = {
       date: new Date(),
       "startup": entity.startupName || null,

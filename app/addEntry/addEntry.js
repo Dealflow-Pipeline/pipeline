@@ -35,7 +35,7 @@ app.controller('addEntryCtrl',
       startup.date = startup.date.toString();
       founder.date = founder.date.toString();
 
-      // Check whether we are adding both a startup and founder or a singular
+      // Check whether we are adding a startup, a founder, or both
       function setAddEntry() {
         if ((Object.keys(founder).length > 2) && (Object.keys(startup).length > 2)) {
 
@@ -43,7 +43,7 @@ app.controller('addEntryCtrl',
           return {
             then: function(callback) {
 
-              // create a new new Startup and Founder
+              // create a new Startup and Founder
               callback(newStartup(startup), newFounder(founder));
             },
           };
@@ -110,6 +110,7 @@ app.controller('addEntryCtrl',
 
     // create a new founder in the database
     var newFounder = function(founder) {
+      
       // TODO: Prevent new record from being created with empty form submit
       var founderRef = new Firebase('https://pipeline8.firebaseio.com/founder');
       var newFounderRef = founderRef.push(founder);

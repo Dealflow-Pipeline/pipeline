@@ -4,8 +4,7 @@ app.controller('dashboardCtrl', [
   '$scope',
   'startupFactory',
   '$uibModal',
-  '$log',
-  function($scope, startupFactory, $uibModal, $log) {
+  function($scope, startupFactory, $uibModal) {
 
   // GET req for all startups; to populate our startup table
   $scope.getStartups = function() {
@@ -51,7 +50,6 @@ app.controller('dashboardCtrl', [
       }
     });
   };
-
 }]);
 
 app.factory('startupFactory', [

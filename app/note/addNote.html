@@ -1,7 +1,9 @@
-<div class="container">
+<div class="modal-header">
+  <h3 class="modal-title">Add Note to {{note.startup || note.founder}}</h3>
+</div>
 
-  <h3>Add Note to {{note.startup || note.founder}}</h3>
-  
+<div class="modal-body">
+
   <div ng-controller="addNoteCtrl">
     <form name="addNote" ng-submit="add(note)" novalidate class="css-form form-horizontal" id="addNote">
 
@@ -50,12 +52,11 @@
         <label class="col-sm-3 control-label">Status</label>
         <div class="col-sm-9">
           <select class="form-control" ng-model="note.status">
-            <option value="1" select>Completed</option>
-            <option value="2">Past Due</option>
-            <option value="3">Immediate</option>
-            <option value="4">Near Future</option>
-            <option value="5">Future</option>
-            <option value="6">Reminder</option>
+            <option value="1">Past due</option>
+            <option value="2">Requires immediate action</option>
+            <option value="3">To do</option>
+            <option value="4">Just a reminder</option>
+            <option value="5">Completed</option>
           </select>
         </div>
       </div>

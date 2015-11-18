@@ -10,29 +10,6 @@
         <label class="btn btn-primary" ng-model="entry.founder" uib-btn-checkbox>Founder</label>
       </div>
 
-      <!-- Date of entry -->
-      <div class="form-group">
-        <label for="date" class="col-sm-3 control-label">Date of Entry</label>
-        <div class="col-sm-9">
-          <input type="date" class="form-control" autocomplete="on" ng-model="date" autofocus />
-        </div>
-      </div>
-
-      <!-- Funnel Step -->
-      <div class="form-group" ng-show="entry.startup">
-        <label for="funnel" class="col-sm-3 control-label">Funnel Step</label>
-        <div class="col-sm-9">
-          <select class="form-control" ng-model="startup.funnel">
-            <option value="1" select>1. Intro</option>
-            <option value="2">2. Call</option>
-            <option value="3">3. Meeting</option>
-            <option value="4">4. Due Diligence</option>
-            <option value="5">5. Accept</option>
-            <option value="6">6. Pass</option>
-          </select>
-        </div>
-      </div>
-
       <!-- Startup name -->
       <div class="form-group" ng-show="entry.startup">
         <label for="startup-name" class="col-sm-3 control-label">Startup Name</label>
@@ -40,23 +17,7 @@
           <input type="text" class="form-control" ng-model="startup.name" />
         </div>
       </div>
-
-      <!-- Intro Source -->
-      <div class="form-group" ng-show="entry.startup">
-        <label for="source" class="col-sm-3 control-label">Introduction</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" ng-model="startup.source" />
-        </div>
-      </div>
-
-      <!-- Location -->
-      <div class="form-group" ng-show="entry.startup">
-        <label for="startup-location" class="col-sm-3 control-label">Startup Location (City, State)</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" ng-model="startup.location" />
-        </div>
-      </div>
-
+      
       <!-- Tagline -->
       <div class="form-group" ng-show="entry.startup">
         <label for="tagline" class="col-sm-3 control-label">Tagline</label>
@@ -65,7 +26,90 @@
         </div>
       </div>
 
-      <h2 ng-show="entry.entrepreneur">Entrepreneur Information</h2>
+      <!-- Lead Partner -->
+      <div class="form-group" ng-show="entry.startup">
+        <label for="partner" class="col-sm-3 control-label">Lead Partner</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" ng-model="startup.partner" />
+        </div>
+      </div>
+
+      <!-- Location -->
+      <div class="form-group" ng-show="entry.startup">
+        <label for="startup-location" class="col-sm-3 control-label">Location</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" ng-model="startup.location" />
+        </div>
+      </div>
+
+      <!-- Industry -->
+      <div class="form-group" ng-show="entry.startup">
+        <label for="funnel" class="col-sm-3 control-label">Industry</label>
+        <div class="col-sm-9">
+          <select class="form-control" ng-model="startup.industry">
+            <option value="agriculture">Agriculture</option>
+            <option value="cleantech">Clean Technology</option>
+            <option value="consumer">Consumer</option>
+            <option value="cryptocurrency">Cryptocurrency</option>
+            <option value="design">Design</option>
+            <option value="education">Education</option>
+            <option value="energy">Energy</option>
+            <option value="enterprise">Enterprise</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="events">Events</option>
+            <option value="fashion">Fashion</option>
+            <option value="finance">Finance</option>
+            <option value="hardware">Hardware</option>
+            <option value="healthwellness">Health & Wellness</option>
+            <option value="healthcare">Health Care</option>
+            <option value="iot">Internet of Things</option>
+            <option value="lifesciences">Life Sciences</option>
+            <option value="media">Media</option>
+            <option value="mobile">Mobile</option>
+            <option value="realestate">Real Estate</option>
+            <option value="retail">Retail</option>
+            <option value="sports">Sports</option>
+            <option value="travel">Travel</option>
+            <option value="ventureforgood">Venture for Good</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Pipeline Step -->
+      <div class="form-group" ng-show="entry.startup">
+        <label for="funnel" class="col-sm-3 control-label">Pipeline Step</label>
+        <div class="col-sm-9">
+          <select class="form-control" ng-model="startup.funnel">
+            <option value="1" select>1. Introduced</option>
+            <option value="2">2. Spoke with Team</option>
+            <option value="3">3. Met Team</option>
+            <option value="4">4. Due Diligence</option>
+            <option value="5">5. Invested</option>
+            <option value="6">6. Passed</option>
+            <option value="7">7. Never Met</option>
+          </select>
+        </div>
+      </div>
+      
+      <!-- Intro Source -->
+      <div class="form-group" ng-show="entry.startup">
+        <label for="source" class="col-sm-3 control-label">Intro Source</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" ng-model="startup.source" />
+        </div>
+      </div>
+
+      <!-- Date of Introduction -->
+      <div class="form-group">
+        <label for="date" class="col-sm-3 control-label">Date of Intro</label>
+        <div class="col-sm-9">
+          <input type="date" class="form-control" autocomplete="on" ng-model="date" autofocus />
+        </div>
+      </div>
+
+
+
+      <h2 ng-show="entry.entrepreneur">Founder Information</h2>
 
       <!-- Founder Name -->
       <div class="form-group" ng-show="entry.founder">
@@ -91,23 +135,6 @@
         </div>
       </div>
 
-      <!-- Location -->
-      <div class="form-group" ng-show="entry.founder">
-        <label for="founder-location" class="col-sm-3 control-label">Founder Location (City, State)</label>
-        <div class="col-sm-9">
-          <input type="text" rows="4" class="form-control" ng-model="founder.location" />
-        </div>
-      </div>
-
-
-      <!-- Notes -->
-     <!--  <div class="form-group" ng-show="entry.founder">
-        <label for="founder-notes" class="col-sm-3 control-label">Founder Notes</label>
-        <div class="col-sm-9">
-          <textarea rows="4" class="form-control" ng-model="founder.notes" />
-        </div>
-      </div> -->
-
       <!-- Submit Button -->
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
@@ -121,24 +148,3 @@
   </div>
 </div>
 
-      <!-- Radio Button -->
-      <!-- <div class="form-group">
-        <label for="radio" class="col-sm-3 control-label">Radio</label>
-        <div class="col-sm-9">
-          <div class="radio">
-            <label>
-              <input type="radio" name="radio-name" value="male" />Male
-            </label>
-          </div>
-          <div class="radio">
-            <label>
-              <input type="radio" name="radio-name" value="female" />Female
-            </label>
-          </div>
-        </div>
-      </div>
-      <div>
-        <input type="submit" ng-click="add(startup, founder)" value="Save" />
-      </div>
-    </form>
-   -->
