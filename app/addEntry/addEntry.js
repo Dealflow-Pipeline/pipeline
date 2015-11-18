@@ -5,8 +5,6 @@ var app = angular.module('addEntry', [
 app.controller('addEntryCtrl',
   function($scope, $firebaseObject) {
 
-    console.log($scope);
-
     // attach startup to scope and populate with today's date
     $scope.startup = {
       "date": $scope.date,

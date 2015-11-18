@@ -21,15 +21,7 @@
         <div class="form-group">
           <label class="col-sm-3 control-label">Startup Name</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" ng-model="note.startup" />
-          </div>
-        </div>
-
-        <!-- Startup ID (hidden) -->
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Startup ID (meant to be hidden)</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" ng-model="note.startupId" value="note.startupId" />
+            <input type="text" class="form-control" ng-model="note.startup" disabled />
           </div>
         </div>
 
@@ -37,24 +29,20 @@
         <div class="form-group">
           <label class="col-sm-3 control-label">Founder Name</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" ng-model="note.founder" />
+            <input type="text" class="form-control" ng-model="note.founder" disabled />
           </div>
         </div>
 
-        <!-- Founder ID (hidden) -->
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Founder ID (meant to be hidden)</label>
-          <div class="col-sm-9">
-            <input type="text" class="form-control" ng-model="note.founderId" />
-          </div>
-        </div>
-
+        <!-- Hidden fields: startupId & founderId -->
+        <input type="hidden" class="form-control" ng-model="note.startupId" value="note.startupId" disabled />
+        <input type="hidden" class="form-control" ng-model="note.founderId" disabled />
+    
         <!-- Status -->
         <div class="form-group">
           <label class="col-sm-3 control-label">Status</label>
           <div class="col-sm-9">
             <select class="form-control" ng-model="note.status">
-              <option value="1">No status</option>
+              <option value="1" select>No status</option>
               <option value="2">Past due</option>
               <option value="3">Requires immediate action</option>
               <option value="4">To do</option>
