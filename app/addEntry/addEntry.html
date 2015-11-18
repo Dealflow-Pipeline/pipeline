@@ -52,7 +52,7 @@
 
       <!-- Industry -->
       <div class="form-group" ng-show="entry.startup">
-        <label for="funnel" class="col-sm-3 control-label">Industry</label>
+        <label for="industry" class="col-sm-3 control-label">Industry</label>
         <div class="col-sm-9">
           <select class="form-control" ng-model="startup.industry">
             <option value="agriculture">Agriculture</option>
@@ -85,9 +85,9 @@
 
       <!-- Pipeline Step -->
       <div class="form-group" ng-show="entry.startup">
-        <label for="funnel" class="col-sm-3 control-label">Pipeline Step</label>
+        <label for="pipeline" class="col-sm-3 control-label">Pipeline Step</label>
         <div class="col-sm-9">
-          <select class="form-control" ng-model="startup.funnel">
+          <select class="form-control" ng-model="startup.pipeline">
             <option value="1" select>1. Introduced</option>
             <option value="2">2. Spoke with Team</option>
             <option value="3">3. Met Team</option>
