@@ -17,6 +17,8 @@ app.controller('addNoteCtrl', [
       "founderId": entity.founderId || null
     };
 
+console.log($scope.note)
+
     // invoke on form submission
     $scope.add = function(note) {
   
