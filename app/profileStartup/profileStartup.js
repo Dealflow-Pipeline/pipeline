@@ -13,15 +13,25 @@ app.controller('profileStartupCtrl', [
 
         $scope.startup = returnedData;
 
-        // assign notes object within startup to own variable
-        var notesArray = Object.keys($scope.startup.notes);
+        console.log($scope.startup);
 
-        // assign founders object within startup to own variable
-        var foundersArray = Object.keys($scope.startup.founders);
+        // Check if notes object exists within startup
+        if ($scope.startup.notes) {
+          // assign notes key's within startup to own variable
+          var notesArr = Object.keys($scope.startup.notes);
 
-        // call both getNotes and getFounders methods
-        $scope.getNotes(notesArray);
-        $scope.getFounders(foundersArray);
+          // call getNotes
+          $scope.getNotes(notesArr);
+        };
+
+        // Check if founders object exists within startup
+        if ($scope.startup.founders) {
+          // assign founders key's within startup to own variable
+          var foundersArr = Object.keys($scope.startup.founders);
+
+          // call getFounders
+          $scope.getFounders(foundersArr);
+        };
       });
     };
 

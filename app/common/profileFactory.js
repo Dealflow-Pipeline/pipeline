@@ -1,4 +1,4 @@
-var app = angular.module('factory', [
+var app = angular.module('profileFactory', [
   'firebase',
 ]);
 

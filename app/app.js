@@ -6,7 +6,7 @@ var app = angular.module('pipeline', [
   'startup',
   'addEntry',
   'addNote',
-  'factory',
+  'profileFactory',
   // 'auth',
   'ui.router',
   'ui.bootstrap',
