@@ -1,6 +1,7 @@
-<div ng-controller="addNoteCtrl">
+<!-- <div ng-controller="addNoteCtrl"> -->
+<div>
   <div class="modal-header">
-    <h3 class="modal-title">Add Note to {{note.startup || note.founder}} - {{note.date}}</h3>
+    <h3 class="modal-title">Add Note to {{note.startup || note.founder}}</h3>
   </div>
 
   <div class="modal-body">
@@ -10,7 +11,7 @@
 
         <!-- Date of entry -->
         <div class="form-group">
-          <label class="col-sm-3 control-label">{{note.date}}</label>
+          <label class="col-sm-3 control-label">Date</label>
           <div class="col-sm-9">
             <input type="date" class="form-control" autocomplete="on" ng-model="note.date" autofocus />
           </div>

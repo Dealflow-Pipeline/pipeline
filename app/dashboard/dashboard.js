@@ -1,11 +1,12 @@
-var app = angular.module('dashboard', ['firebase']);
+var app = angular.module('dashboard', ['firebase', 'ui.bootstrap']);
 
 app.controller('dashboardCtrl', [
   '$scope',
   'startupsTableFactory',
   'foundersTableFactory',
+  'noteInfoFactory',
   '$uibModal',
-  function($scope, startupsTableFactory, foundersTableFactory, foundersFactory, $uibModal) {
+  function($scope, startupsTableFactory, foundersTableFactory, noteInfoFactory, $uibModal) {
 
   // GET req for all startups; to populate our startup table
   $scope.getStartups = function() {
@@ -35,20 +36,6 @@ app.controller('dashboardCtrl', [
 
   // controls addNote (+) symbol; pass through info listed in the row
   $scope.open = function(startupName, startupId, founderName, founderId) {
-    var modalInstance = $uibModal.open({
-      animation: true,
-      templateUrl: 'note/addNote.html',
-      controller: 'addNoteCtrl',
-      resolve: {
-        entity: function() {
-          return {
-            startupName: startupName,
-            startupId: startupId,
-            founderName: founderName,
-            founderId: founderId
-          };
-        }
-      }
-    });
+    noteInfoFactory.getRow(startupName, startupId, founderName, founderId);
   };
 }]);

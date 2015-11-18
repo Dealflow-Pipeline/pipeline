@@ -1,11 +1,11 @@
-var app = angular.module('addNote', ['ui.bootstrap', 'firebase']);
+var app = angular.module('addNote', ['firebase', 'ui.bootstrap']);
 
 app.controller('addNoteCtrl', [
   '$scope',
   '$firebaseObject',
-  'startupFactory',
+  'noteInfoFactory',
   'entity',
-  function($scope, $firebaseObject, startupFactory, entity) {
+  function($scope, $firebaseObject, noteInfoFactory, entity) {
     var noteRef = new Firebase('https://pipeline8.firebaseio.com/notes');
   
     // set our initial note object
@@ -17,12 +17,9 @@ app.controller('addNoteCtrl', [
       "founderId": entity.founderId || null
     };
 
-console.log($scope.note)
-
     // invoke on form submission
     $scope.add = function(note) {
   
-      console.log(entity)
       // turn date to a string
       note.date = note.date.toString();
   
