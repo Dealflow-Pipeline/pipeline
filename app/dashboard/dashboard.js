@@ -94,7 +94,7 @@ app.factory('startupFactory', [
 
         // firebase snapshot of our founder database
         founders = $firebaseArray(founderRef)
-        
+
         // on resolve, pass the founders array to our controller
         defer.resolve(founders)
       });
@@ -104,4 +104,3 @@ app.factory('startupFactory', [
     }
   }
 }]);
-
