@@ -2,15 +2,16 @@ var app = angular.module('dashboard', ['firebase']);
 
 app.controller('dashboardCtrl', [
   '$scope',
-  'startupFactory',
+  'startupsTableFactory',
+  'foundersTableFactory',
   '$uibModal',
-  function($scope, startupFactory, $uibModal) {
+  function($scope, startupsTableFactory, foundersTableFactory, foundersFactory, $uibModal) {
 
   // GET req for all startups; to populate our startup table
   $scope.getStartups = function() {
 
     // invoke our getStartup's from our factory
-    startupFactory.getStartups()
+    startupsTableFactory.getStartups()
       .then(function(data) {
 
         // assign the startups data returned from our promise to scope
@@ -23,7 +24,7 @@ app.controller('dashboardCtrl', [
   $scope.getFounders = function() {
 
     // invoke our getFounder's from our factory
-    startupFactory.getFounders()
+    foundersTableFactory.getFounders()
       .then(function(data) {
 
         // assign the founders data returned from our promise to scope
@@ -52,53 +53,53 @@ app.controller('dashboardCtrl', [
   };
 }]);
 
-app.factory('startupFactory', [
-  '$q',
-  '$firebaseArray',
-  function($q, $firebaseArray) {
+// app.factory('startupFactory', [
+//   '$q',
+//   '$firebaseArray',
+//   function($q, $firebaseArray) {
 
-  // instantiate new firebase objects
-  var startupRef = new Firebase('https://pipeline8.firebaseio.com/startup');
-  var founderRef = new Firebase('https://pipeline8.firebaseio.com/founder');
+//   // instantiate new firebase objects
+//   var startupRef = new Firebase('https://pipeline8.firebaseio.com/startup');
+//   var founderRef = new Firebase('https://pipeline8.firebaseio.com/founder');
 
-  var startups = [];
-  var founders = [];
+//   var startups = [];
+//   var founders = [];
 
-  return {
-    getStartups: function() {
+//   return {
+//     getStartups: function() {
 
-      var defer = $q.defer();
+//       var defer = $q.defer();
 
-      // when the startup object changes or updates
-      startupRef.on("value", function(data) {
+//       // when the startup object changes or updates
+//       startupRef.on("value", function(data) {
 
-        // firebase snapshot of our startup database
-        startups = $firebaseArray(startupRef)
+//         // firebase snapshot of our startup database
+//         startups = $firebaseArray(startupRef)
 
-        // on resolve, pass the startups array to our controller
-        defer.resolve(startups);
-      });
+//         // on resolve, pass the startups array to our controller
+//         defer.resolve(startups);
+//       });
 
-      // return the deferred object's promise property
-      return defer.promise;
-    },
+//       // return the deferred object's promise property
+//       return defer.promise;
+//     },
 
-    getFounders: function() {
+//     getFounders: function() {
 
-      var defer = $q.defer();
+//       var defer = $q.defer();
 
-      // when the founder object changes or updates
-      founderRef.on("value", function(data) {
+//       // when the founder object changes or updates
+//       founderRef.on("value", function(data) {
 
-        // firebase snapshot of our founder database
-        founders = $firebaseArray(founderRef)
+//         // firebase snapshot of our founder database
+//         founders = $firebaseArray(founderRef)
 
-        // on resolve, pass the founders array to our controller
-        defer.resolve(founders)
-      });
+//         // on resolve, pass the founders array to our controller
+//         defer.resolve(founders)
+//       });
 
-      // return the deferred object's promise property
-      return defer.promise;
-    }
-  }
-}]);
+//       // return the deferred object's promise property
+//       return defer.promise;
+//     }
+//   }
+// }]);
