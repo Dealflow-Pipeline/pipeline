@@ -30,7 +30,7 @@
         <td>{{startup.source}}</td>
         <td>{{startup.tagline}}</td>
         <td>{{startup.date}}</td>
-        <td><center><a href="#/startup/{{startup.$id}}/note"><span class="glyphicon glyphicon-plus-sign"></span></a></center></td>
+        <td><a href="#"><span ng-click="open(startup.name, startup.$id, null, null); $event.preventDefault()" class="glyphicon glyphicon-plus-sign"></span></a></td>
       </tr>
     </tbody>
   </table>
@@ -47,6 +47,7 @@
       <th>Email</th>
       <th>Startup</th>
       <th>Date Entered</th>
+      <th>Add Note</th>
     </tr>
     <tbody>
       <tr ng-repeat="(key, founder) in founders | filter:q as results">
@@ -54,6 +55,7 @@
         <td>{{founder.email}}</td>
         <td>{{founder.startup}}</td>
         <td>{{founder.date}}</td>
+        <td><a href="#"><span ng-click="open(null, null, founder.name, founder.$id); $event.preventDefault()" class="glyphicon glyphicon-plus-sign"></span></a></td>
       </tr>
     </tbody>
   </table>

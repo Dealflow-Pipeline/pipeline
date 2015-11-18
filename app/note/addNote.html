@@ -1,5 +1,7 @@
 <div class="container">
-  <h1>Add Tasks</h1>
+
+  <h3>Add Note to {{note.startup || note.founder}}</h3>
+  
   <div ng-controller="addNoteCtrl">
     <form name="addNote" ng-submit="add(note)" novalidate class="css-form form-horizontal" id="addNote">
 
@@ -23,7 +25,7 @@
       <div class="form-group">
         <label class="col-sm-3 control-label">Startup ID (meant to be hidden)</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" ng-model="note.startupId" />
+          <input type="text" class="form-control" ng-model="note.startupId" value="note.startupId" />
         </div>
       </div>
 
