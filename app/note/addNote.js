@@ -4,10 +4,20 @@ app.controller('addNoteCtrl', [
   '$scope',
   '$firebaseObject',
   'noteInfoFactory',
+  '$uibModalInstance',
   'entity',
-  function($scope, $firebaseObject, noteInfoFactory, entity) {
+  function($scope, $firebaseObject, noteInfoFactory, $uibModalInstance, entity) {
     var noteRef = new Firebase('https://pipeline8.firebaseio.com/notes');
   
+    $scope.entry = {
+      startup: false,
+      founder: false
+    };
+
+    $scope.cancel = function() {
+      $uibModalInstance.dismiss('cancel');
+    };
+
     // set our initial note object
     $scope.note = {
       date: new Date(),
@@ -17,9 +27,16 @@ app.controller('addNoteCtrl', [
       "founderId": entity.founderId || null
     };
 
+    if ($scope.note.startupId) {
+      $scope.entry.startup = true;
+    }
+    if ($scope.note.founderId) {
+      $scope.entry.founder = true;
+    }
     // invoke on form submission
     $scope.add = function(note) {
   
+
       // turn date to a string
       note.date = note.date.toString();
   
@@ -35,6 +52,10 @@ app.controller('addNoteCtrl', [
           "founderId": entity.founderId || null
         }, function () {
   
+          // if data hits the server, close the modal
+          $uibModalInstance.close();
+
+
           // once the data gets posted to server, read the data located there
           newNoteRef.once('value', function(noteSnapshot) {
   

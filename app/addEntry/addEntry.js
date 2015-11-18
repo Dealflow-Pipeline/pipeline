@@ -17,7 +17,7 @@ app.controller('addEntryCtrl',
       "startups": {}
     };
 
-    // startup form fields will display by default, entrep fields will not
+    // startup form fields will display by default, founder fields will not
     $scope.entry = {
       startup: true,
       founder: false,
