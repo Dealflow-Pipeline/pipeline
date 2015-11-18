@@ -27,7 +27,7 @@
       <tr>
         <td>{{key + 1}}</td>
         <td><a href="#/startup/{{startup.$id}}/profile">{{startup.name}}</a></td>
-        <td>{{startup.source}}</td>
+        <td><a href="#" editable-text="startup.source">{{ startup.source || "empty" }}</a></td>
         <td>{{startup.tagline}}</td>
         <td>{{startup.date}}</td>
         <td><a href="#"><span ng-click="open(startup.name, startup.$id, null, null); $event.preventDefault()" class="glyphicon glyphicon-plus-sign"></span></a></td>

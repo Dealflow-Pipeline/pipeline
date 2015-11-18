@@ -1,4 +1,9 @@
-var app = angular.module('dashboard', ['firebase', 'ui.bootstrap']);
+var app = angular.module('dashboard', ['firebase', 'ui.bootstrap', 'xeditable']);
+
+// sets theme for xeditable
+app.run(function(editableOptions) {
+  editableOptions.theme = 'bs3'; // bootstrap3 theme
+});
 
 app.controller('dashboardCtrl', [
   '$scope',
