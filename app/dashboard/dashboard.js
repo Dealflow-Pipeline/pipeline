@@ -1,6 +1,11 @@
 var app = angular.module('dashboard', ['firebase']);
 
-app.controller('dashboardCtrl', ['$scope', 'startupFactory', function($scope, startupFactory) {
+app.controller('dashboardCtrl', [
+  '$scope',
+  'startupFactory',
+  '$uibModal',
+  '$log',
+  function($scope, startupFactory, $uibModal, $log) {
 
   // GET req for all startups; to populate our startup table
   $scope.getStartups = function() {
@@ -27,10 +32,32 @@ app.controller('dashboardCtrl', ['$scope', 'startupFactory', function($scope, st
       });
   };
   $scope.getFounders();
+
+  // controls addNote (+) symbol; pass through info listed in the row
+  $scope.open = function(startupName, startupId, founderName, founderId) {
+    var modalInstance = $uibModal.open({
+      animation: true,
+      templateUrl: 'note/addNote.html',
+      controller: 'addNoteCtrl',
+      resolve: {
+        entity: function() {
+          return {
+            startupName: startupName,
+            startupId: startupId,
+            founderName: founderName,
+            founderId: founderId
+          };
+        }
+      }
+    });
+  };
+
 }]);
 
-
-app.factory('startupFactory', ['$q', '$firebaseArray', '$firebaseObject', function($q, $firebaseArray, $firebaseObject) {
+app.factory('startupFactory', [
+  '$q',
+  '$firebaseArray',
+  function($q, $firebaseArray) {
 
   // instantiate new firebase objects
   var startupRef = new Firebase('https://pipeline8.firebaseio.com/startup');
