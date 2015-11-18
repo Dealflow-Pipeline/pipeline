@@ -7,6 +7,7 @@ var app = angular.module('pipeline', [
   'addEntry',
   'addNote',
   'profileFactory',
+  'dashboardFactory',
   // 'auth',
   'ui.router',
   'ui.bootstrap',
@@ -37,9 +38,16 @@ var app = angular.module('pipeline', [
         templateUrl: 'dashboard/dashboard.html',
         controller: 'dashboardCtrl',
         resolve: {
-          loadDashboard: ['startupFactory', function(startupFactory) {
-                      return startupFactory.getStartups();
-                    }]
+          loadStartupsTable: ['startupsTableFactory',
+            function(startupsTableFactory) {
+              return startupsTableFactory.getStartups();
+            }
+          ],
+          loadFoundersTable: ['foundersTableFactory',
+            function(foundersTableFactory) {
+              return foundersTableFactory.getFounders();
+            }
+          ]
         }
       })
       .state('founder', {
@@ -47,22 +55,24 @@ var app = angular.module('pipeline', [
         templateUrl: 'profileFounder/profileFounder.html',
         controller: 'profileFounderCtrl',
         resolve: {
-          founderProfile: ['$stateParams', 'founderProfileFactory', function($stateParams, founderProfileFactory) {
-            return founderProfileFactory.getFounder($stateParams.founderId);
-          },
-          ],
-        },
+          founderProfile: ['$stateParams', 'founderProfileFactory',
+            function($stateParams, founderProfileFactory) {
+              return founderProfileFactory.getFounder($stateParams.founderId);
+            }
+          ]
+        }
       })
       .state('startup', {
         url: '/startup/:startupId/profile',
         templateUrl: 'profileStartup/profileStartup.html',
         controller: 'profileStartupCtrl',
         resolve: {
-          startupProfile: ['$stateParams', 'startupProfileFactory', function($stateParams, startupProfileFactory) {
-            return startupProfileFactory.getStartup($stateParams.startupId);
-          },
-          ],
-        },
+          startupProfile: ['$stateParams', 'startupProfileFactory',
+            function($stateParams, startupProfileFactory) {
+              return startupProfileFactory.getStartup($stateParams.startupId);
+            }
+          ]
+        }
       })
       .state('addEntry', {
         url: '/new',
