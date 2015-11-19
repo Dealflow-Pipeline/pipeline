@@ -106,7 +106,7 @@
       <th>Add Note</th>
     </tr>
     <tbody>
-      <tr ng-repeat="(key, founder) in founders | orderBy : sortType : sortReverse | filter : q as results">
+      <tr ng-repeat="(key, founder) in founders | orderBy : sortType : sortReverse.founders | filter : q as results">
         <td>{{ founder.date | amDateFormat:'MM/DD/YYYY' }}</td>
         <td><a href="#/founder/{{founder.$id}}/profile">{{ founder.name }}</a></td>
         <td>{{ founder.startup }}</td>
