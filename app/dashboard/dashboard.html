@@ -1,10 +1,11 @@
 <h1>Pipeline</h1>
 
 <div class="panel">
-  <form action="">
+  <form>
     <div class="form-group">
       <label class="sr-only" for="dashboard-filter">Filter for startup or founder</label>
-      <input type="search" ng-model="q" class="form-control input-lg" id="dashboard-filter" placeholder="Filter for startup or founder">
+      <div class="input-group-addon"><i class="fa fa-search"></i><div>
+      <input type="search" ng-model="searchTable" class="form-control input-lg" id="dashboard-filter" placeholder="Filter for startup or founder">
     </div>
   </form>
 </div>
@@ -16,7 +17,7 @@
   </div>
   <table class="table table-bordered table-hover">
     <tr>
-      <th>Name</th>
+      <th><a href="#" ng-click="sortType='name'; sortReverse = !sortReverse">Name<span ng-show="sortType === 'name' && !sortReverse" class="fa fa-caret-down"></span><span ng-show="sortType === 'name' && sortReverse" class="fa fa-caret-up"></span></a></th>
       <th>Pipeline</th>
       <th>Lead Partner</th>
       <th>Tagline</th>
@@ -27,7 +28,7 @@
       <th>Location</th>
       <th>Add Note</th>
     </tr>
-    <tbody ng-repeat="(key, startup) in startups | orderBy:sortType:sortReverse">
+    <tbody ng-repeat="(key, startup) in startups | orderBy : sortType : sortReverse | filter : searchTable">
       <tr>
         <td><a href="#/startup/{{startup.$id}}/profile">{{startup.name}}</a></td>
         <td>{{startup.pipeline}}</td>

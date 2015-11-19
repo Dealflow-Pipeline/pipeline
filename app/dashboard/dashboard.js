@@ -13,9 +13,10 @@ app.controller('dashboardCtrl', [
   '$uibModal',
   function($scope, startupsTableFactory, foundersTableFactory, noteInfoFactory, $uibModal) {
 
+  // sort and filter values for our startup table
   $scope.sortType = 'pipeline'; // set the default sort column
   $scope.sortReverse = false;   // set the default sort order
-  // $scope.searchEntities = '';   // set the default search/filter term
+  $scope.searchTable = '';   // set the default search/filter term
 
   // GET req for all startups; to populate our startup table
   $scope.getStartups = function() {
