@@ -30,8 +30,8 @@ app.controller('addEntryCtrl',
       console.log('added!');
 
       // turn date to a string
-      startup.date = startup.date.toString();
-      founder.date = founder.date.toString();
+      startup.date = startup.date.toJSON();
+      founder.date = founder.date.toJSON();
 
       // Check whether we are adding a startup, a founder, or both
       function setAddEntry() {
@@ -108,7 +108,7 @@ app.controller('addEntryCtrl',
 
     // create a new founder in the database
     var newFounder = function(founder) {
-      
+
       // TODO: Prevent new record from being created with empty form submit
       var founderRef = new Firebase('https://pipeline8.firebaseio.com/founder');
       var newFounderRef = founderRef.push(founder);
