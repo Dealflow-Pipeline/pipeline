@@ -16,7 +16,7 @@ app.controller('dashboardCtrl', [
   // sets the default sort column
   $scope.sortType = {
     startups: 'pipeline',
-    founders: 'name'
+    founders: 'date'
   };
 
   // sets the table sort to ascending
