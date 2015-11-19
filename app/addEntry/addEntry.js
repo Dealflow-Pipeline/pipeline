@@ -5,6 +5,10 @@ var app = angular.module('addEntry', [
 app.controller('addEntryCtrl',
   function($scope, $firebaseObject) {
 
+    console.log($scope);
+
+    $scope.date = new Date();
+
     // attach startup to scope and populate with today's date
     $scope.startup = {
       "date": $scope.date,
@@ -22,8 +26,6 @@ app.controller('addEntryCtrl',
       startup: true,
       founder: false,
     };
-
-    $scope.date = new Date();
 
     // gets invoked on form submission
     $scope.add = function(startup, founder) {
