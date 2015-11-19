@@ -16,20 +16,28 @@
   </div>
   <table class="table table-bordered table-hover">
     <tr>
-      <th>Number</th>
       <th>Name</th>
-      <th>Source</th>
+      <th>Pipeline</th>
+      <th>Lead Partner</th>
       <th>Tagline</th>
-      <th>Date Entered</th>
+      <th>Intro Source</th>
+      <th>Intro Date</th>
+      <th>Website</th>
+      <th>Industry</th>
+      <th>Location</th>
       <th>Add Note</th>
     </tr>
-    <tbody ng-repeat="(key, startup) in startups | filter:q as results ">
+    <tbody ng-repeat="(key, startup) in startups | orderBy:sortType:sortReverse">
       <tr>
-        <td>{{key + 1}}</td>
         <td><a href="#/startup/{{startup.$id}}/profile">{{startup.name}}</a></td>
-        <td>{{startup.source}}</td>
+        <td>{{startup.pipeline}}</td>
+        <td>{{startup.partner}}</td>
         <td>{{startup.tagline}}</td>
+        <td><a href="#" editable-text="startup.source">{{ startup.source || "empty" }}</a></td>
         <td>{{startup.date}}</td>
+        <td>{{startup.website}}</td>
+        <td>{{startup.industry}}</td>
+        <td>{{startup.location}}</td>
         <td><a href="#"><span ng-click="open(startup.name, startup.$id, null, null); $event.preventDefault()" class="glyphicon glyphicon-plus-sign"></span></a></td>
       </tr>
     </tbody>

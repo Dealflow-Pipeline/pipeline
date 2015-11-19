@@ -5,8 +5,6 @@ var app = angular.module('addEntry', [
 app.controller('addEntryCtrl',
   function($scope, $firebaseObject) {
 
-    console.log($scope);
-
     // attach startup to scope and populate with today's date
     $scope.startup = {
       "date": $scope.date,
@@ -19,7 +17,7 @@ app.controller('addEntryCtrl',
       "startups": {}
     };
 
-    // startup form fields will display by default, entrep fields will not
+    // startup form fields will display by default, founder fields will not
     $scope.entry = {
       startup: true,
       founder: false,

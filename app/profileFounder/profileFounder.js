@@ -15,6 +15,7 @@ app.controller('profileFounderCtrl', [
 
         // Check if notes object exists within founder
         if ($scope.founder.notes) {
+          
           // assign notes key's within founder to own variable
           var notesArr = Object.keys($scope.founder.notes);
 
@@ -24,6 +25,7 @@ app.controller('profileFounderCtrl', [
 
         // Check if startups object exists within founder
         if ($scope.founder.startups) {
+
           // assign startups key's within founder to own variable
           var startupsArr = Object.keys($scope.founder.startups);
 

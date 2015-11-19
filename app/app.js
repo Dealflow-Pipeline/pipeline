@@ -8,6 +8,7 @@ var app = angular.module('pipeline', [
   'addNote',
   'profileFactory',
   'dashboardFactory',
+  'addNoteFactory',
   // 'auth',
   'ui.router',
   'ui.bootstrap',

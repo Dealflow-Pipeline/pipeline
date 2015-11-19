@@ -1,11 +1,21 @@
-var app = angular.module('dashboard', ['firebase']);
+var app = angular.module('dashboard', ['firebase', 'ui.bootstrap', 'xeditable']);
+
+// sets theme for xeditable
+app.run(function(editableOptions) {
+  editableOptions.theme = 'bs3'; // bootstrap3 theme
+});
 
 app.controller('dashboardCtrl', [
   '$scope',
   'startupsTableFactory',
   'foundersTableFactory',
+  'noteInfoFactory',
   '$uibModal',
-  function($scope, startupsTableFactory, foundersTableFactory, foundersFactory, $uibModal) {
+  function($scope, startupsTableFactory, foundersTableFactory, noteInfoFactory, $uibModal) {
+
+  $scope.sortType = 'pipeline'; // set the default sort column
+  $scope.sortReverse = false;   // set the default sort order
+  // $scope.searchEntities = '';   // set the default search/filter term
 
   // GET req for all startups; to populate our startup table
   $scope.getStartups = function() {
@@ -35,20 +45,6 @@ app.controller('dashboardCtrl', [
 
   // controls addNote (+) symbol; pass through info listed in the row
   $scope.open = function(startupName, startupId, founderName, founderId) {
-    var modalInstance = $uibModal.open({
-      animation: true,
-      templateUrl: 'note/addNote.html',
-      controller: 'addNoteCtrl',
-      resolve: {
-        entity: function() {
-          return {
-            startupName: startupName,
-            startupId: startupId,
-            founderName: founderName,
-            founderId: founderId
-          };
-        }
-      }
-    });
+    noteInfoFactory.getRow(startupName, startupId, founderName, founderId);
   };
 }]);

@@ -1,6 +1,5 @@
 var app = angular.module('dashboardFactory', ['firebase']);
 
-
 app.factory('startupsTableFactory', [
   '$q',
   '$firebaseArray',
