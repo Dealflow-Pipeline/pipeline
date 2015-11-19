@@ -5,19 +5,19 @@ var app = angular.module('addEntry', [
 app.controller('addEntryCtrl',
   function($scope, $firebaseObject) {
 
-    console.log($scope);
-
     $scope.date = new Date();
 
-    // attach startup to scope and populate with today's date
+    // pre-populate form field & startup object with today's date
     $scope.startup = {
       "date": $scope.date,
+      "lastContact": $scope.date,
       "founders": {}
     };
 
-    // attach entrep to scope and populate with today's date
+    // pre-populate form field & founder object with today's date
     $scope.founder = {
       "date": $scope.date,
+      "lastContact": $scope.date,
       "startups": {}
     };
 
@@ -29,15 +29,16 @@ app.controller('addEntryCtrl',
 
     // gets invoked on form submission
     $scope.add = function(startup, founder) {
-      console.log('added!');
 
-      // turn date to a string
+      // turn dates to strings
       startup.date = startup.date.toISOString();
+      startup.lastContact = startup.date;
       founder.date = founder.date.toISOString();
+      founder.lastContact = founder.date;
 
       // Check whether we are adding a startup, a founder, or both
       function setAddEntry() {
-        if ((Object.keys(founder).length > 2) && (Object.keys(startup).length > 2)) {
+        if ((Object.keys(founder).length > 3) && (Object.keys(startup).length > 3)) {
 
           // newStartupAndFounder(startup, founder);
           return {
@@ -47,7 +48,7 @@ app.controller('addEntryCtrl',
               callback(newStartup(startup), newFounder(founder));
             },
           };
-        } else if (Object.keys(startup).length > 2) {
+        } else if (Object.keys(startup).length > 3) {
           return {
             then: function(callback) {
 
@@ -55,7 +56,7 @@ app.controller('addEntryCtrl',
               callback(newStartup(startup));
             },
           };
-        } else if (Object.keys(founder).length > 2) {
+        } else if (Object.keys(founder).length > 3) {
           return {
             then: function(callback) {
 
@@ -70,7 +71,7 @@ app.controller('addEntryCtrl',
 
       // Invoke setAddEtnry with a promise
       setAddEntry().then(function(startupId, founderId) {
-        if ((Object.keys(founder).length > 2) && (Object.keys(startup).length > 2)) {
+        if ((Object.keys(founder).length > 3) && (Object.keys(startup).length > 3)) {
 
           // add startupId and founderId reference to each others record
           pushStartupIdToFounder(startupId, founderId);
@@ -97,13 +98,14 @@ app.controller('addEntryCtrl',
 
       // grab unique reference id for startup
       var startUpRefId = newStartupRef.key();
-      newStartupRef.on('value', function(dataSnapshot) {
-        console.log('Success');
-      },
+      
+      // newStartupRef.on('value', function(dataSnapshot) {
+        // console.log('Success');
+      // },
 
-      function(error) {
-        console.log('Error :' + error);
-      });
+      // function(error) {
+      //   console.log('Error :' + error);
+      // });
 
       return startUpRefId;
     };
@@ -117,13 +119,14 @@ app.controller('addEntryCtrl',
 
       // grab founders unique reference id
       var founderRefId = newFounderRef.key();
-      newFounderRef.on('value', function(dataSnapshot) {
-        console.log('Success');
-      },
 
-      function(error) {
-        console.log('Error :' + error);
-      });
+      // newFounderRef.on('value', function(dataSnapshot) {
+        // console.log('Success');
+      // },
+
+      // function(error) {
+      //   console.log('Error :' + error);
+      // });
 
       return founderRefId;
     };
