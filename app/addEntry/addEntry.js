@@ -32,8 +32,8 @@ app.controller('addEntryCtrl',
       console.log('added!');
 
       // turn date to a string
-      startup.date = startup.date.toJSON();
-      founder.date = founder.date.toJSON();
+      startup.date = startup.date.toISOString();
+      founder.date = founder.date.toISOString();
 
       // Check whether we are adding a startup, a founder, or both
       function setAddEntry() {
