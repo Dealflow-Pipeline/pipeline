@@ -12,7 +12,7 @@
 
       <!-- Startup name -->
       <div class="form-group" ng-show="entry.startup">
-        <label for="startup-name" class="col-sm-3 control-label">Startup Name</label>
+        <label for="startup-name" class="col-sm-3 control-label">Startup Name *</label>
         <div class="col-sm-9">
           <input type="text" class="form-control" ng-model="startup.name" />
         </div>
@@ -36,7 +36,7 @@
 
       <!-- Lead Partner -->
       <div class="form-group" ng-show="entry.startup">
-        <label for="partner" class="col-sm-3 control-label">Lead Partner</label>
+        <label for="partner" class="col-sm-3 control-label">Lead Partner *</label>
         <div class="col-sm-9">
           <input type="text" class="form-control" ng-model="startup.partner" />
         </div>
@@ -85,10 +85,10 @@
 
       <!-- Pipeline Step -->
       <div class="form-group" ng-show="entry.startup">
-        <label for="pipeline" class="col-sm-3 control-label">Pipeline Step</label>
+        <label for="pipeline" class="col-sm-3 control-label">Pipeline Step *</label>
         <div class="col-sm-9">
           <select class="form-control" ng-model="startup.pipeline">
-            <option value="1" select>1. Introduced</option>
+            <option value="1" selected>1. Introduced</option>
             <option value="2">2. Spoke with Team</option>
             <option value="3">3. Met Team</option>
             <option value="4">4. Due Diligence</option>
@@ -109,7 +109,7 @@
 
       <!-- Date of Introduction -->
       <div class="form-group">
-        <label for="date" class="col-sm-3 control-label">Date of Intro</label>
+        <label for="date" class="col-sm-3 control-label">Date of Intro *</label>
         <div class="col-sm-9">
           <input type="date" class="form-control" autocomplete="on" ng-model="date" autofocus />
         </div>
@@ -121,7 +121,7 @@
 
       <!-- Founder Name -->
       <div class="form-group" ng-show="entry.founder">
-        <label for="founder-name" class="col-sm-3 control-label">Founder Name</label>
+        <label for="founder-name" class="col-sm-3 control-label">Founder Name *</label>
         <div class="col-sm-9">
           <input type="text" class="form-control" ng-model="founder.name" />
         </div>

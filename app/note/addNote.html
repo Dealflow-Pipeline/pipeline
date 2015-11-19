@@ -9,7 +9,7 @@
 
       <!-- Date of entry -->
       <div class="form-group">
-        <label class="col-sm-3 control-label">Date</label>
+        <label class="col-sm-3 control-label">Date *</label>
         <div class="col-sm-9">
           <input type="date" class="form-control" autocomplete="on" ng-model="note.date" autofocus />
         </div>
@@ -17,7 +17,7 @@
 
       <!-- Startup name -->
       <div class="form-group" ng-show="entry.startup">
-        <label class="col-sm-3 control-label">Startup Name</label>
+        <label class="col-sm-3 control-label">Startup Name *</label>
         <div class="col-sm-9">
           <input type="text" class="form-control" ng-model="note.startup" disabled />
         </div>
@@ -25,7 +25,7 @@
 
       <!-- Founder name -->
       <div class="form-group" ng-show="entry.founder">
-        <label class="col-sm-3 control-label">Founder Name</label>
+        <label class="col-sm-3 control-label">Founder Name *</label>
         <div class="col-sm-9">
           <input type="text" class="form-control" ng-model="note.founder" disabled />
         </div>
@@ -52,7 +52,7 @@
 
       <!-- Note -->
       <div class="form-group">
-        <label class="col-sm-3 control-label">Note</label>
+        <label class="col-sm-3 control-label">Note *</label>
         <div class="col-sm-9">
           <textarea class="form-control" rows="3" ng-model="note.text"></textarea>
         </div>
