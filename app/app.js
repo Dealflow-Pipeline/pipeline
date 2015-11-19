@@ -13,6 +13,7 @@ var app = angular.module('pipeline', [
   'ui.router',
   'ui.bootstrap',
   'firebase',
+  'angularMoment',
 ])
 .config([
   '$stateProvider',

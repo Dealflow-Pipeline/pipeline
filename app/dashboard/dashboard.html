@@ -12,7 +12,7 @@
 <div class="panel panel-default" ng-controller="dashboardCtrl">
   <div class="panel-heading">Startups</div>
   <div class="panel-body">
-    <p>You currently have {{startups.length}} startups in your pipeline. They are:</p>
+    <p>You currently have {{ startups.length }} startups in your pipeline. They are:</p>
   </div>
   <table class="table table-bordered table-hover">
     <tr>
@@ -34,7 +34,7 @@
         <td>{{startup.partner}}</td>
         <td>{{startup.tagline}}</td>
         <td><a href="#" editable-text="startup.source">{{ startup.source || "empty" }}</a></td>
-        <td>{{startup.date}}</td>
+        <td>{{ startup.date | amDateFormat:'MM/DD/YYYY' }}</td>
         <td>{{startup.website}}</td>
         <td>{{startup.industry}}</td>
         <td>{{startup.location}}</td>
@@ -47,7 +47,7 @@
 <div class="panel panel-default" ng-controller="dashboardCtrl">
   <div class="panel-heading">Founders</div>
   <div class="panel-body">
-    <p>You currently have {{founders.length}} in your pipeline. They are:</p>
+    <p>You currently have {{ founders.length }} in your pipeline. They are:</p>
   </div>
   <table class="table table-bordered table-hover">
     <tr>
@@ -59,10 +59,10 @@
     </tr>
     <tbody>
       <tr ng-repeat="(key, founder) in founders | filter:q as results">
-        <td><a href="#/founder/{{founder.$id}}/profile">{{founder.name}}</a></td>
-        <td>{{founder.email}}</td>
-        <td>{{founder.startup}}</td>
-        <td>{{founder.date}}</td>
+        <td><a href="#/founder/{{founder.$id}}/profile">{{ founder.name }}</a></td>
+        <td>{{ founder.email }}</td>
+        <td>{{ founder.startup }}</td>
+        <td>{{ founder.date | amDateFormat:'MM/DD/YYYY' }}</td>
         <td><a href="#"><span ng-click="open(null, null, founder.name, founder.$id); $event.preventDefault()" class="glyphicon glyphicon-plus-sign"></span></a></td>
       </tr>
     </tbody>

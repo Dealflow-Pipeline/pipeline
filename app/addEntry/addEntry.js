@@ -5,6 +5,10 @@ var app = angular.module('addEntry', [
 app.controller('addEntryCtrl',
   function($scope, $firebaseObject) {
 
+    console.log($scope);
+
+    $scope.date = new Date();
+
     // attach startup to scope and populate with today's date
     $scope.startup = {
       "date": $scope.date,
@@ -23,15 +27,13 @@ app.controller('addEntryCtrl',
       founder: false,
     };
 
-    $scope.date = new Date();
-
     // gets invoked on form submission
     $scope.add = function(startup, founder) {
       console.log('added!');
 
       // turn date to a string
-      startup.date = startup.date.toString();
-      founder.date = founder.date.toString();
+      startup.date = startup.date.toISOString();
+      founder.date = founder.date.toISOString();
 
       // Check whether we are adding a startup, a founder, or both
       function setAddEntry() {
@@ -108,7 +110,7 @@ app.controller('addEntryCtrl',
 
     // create a new founder in the database
     var newFounder = function(founder) {
-      
+
       // TODO: Prevent new record from being created with empty form submit
       var founderRef = new Firebase('https://pipeline8.firebaseio.com/founder');
       var newFounderRef = founderRef.push(founder);
