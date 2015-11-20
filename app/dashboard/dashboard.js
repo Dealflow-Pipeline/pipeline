@@ -9,24 +9,28 @@ app.controller('dashboardCtrl', [
   '$scope',
   'startupsTableFactory',
   'foundersTableFactory',
+  'notesTableFactory',
   'noteInfoFactory',
   '$uibModal',
-  function($scope, startupsTableFactory, foundersTableFactory, noteInfoFactory, $uibModal) {
+  function($scope, startupsTableFactory, foundersTableFactory, notesTableFactory, noteInfoFactory, $uibModal) {
 
   // sets the default sort column
   $scope.sortType = {
     startups: 'pipeline',
-    founders: 'date'
+    founders: 'lastContact',
+    notes: 'date'
   };
 
   // sets the table sort to ascending
   $scope.sortReverse = {
     startups: true,
-    founders: true
+    founders: true,
+    notes: true
   };
   
   // set the default search/filter term
   $scope.searchTable = '';
+
 
   // GET req for all startups; to populate our startup table
   $scope.getStartups = function() {
@@ -41,6 +45,7 @@ app.controller('dashboardCtrl', [
   };
   $scope.getStartups();
 
+
   // GET req for all founder; to populate our founder table
   $scope.getFounders = function() {
 
@@ -53,6 +58,19 @@ app.controller('dashboardCtrl', [
       });
   };
   $scope.getFounders();
+
+
+  $scope.getNotes = function() {
+
+    notesTableFactory.getNotes()
+      .then(function(data) {
+        console.log(data)
+        $scope.notes = data;
+    console.log($scope.notes)
+      });
+  };
+  $scope.getNotes();
+
 
   // controls addNote (+) symbol; pass through info listed in the row
   $scope.open = function(startupName, startupId, founderName, founderId) {
