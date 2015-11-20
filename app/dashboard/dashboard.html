@@ -1,13 +1,15 @@
 <h1>Pipeline</h1>
 
 <div class="panel">
-  <form>
-    <div class="form-group">
+<form>
+  <div class="form-group">
+    <div class="input-group">
       <label class="sr-only" for="dashboard-filter">Filter for startup or founder</label>
-      <div class="input-group-addon"><i class="fa fa-search"></i><div>
+      <div class="input-group-addon"><i class="fa fa-search-plus"></i></div>
       <input type="search" ng-model="q" class="form-control input-lg" id="dashboard-filter" placeholder="Filter for startup or founder">
     </div>
-  </form>
+  </div>
+</form>
 </div>
 
 <!-- Notes Table -->
@@ -18,25 +20,26 @@
   </div>
   <table class="table table-bordered table-hover">
     <tr>
+      <th><a href="#" ng-click="sortType.notes='status'; sortReverse.notes = !sortReverse.notes; $event.preventDefault()">Status <span ng-show="sortType.notes === 'status' && !sortReverse.notes" class="fa fa-caret-down"></span><span ng-show="sortType.notes === 'status' && sortReverse.notes" class="fa fa-caret-up"></span></a></th>
 
-      <th><a href="#" ng-click="sortType.notes='status'; sortReverse.notes = !sortReverse.notes; $event.preventDefault()">Status<span ng-show="sortType.notes === 'status' && !sortReverse.notes" class="fa fa-caret-down"></span><span ng-show="sortType.notes === 'status' && sortReverse.notes" class="fa fa-caret-up"></span></a></th>
+      <th><a href="#" ng-click="sortType.notes='date'; sortReverse.notes = !sortReverse.notes; $event.preventDefault()">Date <span ng-show="sortType.notes === 'date' && !sortReverse.notes" class="fa fa-caret-down"></span><span ng-show="sortType.notes === 'date' && sortReverse.notes" class="fa fa-caret-up"></span></a></th>
 
-      <th><a href="#" ng-click="sortType.notes='date'; sortReverse.notes = !sortReverse.notes; $event.preventDefault()">Date<span ng-show="sortType.notes === 'date' && !sortReverse.notes" class="fa fa-caret-down"></span><span ng-show="sortType.notes === 'date' && sortReverse.notes" class="fa fa-caret-up"></span></a></th>
+      <th><a href="#" ng-click="sortType.notes='startup'; sortReverse.notes = !sortReverse.notes; $event.preventDefault()">Startup <span ng-show="sortType.notes === 'startup' && !sortReverse.notes" class="fa fa-caret-down"></span><span ng-show="sortType.notes === 'startup' && sortReverse.notes" class="fa fa-caret-up"></span></a></th>
 
-      <th><a href="#" ng-click="sortType.notes='startup'; sortReverse.notes = !sortReverse.notes; $event.preventDefault()">Startup<span ng-show="sortType.notes === 'startup' && !sortReverse.notes" class="fa fa-caret-down"></span><span ng-show="sortType.notes === 'startup' && sortReverse.notes" class="fa fa-caret-up"></span></a></th>
+      <th><a href="#" ng-click="sortType.notes='founder'; sortReverse.notes = !sortReverse.notes; $event.preventDefault()">Founder <span ng-show="sortType.notes === 'founder' && !sortReverse.notes" class="fa fa-caret-down"></span><span ng-show="sortType.notes === 'founder' && sortReverse.notes" class="fa fa-caret-up"></span></a></th>
 
-      <th><a href="#" ng-click="sortType.notes='founder'; sortReverse.notes = !sortReverse.notes; $event.preventDefault()">Founder<span ng-show="sortType.notes === 'founder' && !sortReverse.notes" class="fa fa-caret-down"></span><span ng-show="sortType.notes === 'founder' && sortReverse.notes" class="fa fa-caret-up"></span></a></th>
-
-      <th><a href="#" ng-click="sortType.notes='text'; sortReverse.notes = !sortReverse.notes; $event.preventDefault()">Note<span ng-show="sortType.notes === 'text' && !sortReverse.notes" class="fa fa-caret-down"></span><span ng-show="sortType.notes === 'text' && sortReverse.notes" class="fa fa-caret-up"></span></a></th>
+      <th><a href="#" ng-click="sortType.notes='note'; sortReverse.notes = !sortReverse.notes; $event.preventDefault()">Note <span ng-show="sortType.notes === 'note' && !sortReverse.notes" class="fa fa-caret-down"></span><span ng-show="sortType.notes === 'note' && sortReverse.notes" class="fa fa-caret-up"></span></a></th>
 
     </tr>
     <tbody ng-repeat="(key, note) in notes | orderBy : sortType.notes : sortReverse.notes | filter: q as results">
       <tr>
-        <td>{{ notes.status }}</td>
-        <td>{{ notes.date }}</td>
-        <td>{{ notes.text }}</td>
-        <td>{{ notes.founder }}</td>
-        <td>{{ notes.note }}</td>
+        <td>{{ note.status }}</td>
+        <td>{{ note.date | amDateFormat:'MM/DD/YYYY' }}</td>
+        <td><a href="#/startup/{{note.startupId}}/profile">{{ note.startup }}</a></td>
+        <!-- <td>{{ note.startup }}</td> -->
+        <!-- <td>{{ note.founder }}</td> -->
+        <td><a href="#/founder/{{note.founderId}}/profile">{{ note.founder }}</a></td>
+        <td>{{ note.note }}</td>
       </tr>
     </tbody>
   </table>
@@ -52,21 +55,21 @@
   </div>
   <table class="table table-bordered table-hover">
     <tr>
-      <th><a href="#" ng-click="sortType.startups='name'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Name<span ng-show="sortType.startups === 'name' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'name' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
+      <th><a href="#" ng-click="sortType.startups='name'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Name <span ng-show="sortType.startups === 'name' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'name' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
 
-      <th><a href="#" ng-click="sortType.startups='pipeline'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Pipeline<span ng-show="sortType.startups === 'pipeline' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'pipeline' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
+      <th><a href="#" ng-click="sortType.startups='pipeline'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Pipeline <span ng-show="sortType.startups === 'pipeline' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'pipeline' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
 
-      <th><a href="#" ng-click="sortType.startups='partner'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Partner<span ng-show="sortType.startups === 'partner' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'partner' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
+      <th><a href="#" ng-click="sortType.startups='partner'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Partner <span ng-show="sortType.startups === 'partner' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'partner' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
 
-      <th><a href="#" ng-click="sortType.startups='tagline'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Tagline<span ng-show="sortType.startups === 'tagline' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'tagline' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
+      <th><a href="#" ng-click="sortType.startups='tagline'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Tagline <span ng-show="sortType.startups === 'tagline' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'tagline' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
 
-      <th><a href="#" ng-click="sortType.startups='source'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Intro Source<span ng-show="sortType.startups === 'source' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'source' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
+      <th><a href="#" ng-click="sortType.startups='source'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Intro Source <span ng-show="sortType.startups === 'source' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'source' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
 
-      <th><a href="#" ng-click="sortType.startups='lastContact'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Last Contact<span ng-show="sortType.startups === 'lastContact' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'lastContact' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
+      <th><a href="#" ng-click="sortType.startups='lastContact'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Last Contact <span ng-show="sortType.startups === 'lastContact' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'lastContact' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
 
-      <th><a href="#" ng-click="sortType.startups='industry'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Industry<span ng-show="sortType.startups === 'industry' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'industry' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
+      <th><a href="#" ng-click="sortType.startups='industry'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Industry <span ng-show="sortType.startups === 'industry' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'industry' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
 
-      <th><a href="#" ng-click="sortType.startups='location'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Location<span ng-show="sortType.startups === 'location' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'location' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
+      <th><a href="#" ng-click="sortType.startups='location'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Location <span ng-show="sortType.startups === 'location' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'location' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
 
       <th>Add Note</th>
 
@@ -95,13 +98,13 @@
   </div>
   <table class="table table-bordered table-hover">
     <tr>
-      <th><a href="#" ng-click="sortType.founders='lastContact'; sortReverse.founders = !sortReverse.founders; $event.preventDefault()">Last Contact<span ng-show="sortType.founders === 'lastContact' && !sortReverse.founders" class="fa fa-caret-down"></span><span ng-show="sortType.founders === 'lastContact' && sortReverse.founders" class="fa fa-caret-up"></span></a></th>
+      <th><a href="#" ng-click="sortType.founders='lastContact'; sortReverse.founders = !sortReverse.founders; $event.preventDefault()">Last Contact <span ng-show="sortType.founders === 'lastContact' && !sortReverse.founders" class="fa fa-caret-down"></span><span ng-show="sortType.founders === 'lastContact' && sortReverse.founders" class="fa fa-caret-up"></span></a></th>
 
-      <th><a href="#" ng-click="sortType.founders='name'; sortReverse.founders = !sortReverse.founders; $event.preventDefault()">Name<span ng-show="sortType.founders === 'name' && !sortReverse.founders" class="fa fa-caret-down"></span><span ng-show="sortType.founders === 'name' && sortReverse.founders" class="fa fa-caret-up"></span></a></th>
+      <th><a href="#" ng-click="sortType.founders='name'; sortReverse.founders = !sortReverse.founders; $event.preventDefault()">Name <span ng-show="sortType.founders === 'name' && !sortReverse.founders" class="fa fa-caret-down"></span><span ng-show="sortType.founders === 'name' && sortReverse.founders" class="fa fa-caret-up"></span></a></th>
 
-      <th><a href="#" ng-click="sortType.founders='startup'; sortReverse.founders = !sortReverse.founders; $event.preventDefault()">Startup<span ng-show="sortType.founders === 'startup' && !sortReverse.founders" class="fa fa-caret-down"></span><span ng-show="sortType.founders === 'startup' && sortReverse.founders" class="fa fa-caret-up"></span></a></th>
+      <th><a href="#" ng-click="sortType.founders='startup'; sortReverse.founders = !sortReverse.founders; $event.preventDefault()">Startup <span ng-show="sortType.founders === 'startup' && !sortReverse.founders" class="fa fa-caret-down"></span><span ng-show="sortType.founders === 'startup' && sortReverse.founders" class="fa fa-caret-up"></span></a></th>
 
-      <th><a href="#" ng-click="sortType.founders='email'; sortReverse.founders = !sortReverse.founders; $event.preventDefault()">Email<span ng-show="sortType.founders === 'email' && !sortReverse.founders" class="fa fa-caret-down"></span><span ng-show="sortType.founders === 'email' && sortReverse.founders" class="fa fa-caret-up"></span></a></th>
+      <th><a href="#" ng-click="sortType.founders='email'; sortReverse.founders = !sortReverse.founders; $event.preventDefault()">Email <span ng-show="sortType.founders === 'email' && !sortReverse.founders" class="fa fa-caret-down"></span><span ng-show="sortType.founders === 'email' && sortReverse.founders" class="fa fa-caret-up"></span></a></th>
 
       <th>Add Note</th>
     </tr>
