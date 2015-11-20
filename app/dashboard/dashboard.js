@@ -46,27 +46,20 @@ app.controller('dashboardCtrl', [
   $scope.getStartups();
 
 
-  // GET req for all founder; to populate our founder table
+  // GET req for all founders; to populate our founder table
   $scope.getFounders = function() {
-
-    // invoke our getFounder's from our factory
     foundersTableFactory.getFounders()
       .then(function(data) {
-
-        // assign the founders data returned from our promise to scope
         $scope.founders = data;
       });
   };
   $scope.getFounders();
 
-
+  // GET req for all notes; to populate our notes table
   $scope.getNotes = function() {
-
     notesTableFactory.getNotes()
       .then(function(data) {
-        console.log(data)
         $scope.notes = data;
-    console.log($scope.notes)
       });
   };
   $scope.getNotes();
