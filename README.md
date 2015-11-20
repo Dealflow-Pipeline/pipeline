@@ -18,6 +18,7 @@ TO DO HERE:
 * screenshots of mockups
 
 
+database stores dates as ISOStrings in UTC time
 
 Getting Startup
 * Fork the repo, in terminal:

@@ -111,10 +111,12 @@
       <div class="form-group">
         <label for="date" class="col-sm-3 control-label">Date of Intro *</label>
         <div class="col-sm-9">
-          <input type="date" class="form-control" autocomplete="on" ng-model="date" autofocus />
+          <input type="date" class="form-control" autocomplete="on" ng-model="startup.date" autofocus />
         </div>
       </div>
 
+      <!-- Date of Last Contact -->
+      <input type="hidden" class="form-control" autocomplete="on" ng-model="startup.lastContact" />
 
 
       <h2 ng-show="entry.entrepreneur">Founder Information</h2>
