@@ -9,20 +9,23 @@ app.controller('dashboardCtrl', [
   '$scope',
   'startupsTableFactory',
   'foundersTableFactory',
+  'notesTableFactory',
   'noteInfoFactory',
   '$uibModal',
-  function($scope, startupsTableFactory, foundersTableFactory, noteInfoFactory, $uibModal) {
+  function($scope, startupsTableFactory, foundersTableFactory, notesTableFactory, noteInfoFactory, $uibModal) {
 
   // sets the default sort column
   $scope.sortType = {
     startups: 'pipeline',
-    founders: 'date'
+    founders: 'lastContact',
+    notes: 'date'
   };
 
   // sets the table sort to ascending
   $scope.sortReverse = {
     startups: true,
-    founders: true
+    founders: true,
+    notes: true
   };
 
   // cache the number of startups at each pipeline step for our dashboard funnel
@@ -38,6 +41,7 @@ app.controller('dashboardCtrl', [
   
   // set the default search/filter term
   $scope.searchTable = '';
+
 
   // GET req for all startups; to populate our startup table
   $scope.getStartups = function() {
@@ -60,19 +64,26 @@ app.controller('dashboardCtrl', [
   };
   $scope.getStartups();
 
-  // GET req for all founder; to populate our founder table
-  $scope.getFounders = function() {
 
-    // invoke our getFounder's from our factory
+  // GET req for all founders; to populate our founder table
+  $scope.getFounders = function() {
     foundersTableFactory.getFounders()
       .then(function(data) {
-
-        // assign the founders data returned from our promise to scope
         $scope.founders = data;
 
       });
   };
   $scope.getFounders();
+
+  // GET req for all notes; to populate our notes table
+  $scope.getNotes = function() {
+    notesTableFactory.getNotes()
+      .then(function(data) {
+        $scope.notes = data;
+      });
+  };
+  $scope.getNotes();
+
 
   // controls addNote (+) symbol; pass through info listed in the row
   $scope.open = function(startupName, startupId, founderName, founderId) {

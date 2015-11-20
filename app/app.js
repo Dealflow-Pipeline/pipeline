@@ -49,7 +49,12 @@ var app = angular.module('pipeline', [
             function(foundersTableFactory) {
               return foundersTableFactory.getFounders();
             }
-          ]
+          ],
+          loadNotesTable: ['notesTableFactory',
+            function(notesTableFactory) {
+              return notesTableFactory.getNotes()
+            }
+          ],
         }
       })
       .state('founder', {

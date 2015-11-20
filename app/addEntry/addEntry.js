@@ -1,9 +1,10 @@
 var app = angular.module('addEntry', [
   'ui.bootstrap',
+  'vsGoogleAutocomplete'
   ]);
 
 app.controller('addEntryCtrl',
-  function($scope, $firebaseObject) {
+  function($scope, $firebaseObject, vsGoogleAutocomplete) {
 
     $scope.date = new Date();
 
