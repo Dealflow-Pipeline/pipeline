@@ -6,7 +6,7 @@ app.factory('searchAngelListStartups', ['$q', '$http', function($q, $http) {
 
   $http({
     method: 'GET',
-    url: 'https://api.angel.co/1/search?query=' + companyName + '&access_token=00c527015025ccb99080a0e8c9b1b2cff0b8444eab0564f0'
+    url: 'https://api.angel.co/1/search?query=' + companyName + '&access_token='
   })
     .then(function successCallback(response) {
       console.log(response);
