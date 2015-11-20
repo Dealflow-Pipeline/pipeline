@@ -81,15 +81,15 @@
           <th>Action</th>
         </tr>
       </thead>
-      <tbody ng-repeat="note in notes">
-        <tr>
+      <tbody>
+        <tr ng-repeat="note in notes">
           <td>
-            <span editable-select="note.status" e-form="rowform" e-ng-options="s.text as s.text for s in statuses">
+            <span editable-select="note.status" e-name="status" e-form="rowform" e-ng-options="s.text as s.text for s in statuses">
               {{ note.status }}
             </span>
           </td>
           <td>
-            <span editable-text="note.note" e-form="rowform" e-required>
+            <span editable-text="note.note" e-name="note" e-form="rowform" e-required>
               {{ note.note }}
             </span>
           </td>

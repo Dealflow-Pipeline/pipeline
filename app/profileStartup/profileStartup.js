@@ -9,8 +9,8 @@ app.controller('profileStartupCtrl', [
   '$scope',
   'startupProfileFactory',
   '$stateParams',
-  'searchAngelListStartups',
-  function($scope, startupProfileFactory, $stateParams, searchAngelListStartups) {
+  // 'searchAngelListStartups',
+  function($scope, startupProfileFactory, $stateParams) {
     var startupId = $stateParams.startupId;
 
     // callback for firebase set method
@@ -32,6 +32,10 @@ app.controller('profileStartupCtrl', [
     $scope.updateNotes = function(update) {
       update.$save().then(function(ref) {
         ref.key() === update.$id; // true
+        console.log($scope.notesArr);
+
+        // call getNotes
+        $scope.getNotes($scope.notesArr);
       },
 
       function(error) {
@@ -96,10 +100,10 @@ app.controller('profileStartupCtrl', [
         // Check if notes object exists within startup
         if ($scope.startup.notes) {
           // assign notes key's within startup to own variable
-          var notesArr = Object.keys($scope.startup.notes);
+          $scope.notesArr = Object.keys($scope.startup.notes);
 
           // call getNotes
-          $scope.getNotes(notesArr);
+          $scope.getNotes($scope.notesArr);
         };
 
         // Check if founders object exists within startup
@@ -116,9 +120,7 @@ app.controller('profileStartupCtrl', [
     // Get notes via factory
     $scope.getNotes = function(notes) {
       startupProfileFactory.getNotes(notes).then(function(returnedData) {
-        $scope.notes = [];
         $scope.notes = returnedData;
-        console.log($scope.notes);
       });
     };
 
@@ -150,6 +152,5 @@ app.controller('profileStartupCtrl', [
     //   $scope.startup = sync.$asArray();
     // };
 
-    console.log($scope.startup);
   },
 ]);
