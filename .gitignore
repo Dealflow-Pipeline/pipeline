@@ -19,3 +19,6 @@ lib-cov
 # Dependency directorys
 node_modules/
 bower_components/
+
+# uncomment this when you clean out the folder
+app/assets/charts
