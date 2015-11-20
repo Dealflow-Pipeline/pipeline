@@ -5,41 +5,6 @@ app.run(function(editableOptions) {
   editableOptions.theme = 'bs3'; // bootstrap3 theme
 });
 
-app.filter('pipelineFilter', [
-  function() {
-    return function(pipelineNum) { //1 = Introduced
-      var pipelineNames = [
-        'Introduced',
-        'Spoke with Team',
-        'Met Team',
-        'Due Diligence',
-        'Invested',
-        'Passed',
-        'Never Met',
-      ];
-      return pipelineNames[pipelineNum - 1];
-    };
-  },
-]);
-
-// app.filter('industryFilter', [
-//   function() {
-//     return function(pipelineNum) { //1 = Introduced
-//       var pipelineNames = [
-//         'Introduced',
-//         'Spoke with Team',
-//         'Met Team',
-//         'Due Dukugence',
-//         'Invested',
-//         'Passed',
-//         'Never Met',
-//       ];
-//       console.log(pipelineNames[pipelineNum - 1]);
-//       return pipelineNames[pipelineNum - 1];
-//     };
-//   },
-// ]);
-
 app.controller('profileStartupCtrl', [
   '$scope',
   'startupProfileFactory',
@@ -48,10 +13,7 @@ app.controller('profileStartupCtrl', [
   function($scope, startupProfileFactory, $stateParams, searchAngelListStartups) {
     var startupId = $stateParams.startupId;
 
-    var ref = new Firebase('https://pipeline8.firebaseio.com/startup/');
-    var startup = ref.child(startupId);
-    console.log(startup);
-
+    // callback for firebase set method
     var onComplete = function(error) {
       if (error) {
         console.log('Error: ' + error);
@@ -60,17 +22,76 @@ app.controller('profileStartupCtrl', [
       }
     };
 
+    // update startup object via xeditable
     $scope.updateStartup = function(update) {
-      console.log(update);
+      var startupRef = new Firebase('https://pipeline8.firebaseio.com/startup/');
+      var startup = startupRef.child(startupId);
       startup.set(update, onComplete);
     };
+
+    $scope.updateNotes = function(update) {
+      update.$save().then(function(ref) {
+        ref.key() === update.$id; // true
+      },
+
+      function(error) {
+        console.log('Error:', error);
+      });
+    };
+
+    $scope.pipelines = [
+      {text: '-'},
+      {text: '1. Introduced'},
+      {text: '2. Spoke with Team'},
+      {text: '3. Met Team'},
+      {text: '4. Due Diligence'},
+      {text: '5. Invested'},
+      {text: '6. Passed'},
+      {text: '7. Never Met'},
+    ];
+
+    $scope.industries = [
+      {text: '-'},
+      {text: 'Agriculture'},
+      {text: 'Clean Technology'},
+      {text: 'Consumer"'},
+      {text: 'Cryptocurrency'},
+      {text: 'Design'},
+      {text: 'Education'},
+      {text: 'Energy'},
+      {text: 'Enterprise'},
+      {text: 'Entertainment'},
+      {text: 'Events'},
+      {text: 'Fashion'},
+      {text: 'Finance'},
+      {text: 'Hardware'},
+      {text: 'Health & Wellness'},
+      {text: 'Health Care'},
+      {text: 'Internet of Things'},
+      {text: 'Life Sciences'},
+      {text: 'Media'},
+      {text: 'Mobile'},
+      {text: 'Real Estate'},
+      {text: 'Retail'},
+      {text: 'Sports'},
+      {text: 'Travel'},
+      {text: 'Venture for Good'},
+    ];
+
+    $scope.statuses = [
+      {text: 'No status'},
+      {text: 'Past due'},
+      {text: 'Requires immediate action'},
+      {text: 'To do'},
+      {text: 'Just a reminder'},
+      {text: 'Completed'},
+    ];
 
     // Get startup information via factory
     $scope.getProfile = function() {
       startupProfileFactory.getStartup(startupId).then(function(returnedData) {
 
         $scope.startup = returnedData;
-        var test = $scope.startup;
 
         // Check if notes object exists within startup
         if ($scope.startup.notes) {
@@ -95,11 +116,11 @@ app.controller('profileStartupCtrl', [
     // Get notes via factory
     $scope.getNotes = function(notes) {
       startupProfileFactory.getNotes(notes).then(function(returnedData) {
+        $scope.notes = [];
         $scope.notes = returnedData;
+        console.log($scope.notes);
       });
     };
-
-    console.log($scope.notes);
 
     // Get founders via factory
     $scope.getFounders = function(founders) {

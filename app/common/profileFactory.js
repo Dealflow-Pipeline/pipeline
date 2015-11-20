@@ -43,9 +43,10 @@ app.factory('startupProfileFactory', [
           // call reference URL and push response onto notesArr
           notesAll.on('value', function(data) {
             _notesArr.push($firebaseObject(notesAll));
+            console.log(_notesArr);
             defer.resolve(_notesArr);
           });
-
+          console.log(_notesArr);
           return defer.promise;
         });
 
@@ -117,8 +118,9 @@ app.factory('founderProfileFactory', [
           notesAll.on('value', function(data) {
             _notesArr.push($firebaseObject(notesAll));
             defer.resolve(_notesArr);
+            console.log(_notesArr);
           });
-
+          console.log(_notesArr);
           return defer.promise;
         });
 
