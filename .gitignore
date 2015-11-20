@@ -19,3 +19,6 @@ lib-cov
 # Dependency directorys
 node_modules/
 bower_components/
+
+# theme assets; we dont need them all but for now we will git ignore
+app/assets/charts/
