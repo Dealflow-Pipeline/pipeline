@@ -4,7 +4,8 @@ app.controller('profileStartupCtrl', [
   '$scope',
   'startupProfileFactory',
   '$stateParams',
-  function($scope, startupProfileFactory, $stateParams) {
+  'searchAngelListStartups',
+  function($scope, startupProfileFactory, $stateParams, searchAngelListStartups) {
     var startupId = $stateParams.startupId;
 
     // Get startup information via factory
@@ -51,5 +52,18 @@ app.controller('profileStartupCtrl', [
 
     // Invoke initial method to get startup info
     $scope.getProfile();
+
+
+
+    // Search AL's database for match
+    $scope.getAngelList = function(startupName) {
+      // searchAngelListStartups
+      // invoke the http GET req in angelListFactory.js
+      //   this will return an array matching the search query
+      //   choose the first one (index 0)
+      //   return the object response from AL 
+      //   display on the page via profileStartup.js
+
+    };
   },
 ]);

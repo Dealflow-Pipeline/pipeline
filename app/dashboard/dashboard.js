@@ -24,6 +24,17 @@ app.controller('dashboardCtrl', [
     startups: true,
     founders: true
   };
+
+  // cache the number of startups at each pipeline step for our dashboard funnel
+  $scope.pipelineCount = {
+    "1. Introduced": 0,
+    "2. Spoke with Team": 0,
+    "3. Met Team": 0,
+    "4. Due Diligence": 0,
+    "5. Invested": 0,
+    "6. Passed": 0,
+    "7. Never Met": 0
+  }
   
   // set the default search/filter term
   $scope.searchTable = '';
@@ -37,7 +48,15 @@ app.controller('dashboardCtrl', [
 
         // assign the startups data returned from our promise to scope
         $scope.startups = data;
+
+        // iterate over all our startups
+        data.forEach(function(startup, index) {
+
+          // increment the appropriate pipeline counter for each startup in that step
+          $scope.pipelineCount[startup.pipeline]++
+        })
       });
+      
   };
   $scope.getStartups();
 
@@ -50,6 +69,7 @@ app.controller('dashboardCtrl', [
 
         // assign the founders data returned from our promise to scope
         $scope.founders = data;
+
       });
   };
   $scope.getFounders();
