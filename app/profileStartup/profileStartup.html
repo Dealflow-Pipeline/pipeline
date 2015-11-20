@@ -8,27 +8,28 @@
         <img src="assets/logo_blank.svg" alt="..." class="img-thumbnail">
       </div>
       <div class="col-md-4">
-        <p><strong>Tagline:</strong> {{ startup.tagline }}</p>
-        <p><strong>Industry:</strong></p>
-        <p><strong>Location:</strong> {{ startup.location }}</p>
-        <p><strong>Website:</strong></p>
-        <p><strong>Social Profiles:</strong></p>
+        <p><strong>Tagline: </strong><a href="#" editable-text="startup.tagline" onaftersave="updateStartup(startup)">{{ startup.tagline }}</a></p>
+        <p><strong>Industry: </strong><a href="#" editable-select="startup.industry" onshow="loadIndustries()" e-ng-options="p.id as p.text for p in pipeline"></a></p>
+        <p><strong>Location: </strong><a href="x" editable-text="startup.location">{{ startup.location }}</a></p>
+        <p><strong>Website: </strong><a href="#" editable-url="startup.website">{{ startup.website || 'empty' }}</a></p>
+        <!-- <p><strong>Social Profiles: </strong></p> -->
       </div>
       <div class="col-md-4">
-        <p><strong>Funnel Step:</strong> {{ startup.funnel }}</p>
-        <p><strong>Referral Source:</strong> {{ startup.source }}</p>
-        <p><strong>Founding Date:</strong> {{ startup.date | amDateFormat:'MM/DD/YYYY' }}</p>
-        <p><strong>Aamount Raised</strong></p>
-        <p><strong>Size(employee count):</strong></p>
-        <p><strong>Burn Rate</strong></p>
+        <p><strong>Owner: </strong><a href="#" editable-select="startup.partner">{{ startup.partner }}</a></p>
+        <p><strong>Pipeline Step: </strong><a href="#" editable-select="startup.pipeline" onshow="loadPipeline()" e-ng-options="p.id as p.text for p in pipeline">{{ startup.pipeline | pipelineFilter }}</a></p>
+        <p><strong>Intro Source: </strong><a href="#" editable-text="startup.source">{{ startup.source }}</a></p>
+        <p><strong>Intro Date:</strong> {{ startup.date | amDateFormat:'MM/DD/YYYY' }}</p>
+        <!-- <p><strong>Amount Raised: </strong></p> -->
+        <!-- <p><strong>Size(employee count): </strong></p> -->
+        <!-- <p><strong>Burn Rate</strong></p> -->
       </div>
     </div>
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-md-12">
         <p><strong>Description:</strong></p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       </div>
-    </div>
+    </div> -->
   </div>
   <div class="panel panel-default">
     <div class="panel-heading">

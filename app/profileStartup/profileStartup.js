@@ -1,4 +1,44 @@
-var app = angular.module('startup', ['ui.bootstrap']);
+var app = angular.module('startup', ['ui.bootstrap', 'xeditable', 'firebase']);
+
+// sets theme for xeditable
+app.run(function(editableOptions) {
+  editableOptions.theme = 'bs3'; // bootstrap3 theme
+});
+
+app.filter('pipelineFilter', [
+  function() {
+    return function(pipelineNum) { //1 = Introduced
+      var pipelineNames = [
+        'Introduced',
+        'Spoke with Team',
+        'Met Team',
+        'Due Diligence',
+        'Invested',
+        'Passed',
+        'Never Met',
+      ];
+      return pipelineNames[pipelineNum - 1];
+    };
+  },
+]);
+
+// app.filter('industryFilter', [
+//   function() {
+//     return function(pipelineNum) { //1 = Introduced
+//       var pipelineNames = [
+//         'Introduced',
+//         'Spoke with Team',
+//         'Met Team',
+//         'Due Dukugence',
+//         'Invested',
+//         'Passed',
+//         'Never Met',
+//       ];
+//       console.log(pipelineNames[pipelineNum - 1]);
+//       return pipelineNames[pipelineNum - 1];
+//     };
+//   },
+// ]);
 
 app.controller('profileStartupCtrl', [
   '$scope',
@@ -8,13 +48,29 @@ app.controller('profileStartupCtrl', [
   function($scope, startupProfileFactory, $stateParams, searchAngelListStartups) {
     var startupId = $stateParams.startupId;
 
+    var ref = new Firebase('https://pipeline8.firebaseio.com/startup/');
+    var startup = ref.child(startupId);
+    console.log(startup);
+
+    var onComplete = function(error) {
+      if (error) {
+        console.log('Error: ' + error);
+      } else {
+        console.log('Synchronization succeeded');
+      }
+    };
+
+    $scope.updateStartup = function(update) {
+      console.log(update);
+      startup.set(update, onComplete);
+    };
+
     // Get startup information via factory
     $scope.getProfile = function() {
       startupProfileFactory.getStartup(startupId).then(function(returnedData) {
 
         $scope.startup = returnedData;
-
-        console.log($scope.startup);
+        var test = $scope.startup;
 
         // Check if notes object exists within startup
         if ($scope.startup.notes) {
@@ -43,6 +99,8 @@ app.controller('profileStartupCtrl', [
       });
     };
 
+    console.log($scope.notes);
+
     // Get founders via factory
     $scope.getFounders = function(founders) {
       startupProfileFactory.getFounders(founders).then(function(returnedData) {
@@ -53,17 +111,24 @@ app.controller('profileStartupCtrl', [
     // Invoke initial method to get startup info
     $scope.getProfile();
 
-
-
     // Search AL's database for match
     $scope.getAngelList = function(startupName) {
       // searchAngelListStartups
       // invoke the http GET req in angelListFactory.js
       //   this will return an array matching the search query
       //   choose the first one (index 0)
-      //   return the object response from AL 
+      //   return the object response from AL
       //   display on the page via profileStartup.js
 
     };
+
+    // $scope.updateStartup = function(startupId) {
+    //   ref = new Firebase('https://pipeline8.firebaseio.com/startup/' + startupId);
+    //   var sync = $firebase(ref);
+    //
+    //   $scope.startup = sync.$asArray();
+    // };
+
+    console.log($scope.startup);
   },
 ]);

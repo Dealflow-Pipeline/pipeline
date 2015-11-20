@@ -1,5 +1,10 @@
 var app = angular.module('founder', ['ui.bootstrap']);
 
+// sets theme for xeditable
+app.run(function(editableOptions) {
+  editableOptions.theme = 'bs3'; // bootstrap3 theme
+});
+
 app.controller('profileFounderCtrl', [
   '$scope',
   'founderProfileFactory',
@@ -15,7 +20,7 @@ app.controller('profileFounderCtrl', [
 
         // Check if notes object exists within founder
         if ($scope.founder.notes) {
-          
+
           // assign notes key's within founder to own variable
           var notesArr = Object.keys($scope.founder.notes);
 
