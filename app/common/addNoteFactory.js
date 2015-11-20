@@ -7,7 +7,6 @@ app.factory('noteInfoFactory', ['$uibModal', function($uibModal) {
   return {
     getRow: function(startupName, startupId, founderName, founderId) {
 
-
       var modalInstance = $uibModal.open({
         animation: true,
         templateUrl: 'note/addNote.html',
@@ -22,16 +21,7 @@ app.factory('noteInfoFactory', ['$uibModal', function($uibModal) {
             };
           }
         }
-      });      
-    
-      // modalInstance.rowInfo = {
-      //   startupName: startupName,
-      //   startupId: startupId,
-      //   founderName: founderName,
-      //   founderId: founderId
-      // }
+      });
     },
   }
-
-  
-}])
+}]);

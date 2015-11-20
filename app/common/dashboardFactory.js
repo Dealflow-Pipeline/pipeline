@@ -5,7 +5,7 @@ app.factory('startupsTableFactory', [
   '$firebaseArray',
   function($q, $firebaseArray) {
 
-  // instantiate new firebase objects
+  // instantiate new firebase object
   var startupRef = new Firebase('https://pipeline8.firebaseio.com/startup');
 
   var startups = [];
@@ -36,7 +36,7 @@ app.factory('foundersTableFactory', [
   '$firebaseArray',
   function($q, $firebaseArray) {
 
-  // instantiate new firebase objects
+  // instantiate new firebase object
   var founderRef = new Firebase('https://pipeline8.firebaseio.com/founder');
 
   var founders = [];
@@ -62,3 +62,36 @@ app.factory('foundersTableFactory', [
     }
   }
 }]);
+
+app.factory('notesTableFactory', [
+  '$q',
+  '$firebaseArray',
+  function($q, $firebaseArray) {
+
+  // instantiate new firebase object
+  var noteRef = new Firebase('https://pipeline8.firebaseio.com/notes');
+
+  var notes = [];
+
+  return {
+    getNotes: function() {
+
+      var defer = $q.defer();
+
+      // when the startup object changes or updates
+      noteRef.on("value", function(data) {
+
+        // firebase snapshot of our startup database
+        notes = $firebaseArray(noteRef)
+
+        // on resolve, pass the startups array to our controller
+        defer.resolve(notes);
+      });
+
+      // return the deferred object's promise property
+      return defer.promise;
+    }
+  }
+}]);
+
+
