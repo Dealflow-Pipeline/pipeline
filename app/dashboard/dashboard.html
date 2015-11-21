@@ -14,71 +14,70 @@
 </div>
 
 <!-- Funnel pie charts -->
-<div class="container" ng-controller="dashboardCtrl">
-  <div class="row">
-    <div id="content" class="col-sm-10">
-      <div class="row circleStats">
-        <div class="col-md-2 col-sm-4 col-xs-6">
-          <div class="circleStatsItem red">
-            <i class="fa  fa-thumbs-up"></i>
-            <span class="plus">+</span>
-            <!-- <span class="percent">%</span> -->
-            <input type="text" value="{{pipelineCount['1. Introduced']}}" class="orangeCircle" />
-          </div>
-          <div class="box-small-title">Introduced</div>
-        </div><!--/col-->
 
-        <div class="col-md-2 col-sm-4 col-xs-6">
-          <div class="circleStatsItem blue">
-            <i class="fa  fa-bullhorn"></i>
-            <span class="plus">+</span>
-            <!-- <span class="percent">%</span> -->
-            <input type="text" value="{{pipelineCount['2. Spoke with Team']}}" class="blueCircle" />
-          </div>
-          <div class="box-small-title">Spoke with Team</div>
-        </div><!--/col-->
+<div class="panel panel-default" ng-controller="dashboardCtrl">
+  <div class="panel-heading">Notes</div>
+  <div class="panel-body">
+    <p>You currently have {{notes.length}} notes. They are:</p>
+  </div>
 
-        <div class="col-md-2 col-sm-4 col-xs-6">
-          <div class="circleStatsItem yellow">
-            <i class="fa  fa-user"></i>
-            <span class="plus">+</span>
-            <!-- <span class="percent">%</span> -->
-            <input type="text" value="{{pipelineCount['3. Met Team']}}" class="yellowCircle" />
-          </div>
-          <div class="box-small-title">Met Team</div>
-        </div><!--/col-->
 
-        <div class="col-md-2 col-sm-4 col-xs-6">
-          <div class="circleStatsItem pink">
-            <i class="fa  fa-globe"></i>
-            <span class="plus">+</span>
-            <!-- <span class="percent">%</span> -->
-            <input type="text" value="{{pipelineCount['4. Due Diligence']}}" class="pinkCircle" />
-          </div>
-          <div class="box-small-title">Due Diligence</div>
-        </div><!--/col-->
+<div class="panel panel-default panel-success" ng-controller="dashboardCtrl">
+  <div class="panel-heading">Your Pipeline</div>
+  <div class="panel-body">
+    <div class="row">
+      <div id="content" class="col-sm-10">
+        <div class="row circleStats">
+          <div class="col-md-2 col-sm-4 col-xs-6">
+            <div class="circleStatsItem red">
+              <i class="fa  fa-thumbs-up"></i>
+              <span class="plus">{{pipelineCount['1. Introduced']}}</span>
+            </div>
+            <div class="box-small-title">Introduced</div>
+          </div><!--/col-->
+>
+          <div class="col-md-2 col-sm-4 col-xs-6">
+            <div class="circleStatsItem blue">
+              <i class="fa  fa-bullhorn"></i>
+              <span class="plus">{{pipelineCount['2. Spoke with Team']}}</span>
+            </div>
+            <div class="box-small-title">Spoke with Team</div>
+          </div><!--/col-->
+>
+          <div class="col-md-2 col-sm-4 col-xs-6">
+            <div class="circleStatsItem yellow">
+              <i class="fa  fa-user"></i>
+              <span class="plus">{{pipelineCount['3. Met Team']}}</span>
+            </div>
+            <div class="box-small-title">Met Team</div>
+          </div><!--/col-->
 
-        <div class="col-md-2 col-sm-4 col-xs-6">
-          <div class="circleStatsItem green">
-            <i class="fa  fa-bar-chart-o"></i>
-            <span class="plus">+</span>
-            <!-- <span class="percent">%</span> -->
-            <input type="text" value="{{pipelineCount['5. Invested']}}" class="greenCircle" />
-          </div>
-          <div class="box-small-title">Invested</div>
-        </div><!--/col-->
+          <div class="col-md-2 col-sm-4 col-xs-6">
+            <div class="circleStatsItem pink">
+              <i class="fa  fa-globe"></i>
+              <span class="plus">{{pipelineCount['4. Due Diligence']}}</span>
+            </div>
+            <div class="box-small-title">Due Diligence</div>
+          </div><!--/col-->
 
-        <div class="col-md-2 col-sm-4 col-xs-6">
-          <div class="circleStatsItem lightorange">
-            <i class="fa  fa-shopping-cart"></i>
-            <span class="plus">+</span>
-            <!-- <span class="percent">%</span> -->
-            <input type="text" value="{{pipelineCount['6. Passed']}}" class="lightOrangeCircle" />
-                  </div>
-          <div class="box-small-title">Passed</div>
-        </div><!--/col-->
+          <div class="col-md-2 col-sm-4 col-xs-6">
+            <div class="circleStatsItem green">
+              <i class="fa  fa-bar-chart-o"></i>
+              <span class="plus">{{pipelineCount['5. Invested']}}</span>
+            </div>
+            <div class="box-small-title">Invested</div>
+          </div><!--/col-->
 
-      </div><!--/row-->
+          <div class="col-md-2 col-sm-4 col-xs-6">
+            <div class="circleStatsItem lightorange">
+              <i class="fa  fa-shopping-cart"></i>
+              <span class="plus">{{pipelineCount['6. Passed']}}</span>
+            </div>
+            <div class="box-small-title">Passed</div>
+          </div><!--/col-->
+
+        </div><!--/row-->
+      </div>
     </div>
   </div>
 </div>
