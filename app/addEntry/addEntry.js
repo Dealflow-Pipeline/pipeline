@@ -7,7 +7,7 @@ app.controller('addEntryCtrl',
 
     // restricts the city autocomplete to USA only
     $scope.options = {
-      type:['(cities)'],
+      type: ['(cities)'],
       componentRestrictions: { country: 'USA' }
     }
 
