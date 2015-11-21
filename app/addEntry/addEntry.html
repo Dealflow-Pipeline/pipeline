@@ -17,7 +17,7 @@
           <input type="text" class="form-control" ng-model="startup.name" placeholder="What is the startup's name?" />
         </div>
       </div>
-      
+
       <!-- Tagline -->
       <div class="form-group" ng-show="entry.startup">
         <label for="tagline" class="col-sm-3 control-label">Tagline</label>
@@ -96,6 +96,7 @@
         <label for="pipeline" class="col-sm-3 control-label">Pipeline Step *</label>
         <div class="col-sm-9">
           <select class="form-control" ng-model="startup.pipeline">
+            <option value="-" ng-selected="true">-</option>
             <option value="1. Introduced" ng-selected="true">1. Introduced</option>
             <option value="2. Spoke with Team">2. Spoke with Team</option>
             <option value="3. Met Team">3. Met Team</option>
@@ -106,7 +107,7 @@
           </select>
         </div>
       </div>
-      
+
       <!-- Intro Source -->
       <div class="form-group" ng-show="entry.startup">
         <label for="source" class="col-sm-3 control-label">Intro Source</label>
@@ -166,4 +167,3 @@
     </form>
   </div>
 </div>
-

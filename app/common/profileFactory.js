@@ -41,8 +41,21 @@ app.factory('startupProfileFactory', [
           var notesAll = notesRef.child(note);
 
           // call reference URL and push response onto notesArr
-          notesAll.on('value', function(data) {
-            _notesArr.push($firebaseObject(notesAll));
+          notesAll.on('value', function(snapshot) {
+            var data = $firebaseObject(notesAll);
+
+            if (snapshot.val() !== null) {
+              _notesArr.push(data);
+            } else {
+              data.$remove().then(function(data) {
+                // data has been deleted locally and in the database
+              },
+
+              function(error) {
+                console.log('Error:', error);
+              });
+            }
+
             defer.resolve(_notesArr);
           });
 
@@ -117,8 +130,9 @@ app.factory('founderProfileFactory', [
           notesAll.on('value', function(data) {
             _notesArr.push($firebaseObject(notesAll));
             defer.resolve(_notesArr);
+            console.log(_notesArr);
           });
-
+          console.log(_notesArr);
           return defer.promise;
         });
 

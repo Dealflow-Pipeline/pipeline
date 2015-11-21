@@ -1,11 +1,55 @@
 var app = angular.module('founder', ['ui.bootstrap']);
 
+// sets theme for xeditable
+app.run(function(editableOptions) {
+  editableOptions.theme = 'bs3'; // bootstrap3 theme
+});
+
 app.controller('profileFounderCtrl', [
   '$scope',
   'founderProfileFactory',
   '$stateParams',
   function($scope, founderProfileFactory, $stateParams) {
     var founderId = $stateParams.founderId;
+
+    // callback for firebase set method
+    var onComplete = function(error) {
+      if (error) {
+        console.log('Error: ' + error);
+      } else {
+        console.log('Synchronization succeeded');
+      }
+    };
+
+    // update startup object via xeditable
+    $scope.updateFounder = function(update) {
+      var founderRef = new Firebase('https://pipeline8.firebaseio.com/founder/');
+      var founder = founderRef.child(founderId);
+      founder.set(update, onComplete);
+    };
+
+    $scope.updateNotes = function(update) {
+      update.$save().then(function(ref) {
+        ref.key() === update.$id; // true
+        console.log($scope.notesArr);
+
+        // call getNotes
+        $scope.getNotes($scope.notesArr);
+      },
+
+      function(error) {
+        console.log('Error:', error);
+      });
+    };
+
+    $scope.statuses = [
+      {text: 'No status'},
+      {text: 'Past due'},
+      {text: 'Requires immediate action'},
+      {text: 'To do'},
+      {text: 'Just a reminder'},
+      {text: 'Completed'},
+    ];
 
     // Get founder information via factory
     $scope.getProfile = function() {
@@ -15,12 +59,12 @@ app.controller('profileFounderCtrl', [
 
         // Check if notes object exists within founder
         if ($scope.founder.notes) {
-          
+
           // assign notes key's within founder to own variable
-          var notesArr = Object.keys($scope.founder.notes);
+          $scope.notesArr = Object.keys($scope.founder.notes);
 
           // call getNotes
-          $scope.getNotes(notesArr);
+          $scope.getNotes($scope.notesArr);
         };
 
         // Check if startups object exists within founder

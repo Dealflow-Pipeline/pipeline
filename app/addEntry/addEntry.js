@@ -17,6 +17,7 @@ app.controller('addEntryCtrl',
     $scope.startup = {
       "date": $scope.date,
       "lastContact": $scope.date,
+      "pipeline": "1. Introduced",
       "founders": {}
     };
 
@@ -104,7 +105,7 @@ app.controller('addEntryCtrl',
 
       // grab unique reference id for startup
       var startUpRefId = newStartupRef.key();
-      
+
       // newStartupRef.on('value', function(dataSnapshot) {
         // console.log('Success');
       // },

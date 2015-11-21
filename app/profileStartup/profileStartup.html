@@ -7,27 +7,34 @@
       <div class="col-md-2">
         <img src="assets/logo_blank.svg" alt="..." class="img-thumbnail">
       </div>
-      <div class="col-md-4">
-        <p><strong>Tagline:</strong> {{ startup.tagline }}</p>
-        <p><strong>Industry:</strong></p>
-        <p><strong>Location:</strong> {{ startup.location }}</p>
-        <p><strong>Website:</strong></p>
-        <p><strong>Social Profiles:</strong></p>
-      </div>
-      <div class="col-md-4">
-        <p><strong>Funnel Step:</strong> {{ startup.funnel }}</p>
-        <p><strong>Referral Source:</strong> {{ startup.source }}</p>
-        <p><strong>Founding Date:</strong> {{ startup.date | amDateFormat:'MM/DD/YYYY' }}</p>
-        <p><strong>Aamount Raised</strong></p>
-        <p><strong>Size(employee count):</strong></p>
-        <p><strong>Burn Rate</strong></p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <p><strong>Description:</strong></p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      </div>
+      <form editable-form name="tableform" onaftersave="updateStartup(startup)" oncancel="cancel()">
+        <div class="col-md-4">
+          <p><strong>Tagline: </strong><span editable-text="startup.tagline">{{ startup.tagline }}</span></p>
+          <p><strong>Industry: </strong><span editable-select="startup.industry" e-ng-options="s.text as s.text for s in industries">{{ startup.industry }}</span></p>
+          <p><strong>Location: </strong><span editable-text="startup.location">{{ startup.location }}</span></p>
+          <p><strong>Website: </strong><span editable-url="startup.website">{{ startup.website || 'empty' }}</span></p>
+          <!-- <p><strong>Social Profiles: </strong></p> -->
+        </div>
+        <div class="col-md-4">
+          <p><strong>Owner: </strong><span editable-text="startup.partner">{{ startup.partner }}</span></p>
+          <p><strong>Pipeline Step: </strong><span editable-select="startup.pipeline" e-ng-options="s.text as s.text for s in pipelines">{{ startup.pipeline }}</span></p>
+          <p><strong>Intro Source: </strong><span editable-text="startup.source">{{ startup.source }}</span></p>
+          <p><strong>Intro Date:</strong> {{ startup.date | amDateFormat:'MM/DD/YYYY' }}</p>
+          <!-- <p><strong>Amount Raised: </strong></p> -->
+          <!-- <p><strong>Size(employee count): </strong></p> -->
+          <!-- <p><strong>Burn Rate</strong></p> -->
+        </div>
+        <!-- buttons -->
+        <div class="btn-edit">
+          <button type="button" class="btn btn-default" ng-show="!tableform.$visible" ng-click="tableform.$show()">
+            edit
+          </button>
+        </div>
+        <div class="btn-form" ng-show="tableform.$visible">
+          <button type="submit" ng-disabled="tableform.$waiting" class="btn btn-primary">save</button>
+          <button type="button" ng-disabled="tableform.$waiting" ng-click="tableform.$cancel()" class="btn btn-default">cancel</button>
+        </div>
+      </form>
     </div>
   </div>
   <div class="panel panel-default">
@@ -71,13 +78,37 @@
           <th>Status</th>
           <th>Note</th>
           <th>Date Entered</th>
+          <th>Action</th>
         </tr>
       </thead>
-      <tbody ng-repeat="note in notes">
-        <tr>
-          <td>{{ note.status }}</td>
-          <td>{{ note.note }}</td>
+      <tbody>
+        <tr ng-repeat="note in notes">
+          <td>
+            <span editable-select="note.status" e-name="status" e-form="rowform" e-ng-options="s.text as s.text for s in statuses">
+              {{ note.status }}
+            </span>
+          </td>
+          <td>
+            <span editable-text="note.note" e-name="note" e-form="rowform" e-required>
+              {{ note.note }}
+            </span>
+          </td>
           <td am-time-ago="note.date"></td>
+          <td style="white-space: nowrap">
+            <!-- form -->
+            <form editable-form name="rowform" ng-show="rowform.$visible" onaftersave="updateNotes(note)" class="form-buttons form-inline">
+              <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+                save
+              </button>
+              <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                cancel
+              </button>
+            </form>
+            <div class="buttons" ng-show="!rowform.$visible">
+              <button class="btn btn-default" ng-click="rowform.$show()">edit</button>
+              <!-- <button class="btn btn-danger" ng-click="removeUser($index)">del</button> -->
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
