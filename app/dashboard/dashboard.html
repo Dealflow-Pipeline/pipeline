@@ -201,7 +201,7 @@
           <span editable-text="startup.location" e-name="location" e-form="rowform">{{ startup.location }}</span>
         </td>
         <td style="white-space: nowrap">
-          <form editable-form name="rowform" ng-show="rowform.$visible" onaftersave="updateNotes(note)" class="form-buttons form-inline">
+          <form editable-form name="rowform" ng-show="rowform.$visible" onaftersave="updateStartup(startup)" class="form-buttons form-inline">
             <button type="submit" ng-disabled="rowform.$waiting" class="glyphicon-button">
               <span class="glyphicon glyphicon-save"></span>
             </button>
