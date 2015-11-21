@@ -30,12 +30,8 @@ app.controller('profileFounderCtrl', [
 
     // update individual notes object via x-editable
     $scope.updateNotes = function(update) {
-      update.$save().then(function(ref) {
+      $scope.notesIndex.$save(update).then(function(ref) {
         ref.key() === update.$id; // true
-        console.log($scope.notesArr);
-
-        // call getNotes
-        $scope.getNotes($scope.notesArr);
       },
 
       function(error) {
@@ -82,9 +78,27 @@ app.controller('profileFounderCtrl', [
     };
 
     // Get notes via factory
+    // $scope.getNotes = function(notes) {
+    //   founderProfileFactory.getNotes(notes).then(function(returnedData) {
+    //     $scope.notes = returnedData;
+    //   });
+    // };
+
+    // Get notes via factory
     $scope.getNotes = function(notes) {
       founderProfileFactory.getNotes(notes).then(function(returnedData) {
-        $scope.notes = returnedData;
+        $scope.notesIndex = returnedData;
+
+        // array to store notes specific to this startup
+        $scope.notes = [];
+
+        // search notesIndex for keys stored in notesArr and
+        // push associated record to $scope.notes
+        $scope.notesArr.forEach(function(name) {
+          if ($scope.notesIndex.$getRecord(name)) {
+            $scope.notes.push($scope.notesIndex.$getRecord(name));
+          }
+        });
       });
     };
 
