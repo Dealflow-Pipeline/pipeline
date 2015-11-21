@@ -1,10 +1,15 @@
 var app = angular.module('addEntry', [
   'ui.bootstrap',
-  'vsGoogleAutocomplete'
   ]);
 
 app.controller('addEntryCtrl',
-  function($scope, $firebaseObject, vsGoogleAutocomplete) {
+  function($scope, $firebaseObject) {
+
+    // restricts the city autocomplete to USA only
+    $scope.options = {
+      type:['(cities)'],
+      componentRestrictions: { country: 'USA' }
+    }
 
     $scope.date = new Date();
 

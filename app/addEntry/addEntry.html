@@ -14,7 +14,7 @@
       <div class="form-group" ng-show="entry.startup">
         <label for="startup-name" class="col-sm-3 control-label">Startup Name *</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" ng-model="startup.name" />
+          <input type="text" class="form-control" ng-model="startup.name" placeholder="What is the startup's name?" />
         </div>
       </div>
       
@@ -22,7 +22,7 @@
       <div class="form-group" ng-show="entry.startup">
         <label for="tagline" class="col-sm-3 control-label">Tagline</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" ng-model="startup.tagline" />
+          <input type="text" class="form-control" ng-model="startup.tagline" placeholder="What is the startup's tagline?" />
         </div>
       </div>
 
@@ -30,7 +30,7 @@
       <div class="form-group" ng-show="entry.startup">
         <label for="tagline" class="col-sm-3 control-label">Website</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" ng-model="startup.website" />
+          <input type="text" class="form-control" ng-model="startup.website" placeholder="What is the startup's website?" />
         </div>
       </div>
 
@@ -38,7 +38,7 @@
       <div class="form-group" ng-show="entry.startup">
         <label for="partner" class="col-sm-3 control-label">Lead Partner *</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" ng-model="startup.partner" />
+          <input type="text" class="form-control" ng-model="startup.partner" placeholder="Who is the lead partner at your firm?" />
         </div>
       </div>
 
@@ -49,7 +49,7 @@
           <input type="text"
             class="form-control"
             ng-model="startup.location"
-            vs-google-autocomplete
+            vs-google-autocomplete="options"
             ng-model="address"
             name="address"
             type="text" 
@@ -111,7 +111,7 @@
       <div class="form-group" ng-show="entry.startup">
         <label for="source" class="col-sm-3 control-label">Intro Source</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" ng-model="startup.source" />
+          <input type="text" class="form-control" ng-model="startup.source" placeholder="Who made an intro to this startup?" />
         </div>
       </div>
 
@@ -133,7 +133,7 @@
       <div class="form-group" ng-show="entry.founder">
         <label for="founder-name" class="col-sm-3 control-label">Founder Name *</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" ng-model="founder.name" />
+          <input type="text" class="form-control" ng-model="founder.name" placeholder="What is the founder's name?" />
         </div>
       </div>
 
@@ -141,7 +141,7 @@
       <div class="form-group" ng-show="entry.founder">
         <label for="founder-email" class="col-sm-3 control-label">Founder Email</label>
         <div class="col-sm-9">
-          <input type="email" class="form-control" ng-model="founder.email" />
+          <input type="email" class="form-control" ng-model="founder.email" placeholder="What is the founder's email address?" />
         </div>
       </div>
 
@@ -149,7 +149,8 @@
       <div class="form-group" ng-show="entry.founder">
         <label for="founder-phone" class="col-sm-3 control-label">Founder Phone</label>
         <div class="col-sm-9">
-          <input type="number" class="form-control" ng-model="founder.phone" />
+          <input type="number" class="form-control" ng-model="founder.phone" 
+          placeholder="What is the founder's phone number?" />
         </div>
       </div>
 

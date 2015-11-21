@@ -14,6 +14,7 @@ var app = angular.module('pipeline', [
   'ui.bootstrap',
   'firebase',
   'angularMoment',
+  'vsGoogleAutocomplete',
 ])
 .config([
   '$stateProvider',
