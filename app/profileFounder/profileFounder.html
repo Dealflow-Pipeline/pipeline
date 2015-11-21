@@ -8,16 +8,27 @@
       <div class="col-md-2">
         <img src="assets/logo_blank.svg" alt="..." class="img-thumbnail">
       </div>
-      <div class="col-md-4">
-        <p><strong>Email:</strong> {{ founder.email }}</p>
-        <p><strong>Phone:</strong> {{ founder.phone }}</p>
-        <p><strong>Secondary Phone:</strong> {{ founder.phone2 }}</p>
-        <p><strong>Address:</strong> {{ founder.address }}</p>
-        <p><strong>Secondary Address:</strong> {{ founder.address2 }}</p>
-      </div>
-      <div class="col-md-4">
-        <p><strong>Social Profiles:</strong></p>
-      </div>
+      <form editable-form name="tableform" onaftersave="updateFounder(founder)" oncancel="cancel()">
+        <div class="col-md-4">
+          <p><strong>Email: </strong><span editable-email="founder.email">{{ founder.email || 'empty'  }}</span></p>
+          <p><strong>Phone: </strong><span editable-tel="founder.phone">{{ founder.phone || 'empty' }}</span></p>
+          <p><strong>Secondary Phone:</strong> {{ founder.phone2 }}</p>
+          <p><strong>Address:</strong> {{ founder.address }}</p>
+          <p><strong>Secondary Address:</strong> {{ founder.address2 }}</p>
+        </div>
+        <div class="col-md-4">
+          <p><strong>Social Profiles:</strong></p>
+        </div>
+        <div class="btn-edit">
+          <button type="button" class="btn btn-default" ng-show="!tableform.$visible" ng-click="tableform.$show()">
+            edit
+          </button>
+        </div>
+        <div class="btn-form" ng-show="tableform.$visible">
+          <button type="submit" ng-disabled="tableform.$waiting" class="btn btn-primary">save</button>
+          <button type="button" ng-disabled="tableform.$waiting" ng-click="tableform.$cancel()" class="btn btn-default">cancel</button>
+        </div>
+      </form>
     </div>
   </div>
   <div class="panel panel-default">
@@ -61,15 +72,39 @@
           <th>Status</th>
           <th>Note</th>
           <th>Date Entered</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody ng-repeat="note in notes">
         <tr>
-          <td>{{ note.status }}</td>
-          <td>{{ note.note }}</td>
+          <td>
+            <span editable-select="note.status" e-name="status" e-form="rowform" e-ng-options="s.text as s.text for s in statuses">
+              {{ note.status }}
+            </span>
+          </td>
+          <td>
+            <span editable-text="note.note" e-name="note" e-form="rowform" e-required>
+              {{ note.note }}
+            </span>
+          </td>
           <td am-time-ago="note.date"</td>
-        </tr>
-      </tbody>
-    </table>
+            <td style="white-space: nowrap">
+              <!-- form -->
+              <form editable-form name="rowform" ng-show="rowform.$visible" onaftersave="updateNotes(note)" class="form-buttons form-inline">
+                <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+                  save
+                </button>
+                <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                  cancel
+                </button>
+              </form>
+              <div class="buttons" ng-show="!rowform.$visible">
+                <button class="btn btn-default" ng-click="rowform.$show()">edit</button>
+                <!-- <button class="btn btn-danger" ng-click="removeUser($index)">del</button> -->
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
