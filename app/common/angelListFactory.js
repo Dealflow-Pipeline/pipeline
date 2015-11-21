@@ -1,7 +1,13 @@
 var app = angular.module('angelListFactory', ['firebase']);
 
-app.factory('searchAngelListStartups', ['$q', '$http', function($q, $http) {
-
+app.factory('searchAngelListStartups', [
+  '$q',
+  '$http',
+  'apiKeys',
+  function($q, $http, apiKeys) {
+  
+  console.log(apiKeys)
+  
   var companyName = 'periscope';
 
   $http({
