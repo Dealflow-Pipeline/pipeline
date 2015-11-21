@@ -5,7 +5,8 @@ var app = angular.module('profileFactory', [
 app.factory('startupProfileFactory', [
   '$q',
   '$firebaseObject',
-  function($q, $firebaseObject) {
+  '$firebaseArray',
+  function($q, $firebaseObject, $firebaseArray) {
     // Set all ref URL's
     var startupRef = new Firebase('https://pipeline8.firebaseio.com/startup/');
     var notesRef = new Firebase('https://pipeline8.firebaseio.com/notes/');
@@ -32,35 +33,16 @@ app.factory('startupProfileFactory', [
         return defer.promise;
       },
 
-      getNotes: function(notes) {
+      getNotes: function() {
         var defer = $q.defer();
-        _notesArr = [];
 
-        // iterate through notesArr and add notes ID to ref URL
-        notes.forEach(function(note) {
-          var notesAll = notesRef.child(note);
+        notesRef.on('value', function(data) {
 
-          // call reference URL and push response onto notesArr
-          notesAll.on('value', function(snapshot) {
-            var data = $firebaseObject(notesAll);
+          // firebase snapshot of our startup database
+          notes = $firebaseArray(notesRef);
 
-            // push to _notesArr only notes objects that have snapshot values
-            if (snapshot.val() !== null) {
-              _notesArr.push(data);
-            } else {
-              data.$remove().then(function(data) {
-                // data has been deleted locally and in the database
-              },
-
-              function(error) {
-                console.log('Error:', error);
-              });
-            }
-
-            defer.resolve(_notesArr);
-          });
-
-          return defer.promise;
+          // on resolve, pass the startups array to our controller
+          defer.resolve(notes);
         });
 
         return defer.promise;
@@ -92,7 +74,8 @@ app.factory('startupProfileFactory', [
 app.factory('founderProfileFactory', [
   '$q',
   '$firebaseObject',
-  function($q, $firebaseObject) {
+  '$firebaseArray',
+  function($q, $firebaseObject, $firebaseArray) {
     // Set all ref URL's
     var founderRef = new Firebase('https://pipeline8.firebaseio.com/founder/');
     var notesRef = new Firebase('https://pipeline8.firebaseio.com/notes/');
@@ -119,22 +102,16 @@ app.factory('founderProfileFactory', [
         return defer.promise;
       },
 
-      getNotes: function(notes) {
+      getNotes: function() {
         var defer = $q.defer();
-        _notesArr = [];
 
-        // iterate through notesArr and add notes ID to ref URL
-        notes.forEach(function(note) {
-          var notesAll = notesRef.child(note);
+        notesRef.on('value', function(data) {
 
-          // call reference URL and push response onto notesArr
-          notesAll.on('value', function(data) {
-            _notesArr.push($firebaseObject(notesAll));
-            defer.resolve(_notesArr);
-            console.log(_notesArr);
-          });
-          console.log(_notesArr);
-          return defer.promise;
+          // firebase snapshot of our startup database
+          notes = $firebaseArray(notesRef);
+
+          // on resolve, pass the startups array to our controller
+          defer.resolve(notes);
         });
 
         return defer.promise;
