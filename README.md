@@ -36,37 +36,58 @@ Getting Startup
 ```
 .
 ├── app
-│   ├── app.js
-│   ├── common
-│   │   ├── controllers
-│   │   ├── directives
-│   │   ├── filters
-│   │   └── services
-│   ├── home
-│   │   ├── controllers
-│   │   │   ├── FirstCtrl.js
-│   │   │   └── SecondCtrl.js
-│   │   ├── directives
-│   │   │   └── directive1.js
-│   │   ├── filters
-│   │   │   ├── filter1.js
-│   │   │   └── filter2.js
-│   │   └── services
-│   │       ├── service1.js
-│   │       └── service2.js
 │   └── about
-│       ├── controllers
-│       │   └── ThirdCtrl.js
-│       ├── directives
-│       │   ├── directive2.js
-│       │   └── directive3.js
-│       ├── filters
-│       │   └── filter3.js
-│       └── services
-│           └── service3.js
-├── partials
-├── lib
-└── test
+│   ├   ├── about.html
+│   ├   ├── about.js
+│   └── addEntry
+│   ├   ├── addEntry.html
+│   ├   ├── addEntry.js
+│   └── addEntry
+│   ├   ├── addEntry.html
+│   ├   ├── addEntry.js
+│   └── assets
+│   ├   ├── charts
+│   ├   ├── logo_blank.svg
+│   ├   ├── venture-route-logo-small.png
+│   └── auth
+│   ├   ├── auth.js
+│   └── bower_components
+│   └── common
+│   ├   ├── addNoteFactory.js
+│   ├   ├── angelListFactory.js
+│   ├   ├── dashboardFactory.js
+│   ├   ├── profileFactory.js
+│   └── dashboard
+│   ├   ├── dashboard.html
+│   ├   ├── dashboard.js
+│   └── env
+│   ├   ├── config.js
+│   └── home
+│   ├   ├── home.html
+│   ├   ├── home.js
+│   └── nav
+│   ├   ├── nav.html
+│   ├   ├── nav.js
+│   └── note
+│   ├   ├── addNote.html
+│   ├   ├── addNote.js
+│   └── profileFounder
+│   ├   ├── profileFounder.html
+│   ├   ├── profileFounder.js
+│   └── profileStartup
+│   ├   ├── profileStartup.html
+│   ├   ├── profileStartup.js
+│   └── styles
+│   ├   ├── main.css
+│   ├── app.js
+│   ├── index.html
+├── documentation
+├── test
+├── .bowerrc
+├── .gitignore
+├── bower.json
+├── npm-debug.log
+└── README.md
 ```
 
 Firebase Data Structure:
@@ -106,17 +127,11 @@ Firebase Data Structure:
     "notes": {
       "unique_id": {
         "note": "text",
-        "date": "date_as_a_string",
-        "startups": {
-          "unique_id": true,
-          "unique_id": true
-        },
-        "founders": {
-           "unique_id": true,
-           "unique_id": true
-        },
+        "date": "date_as_ISOstring",
+        "startupId": true,
+        "founderId": true
+       },
         ...
-      }
     }
   }
 ```
