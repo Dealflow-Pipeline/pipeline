@@ -12,7 +12,14 @@ app.factory('searchAngelListStartups', [
 
   return $http({
     method: 'GET',
-    url: 'https://api.angel.co/1/search?query=' + companyName + '&access_token=' + apiKeys.angelList
+    url: 'https://api.angel.co/1/search?query=periscope&access_token=00c527015025ccb99080a0e8c9b1b2cff0b8444eab0564f0',
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+      "Content-Type": "application/json"
+    },
+    // url: 'https://api.angel.co/1/search?query=' + companyName + '&access_token=' + apiKeys.angelList
   })
     .then(function successCallback(response) {
       console.log(response);
