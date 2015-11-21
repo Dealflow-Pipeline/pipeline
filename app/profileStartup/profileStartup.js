@@ -22,13 +22,14 @@ app.controller('profileStartupCtrl', [
       }
     };
 
-    // update startup object via xeditable
+    // update startup object via x-editable
     $scope.updateStartup = function(update) {
       var startupRef = new Firebase('https://pipeline8.firebaseio.com/startup/');
       var startup = startupRef.child(startupId);
       startup.set(update, onComplete);
     };
 
+    // update individual notes object via x-editable
     $scope.updateNotes = function(update) {
       update.$save().then(function(ref) {
         ref.key() === update.$id; // true
@@ -43,6 +44,7 @@ app.controller('profileStartupCtrl', [
       });
     };
 
+    // pipeline dropdown options for x-editable
     $scope.pipelines = [
       {text: '-'},
       {text: '1. Introduced'},
@@ -54,6 +56,7 @@ app.controller('profileStartupCtrl', [
       {text: '7. Never Met'},
     ];
 
+    // industry dropdown options for x-editable
     $scope.industries = [
       {text: '-'},
       {text: 'Agriculture'},
@@ -82,6 +85,7 @@ app.controller('profileStartupCtrl', [
       {text: 'Venture for Good'},
     ];
 
+    // status dropdown options for x-editable
     $scope.statuses = [
       {text: 'No status'},
       {text: 'Past due'},

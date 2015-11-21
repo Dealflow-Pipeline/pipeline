@@ -173,14 +173,47 @@
     <tbody ng-repeat="(key, startup) in startups | orderBy : sortType.startups : sortReverse.startups | filter: q as results">
       <tr>
         <td><a href="#/startup/{{startup.$id}}/profile">{{startup.name}}</a></td>
-        <td>{{ startup.pipeline }}</td>
-        <td>{{ startup.partner }}</td>
-        <td>{{ startup.tagline }}</td>
-        <td>{{ startup.source }}</a></td>
+        <td>
+          <span editable-select="startup.pipeline" e-name="pipeline" e-form="rowform" e-ng-options="s.text as s.text for s in pipelines">
+            {{ startup.pipeline }}
+          </span>
+        </td>
+        <td>
+          <span editable-text="startup.partner" e-name="partner" e-form="rowform">
+            {{ startup.partner }}
+          </span>
+        </td>
+        <td>
+          <span editable-text="startup.tagline" e-name="tagline" e-form="rowform">
+            {{ startup.tagline }}
+          </span>
+        </td>
+        <td>
+          <span editable-text="startup.source" e-name="source" e-form="rowform">
+            {{ startup.source }}
+          </span>
+        </td>
         <td>{{ startup.lastContact | amDateFormat:'MM/DD/YYYY' }}</td>
-        <td>{{ startup.industry }}</td>
-        <td>{{ startup.location }}</td>
-        <td><a href="#"><span ng-click="open(startup.name, startup.$id, null, null); $event.preventDefault()" class="glyphicon glyphicon-plus-sign"></span></a></td>
+        <td>
+          <span editable-select="startup.industry" e-name="industry" e-form="rowform" e-ng-options="s.text as s.text for s in industries">{{ startup.industry }}</span>
+        </td>
+        <td>
+          <span editable-text="startup.location" e-name="location" e-form="rowform">{{ startup.location }}</span>
+        </td>
+        <td style="white-space: nowrap">
+          <form editable-form name="rowform" ng-show="rowform.$visible" onaftersave="updateNotes(note)" class="form-buttons form-inline">
+            <button type="submit" ng-disabled="rowform.$waiting" class="glyphicon-button">
+              <span class="glyphicon glyphicon-save"></span>
+            </button>
+            <button type="submit" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="glyphicon-button">
+              <span class="glyphicon glyphicon-step-backward"></span>
+            </button>
+          </form>
+          <div class="buttons" ng-show="!rowform.$visible">
+            <span ng-click="open(startup.name, startup.$id, null, null); $event.preventDefault()" class="glyphicon glyphicon-plus-sign"></span>
+            <span  ng-click="rowform.$show()" class="glyphicon glyphicon-edit"></span>
+          </div>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -210,7 +243,7 @@
         <td><a href="#/founder/{{founder.$id}}/profile">{{ founder.name }}</a></td>
         <td>{{ founder.startup }}</td>
         <td>{{ founder.email }}</td>
-        <td><a href="#"><span ng-click="open(null, null, founder.name, founder.$id); $event.preventDefault()" class="glyphicon glyphicon-plus-sign"></span></a></td>
+        <td><span ng-click="open(null, null, founder.name, founder.$id); $event.preventDefault()" class="glyphicon glyphicon-plus-sign"></span></td>
       </tr>
     </tbody>
   </table>

@@ -42,6 +42,7 @@ app.controller('dashboardCtrl', [
     // set the default search/filter term
     $scope.searchTable = '';
 
+    // update individual notes object via x-editable
     $scope.updateNotes = function(update) {
       console.log(update);
       $scope.notes.$save(update).then(function(ref) {
@@ -57,6 +58,12 @@ app.controller('dashboardCtrl', [
       });
     };
 
+    // update startup object via x-editable
+    $scope.updateStartup = function(update) {
+      console.log(update);
+    };
+
+    // // status dropdown options for x-editable
     $scope.statuses = [
       {text: 'No status'},
       {text: 'Past due'},
@@ -66,6 +73,46 @@ app.controller('dashboardCtrl', [
       {text: 'Completed'},
     ];
 
+    // pipeline dropdown options for x-editable
+    $scope.pipelines = [
+      {text: '-'},
+      {text: '1. Introduced'},
+      {text: '2. Spoke with Team'},
+      {text: '3. Met Team'},
+      {text: '4. Due Diligence'},
+      {text: '5. Invested'},
+      {text: '6. Passed'},
+      {text: '7. Never Met'},
+    ];
+
+    // industry dropdown options for x-editable
+    $scope.industries = [
+      {text: '-'},
+      {text: 'Agriculture'},
+      {text: 'Clean Technology'},
+      {text: 'Consumer"'},
+      {text: 'Cryptocurrency'},
+      {text: 'Design'},
+      {text: 'Education'},
+      {text: 'Energy'},
+      {text: 'Enterprise'},
+      {text: 'Entertainment'},
+      {text: 'Events'},
+      {text: 'Fashion'},
+      {text: 'Finance'},
+      {text: 'Hardware'},
+      {text: 'Health & Wellness'},
+      {text: 'Health Care'},
+      {text: 'Internet of Things'},
+      {text: 'Life Sciences'},
+      {text: 'Media'},
+      {text: 'Mobile'},
+      {text: 'Real Estate'},
+      {text: 'Retail'},
+      {text: 'Sports'},
+      {text: 'Travel'},
+      {text: 'Venture for Good'},
+    ];
 
     // GET req for all startups; to populate our startup table
     $scope.getStartups = function() {
