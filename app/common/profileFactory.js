@@ -44,6 +44,7 @@ app.factory('startupProfileFactory', [
           notesAll.on('value', function(snapshot) {
             var data = $firebaseObject(notesAll);
 
+            // push to _notesArr only notes objects that have snapshot values
             if (snapshot.val() !== null) {
               _notesArr.push(data);
             } else {

@@ -17,7 +17,7 @@
 <div class="container" ng-controller="dashboardCtrl">
   <div class="row">
     <div id="content" class="col-sm-10">
-      <div class="row circleStats">  
+      <div class="row circleStats">
         <div class="col-md-2 col-sm-4 col-xs-6">
           <div class="circleStatsItem red">
             <i class="fa  fa-thumbs-up"></i>
@@ -27,7 +27,7 @@
           </div>
           <div class="box-small-title">Introduced</div>
         </div><!--/col-->
-        
+
         <div class="col-md-2 col-sm-4 col-xs-6">
           <div class="circleStatsItem blue">
             <i class="fa  fa-bullhorn"></i>
@@ -37,7 +37,7 @@
           </div>
           <div class="box-small-title">Spoke with Team</div>
         </div><!--/col-->
-        
+
         <div class="col-md-2 col-sm-4 col-xs-6">
           <div class="circleStatsItem yellow">
             <i class="fa  fa-user"></i>
@@ -47,7 +47,7 @@
           </div>
           <div class="box-small-title">Met Team</div>
         </div><!--/col-->
-        
+
         <div class="col-md-2 col-sm-4 col-xs-6">
           <div class="circleStatsItem pink">
             <i class="fa  fa-globe"></i>
@@ -57,7 +57,7 @@
           </div>
           <div class="box-small-title">Due Diligence</div>
         </div><!--/col-->
-        
+
         <div class="col-md-2 col-sm-4 col-xs-6">
           <div class="circleStatsItem green">
             <i class="fa  fa-bar-chart-o"></i>
@@ -67,7 +67,7 @@
           </div>
           <div class="box-small-title">Invested</div>
         </div><!--/col-->
-        
+
         <div class="col-md-2 col-sm-4 col-xs-6">
           <div class="circleStatsItem lightorange">
             <i class="fa  fa-shopping-cart"></i>
@@ -101,17 +101,41 @@
       <th><a href="#" ng-click="sortType.notes='founder'; sortReverse.notes = !sortReverse.notes; $event.preventDefault()">Founder <span ng-show="sortType.notes === 'founder' && !sortReverse.notes" class="fa fa-caret-down"></span><span ng-show="sortType.notes === 'founder' && sortReverse.notes" class="fa fa-caret-up"></span></a></th>
 
       <th><a href="#" ng-click="sortType.notes='note'; sortReverse.notes = !sortReverse.notes; $event.preventDefault()">Note <span ng-show="sortType.notes === 'note' && !sortReverse.notes" class="fa fa-caret-down"></span><span ng-show="sortType.notes === 'note' && sortReverse.notes" class="fa fa-caret-up"></span></a></th>
+      <th>Action</th>
 
     </tr>
     <tbody ng-repeat="(key, note) in notes | orderBy : sortType.notes : sortReverse.notes | filter: q as results">
       <tr>
-        <td>{{ note.status }}</td>
+        <td>
+          <span editable-select="note.status" e-name="status" e-form="rowform" e-ng-options="s.text as s.text for s in statuses">
+            {{ note.status }}
+          </span>
+        </td>
         <td>{{ note.date | amDateFormat:'MM/DD/YYYY' }}</td>
         <td><a href="#/startup/{{note.startupId}}/profile">{{ note.startup }}</a></td>
         <!-- <td>{{ note.startup }}</td> -->
         <!-- <td>{{ note.founder }}</td> -->
         <td><a href="#/founder/{{note.founderId}}/profile">{{ note.founder }}</a></td>
-        <td>{{ note.note }}</td>
+        <td>
+          <span editable-text="note.note" e-name="note" e-form="rowform" e-required>
+            {{ note.note }}
+          </span>
+        </td>
+        <td style="white-space: nowrap">
+          <!-- form -->
+          <form editable-form name="rowform" ng-show="rowform.$visible" onaftersave="updateNotes(note)" class="form-buttons form-inline">
+            <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+              save
+            </button>
+            <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+              cancel
+            </button>
+          </form>
+          <div class="buttons" ng-show="!rowform.$visible">
+            <button class="btn btn-default" ng-click="rowform.$show()">edit</button>
+            <!-- <button class="btn btn-danger" ng-click="removeUser($index)">del</button> -->
+          </div>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -149,14 +173,47 @@
     <tbody ng-repeat="(key, startup) in startups | orderBy : sortType.startups : sortReverse.startups | filter: q as results">
       <tr>
         <td><a href="#/startup/{{startup.$id}}/profile">{{startup.name}}</a></td>
-        <td>{{ startup.pipeline }}</td>
-        <td>{{ startup.partner }}</td>
-        <td>{{ startup.tagline }}</td>
-        <td>{{ startup.source }}</a></td>
+        <td>
+          <span editable-select="startup.pipeline" e-name="pipeline" e-form="rowform" e-ng-options="s.text as s.text for s in pipelines">
+            {{ startup.pipeline }}
+          </span>
+        </td>
+        <td>
+          <span editable-text="startup.partner" e-name="partner" e-form="rowform">
+            {{ startup.partner }}
+          </span>
+        </td>
+        <td>
+          <span editable-text="startup.tagline" e-name="tagline" e-form="rowform">
+            {{ startup.tagline }}
+          </span>
+        </td>
+        <td>
+          <span editable-text="startup.source" e-name="source" e-form="rowform">
+            {{ startup.source }}
+          </span>
+        </td>
         <td>{{ startup.lastContact | amDateFormat:'MM/DD/YYYY' }}</td>
-        <td>{{ startup.industry }}</td>
-        <td>{{ startup.location }}</td>
-        <td><a href="#"><span ng-click="open(startup.name, startup.$id, null, null); $event.preventDefault()" class="glyphicon glyphicon-plus-sign"></span></a></td>
+        <td>
+          <span editable-select="startup.industry" e-name="industry" e-form="rowform" e-ng-options="s.text as s.text for s in industries">{{ startup.industry }}</span>
+        </td>
+        <td>
+          <span editable-text="startup.location" e-name="location" e-form="rowform">{{ startup.location }}</span>
+        </td>
+        <td style="white-space: nowrap">
+          <form editable-form name="rowform" ng-show="rowform.$visible" onaftersave="updateNotes(note)" class="form-buttons form-inline">
+            <button type="submit" ng-disabled="rowform.$waiting" class="glyphicon-button">
+              <span class="glyphicon glyphicon-save"></span>
+            </button>
+            <button type="submit" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="glyphicon-button">
+              <span class="glyphicon glyphicon-step-backward"></span>
+            </button>
+          </form>
+          <div class="buttons" ng-show="!rowform.$visible">
+            <span ng-click="open(startup.name, startup.$id, null, null); $event.preventDefault()" class="glyphicon glyphicon-plus-sign"></span>
+            <span  ng-click="rowform.$show()" class="glyphicon glyphicon-edit"></span>
+          </div>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -186,9 +243,8 @@
         <td><a href="#/founder/{{founder.$id}}/profile">{{ founder.name }}</a></td>
         <td>{{ founder.startup }}</td>
         <td>{{ founder.email }}</td>
-        <td><a href="#"><span ng-click="open(null, null, founder.name, founder.$id); $event.preventDefault()" class="glyphicon glyphicon-plus-sign"></span></a></td>
+        <td><span ng-click="open(null, null, founder.name, founder.$id); $event.preventDefault()" class="glyphicon glyphicon-plus-sign"></span></td>
       </tr>
     </tbody>
   </table>
 </div>
-

@@ -21,13 +21,14 @@ app.controller('profileFounderCtrl', [
       }
     };
 
-    // update startup object via xeditable
+    // update startup object via x-editable
     $scope.updateFounder = function(update) {
       var founderRef = new Firebase('https://pipeline8.firebaseio.com/founder/');
       var founder = founderRef.child(founderId);
       founder.set(update, onComplete);
     };
 
+    // update individual notes object via x-editable
     $scope.updateNotes = function(update) {
       update.$save().then(function(ref) {
         ref.key() === update.$id; // true
@@ -42,6 +43,7 @@ app.controller('profileFounderCtrl', [
       });
     };
 
+    // status dropdown options for x-editable
     $scope.statuses = [
       {text: 'No status'},
       {text: 'Past due'},
