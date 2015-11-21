@@ -44,13 +44,8 @@ app.controller('dashboardCtrl', [
 
     // update individual notes object via x-editable
     $scope.updateNotes = function(update) {
-      console.log(update);
       $scope.notes.$save(update).then(function(ref) {
         ref.key() === update.$id; // true
-        console.log($scope.notesArr);
-
-        // call getNotes
-        $scope.getNotes($scope.notesArr);
       },
 
       function(error) {
@@ -60,7 +55,14 @@ app.controller('dashboardCtrl', [
 
     // update startup object via x-editable
     $scope.updateStartup = function(update) {
-      console.log(update);
+      console.log($scope.startups);
+      $scope.startups.$save(update).then(function(ref) {
+        ref.key() === update.$id; // true
+      },
+
+      function(error) {
+        console.log('Error:', error);
+      });
     };
 
     // // status dropdown options for x-editable
