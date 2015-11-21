@@ -96,8 +96,9 @@ Firebase Data Structure:
   {
     "startups": {
       "unique_id": {
-        "startupName": "startup's name",
-        "date": "date_as_a_string",
+        "name": "startup's name",
+        "date": "date_as_ISOstring",
+        "lastContact": "date_as_ISOstring",
         "founders": {
           "unique_id": true,
           "unique_id": true
@@ -111,8 +112,9 @@ Firebase Data Structure:
     },
     "founders": {
       "unique_id": {
-        "founderName": "founder's name",
-        "date": "date_as_a_string",
+        "name": "founder's name",
+        "date": "date_as_ISOstring",
+        "lastContact": "date_as_ISOstring",
         "startups": {
           "unique_id": true,
           "unique_id": true
@@ -126,7 +128,7 @@ Firebase Data Structure:
     },
     "notes": {
       "unique_id": {
-        "note": "text",
+        "note": "string",
         "date": "date_as_ISOstring",
         "startupId": true,
         "founderId": true
