@@ -1,5 +1,4 @@
-/*AddEntry Form*/
-
+/* AddEntry Form */
 .css-form input.ng-invalid.ng-touched {
   background-color: #FA787E;
 }
@@ -45,4 +44,10 @@
   outline: none;
   border: 0;
   background: transparent;
+}
+
+
+/* dashboard tables */
+.table-margin {
+  margin: 0px 8px;
 }

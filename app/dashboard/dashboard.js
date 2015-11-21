@@ -1,4 +1,4 @@
-var app = angular.module('dashboard', ['firebase', 'ui.bootstrap', 'xeditable']);
+var app = angular.module('dashboard', ['firebase', 'ui.bootstrap', 'xeditable', 'angularUtils.directives.dirPagination']);
 
 // sets theme for xeditable
 app.run(function(editableOptions) {
@@ -13,6 +13,13 @@ app.controller('dashboardCtrl', [
   'noteInfoFactory',
   '$uibModal',
   function($scope, startupsTableFactory, foundersTableFactory, notesTableFactory, noteInfoFactory, $uibModal) {
+
+    // presets number of rows to 10 (pagination)
+    $scope.rowCount = {
+      startups: 10,
+      notes: 10,
+      founders: 10
+    };
 
     // sets the default sort column
     $scope.sortType = {
