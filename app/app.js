@@ -10,6 +10,8 @@ var app = angular.module('pipeline', [
   'dashboardFactory',
   'addNoteFactory',
   // 'privateKeysFactory',
+  'angelListFactory',
+  'privateKeysFactory',
   // 'auth',
   'ui.router',
   'ui.bootstrap',
