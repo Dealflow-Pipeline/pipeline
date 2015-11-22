@@ -24,6 +24,7 @@
         <div class="col-md-4">
           <p><strong>Social Profiles:</strong></p>
           <p><strong>Intro Date:</strong> {{ founder.date | amDateFormat:'MM/DD/YYYY' }}</p>
+          <p><strong>Last Contact:</strong> {{ founder.lastContact | amDateFormat:'MM/DD/YYYY' }}</p>
         </div>
 
         <div class="col-md-2">
@@ -33,6 +34,9 @@
           <div class="btn-form" ng-show="tableform.$visible">
             <button type="submit" ng-disabled="tableform.$waiting" class="btn btn-primary">save</button>
             <button type="button" ng-disabled="tableform.$waiting" ng-click="tableform.$cancel()" class="btn btn-default">cancel</button>
+          </div>
+          <div>
+            <button type="button" class="btn btn-default" ng-click="open(founder.name, founder.id, founder)">Add Note</button>
           </div>
           <div>
             <button type="button" class="btn btn-default" ng-click="getFullContact(founder.email)" ng-show="founder.email">Get Profile</button>

@@ -14,8 +14,6 @@ app.controller('profileStartupCtrl', [
   function($scope, startupProfileFactory, $stateParams, searchAngelListStartups, $http) {
     var startupId = $stateParams.startupId;
 
-    $scope.socialButton = true;
-
     // callback for firebase set method
     var onComplete = function(error) {
       if (error) {
