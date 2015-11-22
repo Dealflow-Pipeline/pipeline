@@ -20,26 +20,29 @@
           <p><strong>Address:</strong> {{ founder.address }}</p>
           <p><strong>Secondary Address:</strong> {{ founder.address2 }}</p>
         </div>
+
         <div class="col-md-4">
           <p><strong>Social Profiles:</strong></p>
-        </div>
-        <div class="col-md-4">
           <p><strong>Intro Date:</strong> {{ founder.date | amDateFormat:'MM/DD/YYYY' }}</p>
         </div>
-        <div class="btn-edit">
-          <button type="button" class="btn btn-default" ng-show="!tableform.$visible" ng-click="tableform.$show()">
-            edit
-          </button>
+
+        <div class="col-md-2">
+          <div class="btn-edit">
+            <button type="button" class="btn btn-default" ng-show="!tableform.$visible" ng-click="tableform.$show()">edit</button>
+          </div>
+          <div class="btn-form" ng-show="tableform.$visible">
+            <button type="submit" ng-disabled="tableform.$waiting" class="btn btn-primary">save</button>
+            <button type="button" ng-disabled="tableform.$waiting" ng-click="tableform.$cancel()" class="btn btn-default">cancel</button>
+          </div>
+          <div>
+            <button type="button" class="btn btn-default" ng-click="getFullContact(founder.email)" ng-show="founder.email">Get Profile</button>
+            <div>
+              <p class="bg-warning warning-box" ng-show="!founder.email"><i class="fa fa-exclamation-triangle"></i> Want more social data on this founder? Add their email address by clicking 'edit' above.</p>
+            </div>
+          </div>
         </div>
-        <div class="btn-form" ng-show="tableform.$visible">
-          <button type="submit" ng-disabled="tableform.$waiting" class="btn btn-primary">save</button>
-          <button type="button" ng-disabled="tableform.$waiting" ng-click="tableform.$cancel()" class="btn btn-default">cancel</button>
-        </div>
-        <div>
+        
       </form>
-      <div>
-        <button type="button" class="btn btn-default" ng-click="getFullContact(founder.email)">Get Profile</button>
-      </div>
     </div>
   </div>
 
@@ -57,8 +60,24 @@
             <p>
               <strong>Location: </strong>{{ fullContact.demographics.locationGeneral || 'Not Available' }}
             </p>
+            <p>
+              <strong>Gender:</strong>
+              {{ fullContact.demographics.gender || 'Not Available' }}
+            </p>
+            <p>
+              <strong>Skills: </strong>
+              <span ng-repeat="skill in fullContact.digitalFootprint.topics">{{ skill.value || 'Not Available' }}, </span>
+            </p>
           </div>
           <div class="col-md-4">
+            <p>
+              <strong>Job History: </strong>
+              <ul ng-repeat="job in fullContact.organizations">
+                <li>
+                  {{ job.title }}, {{ job.name }}
+                </li>
+              </ul>
+            </p>
             <p>
               <strong>Websites:</strong>
               <ul ng-repeat="website in fullContact.contactInfo.websites">
@@ -96,27 +115,6 @@
 
               <a href="{{ fullContactSocialProfiles.xing.url }}" ng-show="fullContactSocialProfiles.xing" target="_blank"><i class="fa fa-xing-square fa-lg"></i></a>
             </p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-4">
-            <p>
-              <strong>Gender:</strong>
-              {{ fullContact.demographics.gender || 'Not Available' }}
-            </p>
-          </div>
-          <div class="col-md-4">
-            <p>
-              <strong>Job History: </strong>
-              <ul ng-repeat="job in fullContact.organizations">
-                <li>
-                  {{ job.title }}, {{ job.name }}
-                </li>
-              </ul>
-            </p>
-          </div>
-          <div class="col-md-4">
             <p>
               <strong>Twitter Stats: </strong>
               <ul>
@@ -127,27 +125,13 @@
             </p>
           </div>
         </div>
-        
-        <div class="row">
-          <div class="col-md-4">
-            <p>
-              <strong>Skills: </strong>
-              <span ng-repeat="skill in fullContact.digitalFootprint.topics">
-                <ul><li>{{ skill.value || 'Not Available' }}</li></ul>
-              </span>
-            </p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-12">
-            <p>
-              <strong>Social Avatars: </strong><br />
-              <span ng-repeat="picUrl in fullContact.photos">
-                <img src="{{ picUrl.url }}" class="profile-pic" />
-              </span>
-            </p>
-          </div>
+        <div class="col-md-12">
+          <p>
+            <strong>Social Avatars: </strong><br />
+            <span ng-repeat="picUrl in fullContact.photos">
+              <img src="{{ picUrl.url }}" class="profile-pic" />
+            </span>
+          </p>
         </div>
       </div>
     </div>
@@ -160,7 +144,7 @@
         <h3 class="panel-title">Startups</h3>
       </div>
       <div class="panel-body">
-        <p>{{ founder.name }} is associated with {{ startups.length }} startup(s). They are:</p>
+        <p>{{ founder.name }} is associated with {{ startups.length }} startup(s).</p>
       </div>
       <div class="table-responsive">
         <table class="table table-bordered table-hover">
@@ -183,53 +167,57 @@
         </table>
       </div>
     </div>
-    <div class="panel-heading">
-      <h3 class="panel-title">Notes</h3>
-    </div>
-    <div class="panel-body">
-      <p>You currently have {{ notes.length || 0 }} notes related to {{ founder.name }}. They are:</p>
-    </div>
-    <div class="table-responsive">
-      <table class="table table-bordered table-hover">
-        <thead>
-          <tr>
-            <th>Status</th>
-            <th>Note</th>
-            <th>Date Entered</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody ng-repeat="note in notes">
-          <tr>
-            <td>
-              <span editable-select="note.status" e-name="status" e-form="rowform" e-ng-options="s.text as s.text for s in statuses">
-                {{ note.status }}
-              </span>
-            </td>
-            <td>
-              <span editable-text="note.note" e-name="note" e-form="rowform" e-required>
-                {{ note.note }}
-              </span>
-            </td>
-            <td am-time-ago="note.date"></td>
-            <td style="white-space: nowrap">
-              <!-- form -->
-              <form editable-form name="rowform" ng-show="rowform.$visible" onaftersave="updateNotes(note)" class="form-buttons form-inline">
-                <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
-                  save
-                </button>
-                <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
-                  cancel
-                </button>
-              </form>
-              <div class="buttons" ng-show="!rowform.$visible">
-                <button class="btn btn-default" ng-click="rowform.$show()">edit</button>
-                <!-- <button class="btn btn-danger" ng-click="removeUser($index)">del</button> -->
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  </div>
+  <div class="table-margin">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Notes</h3>
+      </div>
+      <div class="panel-body">
+        <p>You currently have {{ notes.length || 0 }} notes related to {{ founder.name }}.</p>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>Note</th>
+              <th>Date Entered</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody ng-repeat="note in notes">
+            <tr>
+              <td>
+                <span editable-select="note.status" e-name="status" e-form="rowform" e-ng-options="s.text as s.text for s in statuses">
+                  {{ note.status }}
+                </span>
+              </td>
+              <td>
+                <span editable-text="note.note" e-name="note" e-form="rowform" e-required>
+                  {{ note.note }}
+                </span>
+              </td>
+              <td am-time-ago="note.date"></td>
+              <td style="white-space: nowrap">
+                <!-- form -->
+                <form editable-form name="rowform" ng-show="rowform.$visible" onaftersave="updateNotes(note)" class="form-buttons form-inline">
+                  <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+                    save
+                  </button>
+                  <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                    cancel
+                  </button>
+                </form>
+                <div class="buttons" ng-show="!rowform.$visible">
+                  <button class="btn btn-default" ng-click="rowform.$show()">edit</button>
+                  <!-- <button class="btn btn-danger" ng-click="removeUser($index)">del</button> -->
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

@@ -72,7 +72,7 @@ app.controller('dashboardCtrl', [
       });
     };
 
-    // // status dropdown options for x-editable
+    // status dropdown options for x-editable
     $scope.statuses = [
       {text: 'No status'},
       {text: 'Past due'},
@@ -164,6 +164,11 @@ app.controller('dashboardCtrl', [
     };
     $scope.getNotes();
 
+    //
+    $scope.showStatus = function() {
+      var selected = $filter('fiter')($scope.statuses, {value: $scope.note.status});
+      return ($scope.note.status && selected.length) ? selected[0].text: 'Not Set';
+    };
 
     // controls addNote (+) symbol; pass through info listed in the row
     $scope.open = function(startupName, startupId, founderName, founderId) {

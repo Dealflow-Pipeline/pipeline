@@ -120,14 +120,15 @@ app.controller('profileFounderCtrl', [
     $scope.getFullContact = function(personEmail) {
       fullContactPersonFactory.getPerson(personEmail)
       .then(function(returnedData) {
+
         // assign returned data to $scope
         $scope.fullContact = returnedData;
 
         // convert person's social profile list from an array to object
         returnedData.socialProfiles.forEach(function(profile, index) {
           $scope.fullContactSocialProfiles[profile.type] = profile;
-          console.log($scope.fullContactSocialProfiles)
-        })
+        });
+
       }).catch(function(error) {
         console.log(error);
       });

@@ -46,14 +46,24 @@
   background: transparent;
 }
 
-/* dashboard tables */
+/* dashboard */
 .table-margin {
   margin: 0px 8px;
 }
 
-/* profile avatars */
+.dashboard-pipeline {
+  font-size: 48px
+}
+
+
+/* profile page */
 
 .profile-pic {
   width: 140px;
   height: 140px;
 }
+
+.warning-box {
+  margin: 5px;
+}
+

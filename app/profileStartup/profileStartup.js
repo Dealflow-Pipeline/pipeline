@@ -14,6 +14,8 @@ app.controller('profileStartupCtrl', [
   function($scope, startupProfileFactory, $stateParams, searchAngelListStartups, $http) {
     var startupId = $stateParams.startupId;
 
+    $scope.socialButton = true;
+
     // callback for firebase set method
     var onComplete = function(error) {
       if (error) {
@@ -100,6 +102,7 @@ app.controller('profileStartupCtrl', [
 
         // Check if notes object exists within startup
         if ($scope.startup.notes) {
+
           // assign notes key's within startup to own variable
           $scope.notesArr = Object.keys($scope.startup.notes);
 
@@ -109,6 +112,7 @@ app.controller('profileStartupCtrl', [
 
         // Check if founders object exists within startup
         if ($scope.startup.founders) {
+          
           // assign founders key's within startup to own variable
           var foundersArr = Object.keys($scope.startup.founders);
 

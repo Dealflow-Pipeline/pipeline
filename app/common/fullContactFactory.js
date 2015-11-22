@@ -8,8 +8,8 @@ app.factory('fullContactPersonFactory', [
 
   return {
     getPerson: function(personEmail) {
-      var  url = "https://api.fullcontact.com/v2/person.json?email=" + personEmail + "&apiKey=" + apiKeys.fullContact;
-
+      // var  url = "https://api.fullcontact.com/v2/person.json?email=" + personEmail + "&apiKey=" + apiKeys.fullContact;
+      var url = 'https://api.fullcontact.com/v2/person.json?email=bart@fullcontact.com&apiKey=' + apiKeys.fullContact;
       var defer = $q.defer();
       var url = url;
       $http.get(url, {
