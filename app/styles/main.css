@@ -51,9 +51,14 @@
   margin: 0px 8px;
 }
 
-/* profile avatars */
+/* profile page */
 
 .profile-pic {
   width: 140px;
   height: 140px;
 }
+
+.warning-box {
+  margin: 5px;
+}
+
