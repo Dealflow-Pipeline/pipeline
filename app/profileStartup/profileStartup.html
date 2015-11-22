@@ -4,26 +4,54 @@
   </div>
   <div class="panel-body">
     <div class="row">
+
       <div class="col-md-2" ng-hide="angelCompany.logo_url">
         <img src="assets/logo_blank.svg" class="img-thumbnail">
       </div>
+
       <div class="col-md-2" ng-show="angelCompany.logo_url">
         <img src="{{ angelCompany.logo_url }}" class="img-thumbnail">
       </div>
+
       <form editable-form name="tableform" onaftersave="updateStartup(startup)" oncancel="cancel()">
+
         <div class="col-md-4">
-          <p><strong>Tagline: </strong><span editable-text="startup.tagline">{{ startup.tagline }}</span></p>
-          <p><strong>Industry: </strong><span editable-select="startup.industry" e-ng-options="s.text as s.text for s in industries">{{ startup.industry }}</span></p>
-          <p><strong>Location: </strong><span editable-text="startup.location">{{ startup.location }}</span></p>
-          <p><strong>Website: </strong><span editable-url="startup.website">{{ startup.website || 'empty' }}</span></p>
-          <!-- <p><strong>Social Profiles: </strong></p> -->
+          <p>
+            <strong>Tagline: </strong>
+            <span editable-text="startup.tagline">{{ startup.tagline }}</span>
+          </p>
+          <p>
+            <strong>Industry: </strong>
+            <span editable-select="startup.industry" e-ng-options="s.text as s.text for s in industries">{{ startup.industry }}</span>
+          </p>
+          <p>
+            <strong>Location: </strong>
+            <span editable-text="startup.location">{{ startup.location }}</span>
+          </p>
+          <p>
+            <strong>Website: </strong>
+            <span editable-url="startup.website">{{ startup.website || 'empty' }}</span>
+          </p>
         </div>
+
         <div class="col-md-4">
-          <p><strong>Owner: </strong><span editable-text="startup.partner">{{ startup.partner }}</span></p>
-          <p><strong>Pipeline Step: </strong><span editable-select="startup.pipeline" e-ng-options="s.text as s.text for s in pipelines">{{ startup.pipeline }}</span></p>
-          <p><strong>Intro Source: </strong><span editable-text="startup.source">{{ startup.source }}</span></p>
-          <p><strong>Intro Date:</strong> {{ startup.date | amDateFormat:'MM/DD/YYYY' }}</p>
+          <p>
+            <strong>Owner: </strong>
+            <span editable-text="startup.partner">{{ startup.partner }}</span>
+          </p>
+          <p>
+            <strong>Pipeline Step: </strong>
+            <span editable-select="startup.pipeline" e-ng-options="s.text as s.text for s in pipelines">{{ startup.pipeline }}</span>
+          </p>
+          <p>
+            <strong>Intro Source: </strong>
+            <span editable-text="startup.source">{{ startup.source }}</span>
+          </p>
+          <p>
+            <strong>Intro Date:</strong> {{ startup.date | amDateFormat:'MM/DD/YYYY' }}
+          </p>
         </div>
+
         <!-- buttons -->
         <div class="btn-edit">
           <button type="button" class="btn btn-default" ng-show="!tableform.$visible" ng-click="tableform.$show()">
@@ -31,6 +59,7 @@
           </button>
           <button type="button" class="btn btn-default" ng-click="getAngelList(startup.name)">Pull in AngelList Data</button>
         </div>
+
         <div class="btn-form" ng-show="tableform.$visible">
           <button type="submit" ng-disabled="tableform.$waiting" class="btn btn-primary">save</button>
           <button type="button" ng-disabled="tableform.$waiting" ng-click="tableform.$cancel()" class="btn btn-default">cancel</button>
@@ -38,143 +67,154 @@
       </form>
     </div>
   </div>
-  <div ng-show="angelCompany.id" class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">{{ angelCompany.name }} - by AngelList</h3>
-    </div>
-    <div class="panel-body">
-      <p>
-        <strong>Website: </strong><a href="{{ angelCompany.company_url }}">{{ angelCompany.company_url }}</a>
-      </p>
-      <div class="row">
-        <div class="col-md-4">
-          <p>
-            <strong>Launch Date: </strong>{{ angelCompany.launch_date || 'Not Available' }}
-          </p>
+
+  <div class="table-margin">
+    <div ng-show="angelCompany.id" class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{ angelCompany.name }} - by AngelList</h3>
+      </div>
+      <div class="panel-body">
+        <p>
+          <strong>Website: </strong><a href="{{ angelCompany.company_url }}">{{ angelCompany.company_url }}</a>
+        </p>
+        <div class="row">
+          <div class="col-md-4">
+            <p>
+              <strong>Launch Date: </strong>{{ angelCompany.launch_date || 'Not Available' }}
+            </p>
+          </div>
+          <div class="col-md-4">
+            <p>
+              <strong>Company Size: </strong>{{ angelCompany.company_size || 'Not Available' }}
+            </p>
+          </div>
+          <div class="col-md-4">
+            <p>
+              <a href="{{ angelCompany.angellist_url }}"><i class="fa fa-angellist fa-lg"></i></a>
+              <a href="{{ angelCompany.facebook_url }}"><i class="fa fa-facebook-official fa-lg"></i></a>
+              <a href="{{ angelCompany.linkedin_url }}"><i class="fa fa-linkedin-square fa-lg"></i></a>
+              <a href="{{ angelCompany.twitter_url }}"><i class="fa fa-twitter-square fa-lg"></i></a>
+            </p>
+          </div>
         </div>
-        <div class="col-md-4">
-          <p>
-            <strong>Company Size: </strong>{{ angelCompany.company_size || 'Not Available' }}
-          </p>
+        <div class="row">
+          <div class="col-md-4">
+            <p><strong>High Concept: </strong></p>
+            <p>
+              {{ angelCompany.high_concept || 'Not Available' }}
+            </p>
+          </div>
+          <div class="col-md-4">
+            <p>
+              <strong>Locations:</strong>
+              <ul>
+                <li ng-repeat="location in angelCompany.locations">
+                  {{ location.display_name || 'Not Available' }}
+                </li>
+              </ul>
+            </p>
+          </div>
+          <div class="col-md-4">
+            <p>
+              <strong>Markets:</strong>
+              <ul>
+                <li ng-repeat="market in angelCompany.markets">
+                  {{ market.display_name || 'Not Available' }}
+                </li>
+              </ul>
+            </p>
+          </div>
         </div>
-        <div class="col-md-4">
-          <p>
-            <a href="{{ angelCompany.angellist_url }}"><i class="fa fa-angellist fa-lg"></i></a>
-            <a href="{{ angelCompany.facebook_url }}"><i class="fa fa-facebook-official fa-lg"></i></a>
-            <a href="{{ angelCompany.linkedin_url }}"><i class="fa fa-linkedin-square fa-lg"></i></a>
-            <a href="{{ angelCompany.twitter_url }}"><i class="fa fa-twitter-square fa-lg"></i></a>
-          </p>
+        <div class="row">
+          <div class="col-md-12">
+            <p><strong>Product Description:</strong></p>
+            <p>{{ angelCompany.product_desc || 'Not Available' }}</p>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-4">
-          <p><strong>High Concept: </strong></p>
-          <p>
-            {{ angelCompany.high_concept || 'Not Available' }}
-          </p>
-        </div>
-        <div class="col-md-4">
-          <p>
-            <strong>Locations:</strong>
-            <ul>
-              <li ng-repeat="location in angelCompany.locations">
-                {{ location.display_name || 'Not Available' }}
-              </li>
-            </ul>
-          </p>
-        </div>
-        <div class="col-md-4">
-          <p>
-            <strong>Markets:</strong>
-            <ul>
-              <li ng-repeat="market in angelCompany.markets">
-                {{ market.display_name || 'Not Available' }}
-              </li>
-            </ul>
-          </p>
-        </div>
+    </div>
+  </div>
+
+  <div class="table-margin">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Founders</h3>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <p><strong>Product Description:</strong></p>
-          <p>{{ angelCompany.product_desc || 'Not Available' }}</p>
-        </div>
+      <div class="panel-body">
+        <p>There is {{ founders.length || 0 }} founder(s) at {{ startup.name }}. They are:</p>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Founder</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Location</th>
+            </tr>
+          </thead>
+          <tbody ng-repeat="founder in founders">
+            <tr>
+              <td><a ui-sref="founder({ founderId: founder.$id })">{{ founder.name }}</a></td>
+              <td>{{ founder.email }}</td>
+              <td>{{ founder.phone }}</td>
+              <td>{{ founder.location }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Founders</h3>
+
+  <div class="table-margin">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Notes</h3>
+      </div>
+      <div class="panel-body">
+        <p>You currently have {{ notes.length || 0 }} notes related to {{ startup.name }}. They are:</p>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>Note</th>
+              <th>Date Entered</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="note in notes">
+              <td>
+                <span editable-select="note.status" e-name="status" e-form="rowform" e-ng-options="s.text as s.text for s in statuses">
+                  {{ note.status }}
+                </span>
+              </td>
+              <td>
+                <span editable-text="note.note" e-name="note" e-form="rowform" e-required>
+                  {{ note.note }}
+                </span>
+              </td>
+              <td am-time-ago="note.date"></td>
+              <td style="white-space: nowrap">
+                <!-- form -->
+                <form editable-form name="rowform" ng-show="rowform.$visible" onaftersave="updateNotes(note)" class="form-buttons form-inline">
+                  <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+                    save
+                  </button>
+                  <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                    cancel
+                  </button>
+                </form>
+                <div class="buttons" ng-show="!rowform.$visible">
+                  <button class="btn btn-default" ng-click="rowform.$show()">edit</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div class="panel-body">
-      <p>There is {{ founders.length || 0 }} founder(s) at {{ startup.name }}. They are:</p>
-    </div>
-    <div class="table-responsive">
-      <table class="table table-bordered table-hover">
-        <thead>
-          <tr>
-            <th>Founder</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Location</th>
-          </tr>
-        </thead>
-        <tbody ng-repeat="founder in founders">
-          <tr>
-            <td><a ui-sref="founder({ founderId: founder.$id })">{{ founder.name }}</a></td>
-            <td>{{ founder.email }}</td>
-            <td>{{ founder.phone }}</td>
-            <td>{{ founder.location }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <div class="panel-heading">
-    <h3 class="panel-title">Notes</h3>
-  </div>
-  <div class="panel-body">
-    <p>You currently have {{ notes.length || 0 }} notes related to {{ startup.name }}. They are:</p>
-  </div>
-  <div class="table-responsive">
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr>
-          <th>Status</th>
-          <th>Note</th>
-          <th>Date Entered</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="note in notes">
-          <td>
-            <span editable-select="note.status" e-name="status" e-form="rowform" e-ng-options="s.text as s.text for s in statuses">
-              {{ note.status }}
-            </span>
-          </td>
-          <td>
-            <span editable-text="note.note" e-name="note" e-form="rowform" e-required>
-              {{ note.note }}
-            </span>
-          </td>
-          <td am-time-ago="note.date"></td>
-          <td style="white-space: nowrap">
-            <!-- form -->
-            <form editable-form name="rowform" ng-show="rowform.$visible" onaftersave="updateNotes(note)" class="form-buttons form-inline">
-              <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
-                save
-              </button>
-              <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
-                cancel
-              </button>
-            </form>
-            <div class="buttons" ng-show="!rowform.$visible">
-              <button class="btn btn-default" ng-click="rowform.$show()">edit</button>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
   </div>
 </div>
