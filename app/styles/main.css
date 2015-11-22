@@ -63,7 +63,11 @@
   height: 140px;
 }
 
+.logo-pic {
+  width: 110px;
+  height: 110px;
+}
+
 .warning-box {
   margin: 5px;
 }
-

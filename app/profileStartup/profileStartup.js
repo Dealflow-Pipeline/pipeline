@@ -110,7 +110,7 @@ app.controller('profileStartupCtrl', [
 
         // Check if founders object exists within startup
         if ($scope.startup.founders) {
-          
+
           // assign founders key's within startup to own variable
           var foundersArr = Object.keys($scope.startup.founders);
 
@@ -152,16 +152,21 @@ app.controller('profileStartupCtrl', [
     $scope.getAngelList = function(startup) {
       searchAngelListStartups.searchAngel(startup).then(function(returnedData) {
         $scope.angelList = returnedData;
-        console.log($scope.angelList);
-        $scope.getAngelCompany($scope.angelList);
+        $scope.angelListOptions($scope.angelList);
       });
     };
 
+    // Assign first 6 startup objects in $scope.angelList to $scope
+    // for user confirmation prior to querying angellist api for full profile
+    $scope.angelListOptions = function(options) {
+      $scope.angelListSelection = options.slice(0, 6);
+    };
+
+    // Call factory method getAngel to return full startup angellist profile
+    // and assign reponse to $scope
     $scope.getAngelCompany = function(startup) {
-      console.log(startup[0].id);
-      searchAngelListStartups.getAngel(startup[0].id).then(function(returnedData) {
+      searchAngelListStartups.getAngel(startup).then(function(returnedData) {
         $scope.angelCompany = returnedData;
-        console.log($scope.angelCompany);
       });
     };
   },
