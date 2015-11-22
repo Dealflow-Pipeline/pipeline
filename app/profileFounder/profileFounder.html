@@ -35,6 +35,9 @@
             <button type="button" ng-disabled="tableform.$waiting" ng-click="tableform.$cancel()" class="btn btn-default">cancel</button>
           </div>
           <div>
+            <button type="button" class="btn btn-default" ng-click="open(founder.name, founder.id, founder)">Add Note</button>
+          </div>
+          <div>
             <button type="button" class="btn btn-default" ng-click="getFullContact(founder.email)" ng-show="founder.email">Get Profile</button>
             <div>
               <p class="bg-warning warning-box" ng-show="!founder.email"><i class="fa fa-exclamation-triangle"></i> Want more social data on this founder? Add their email address by clicking 'edit' above.</p>

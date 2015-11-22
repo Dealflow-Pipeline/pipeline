@@ -8,9 +8,10 @@ app.run(function(editableOptions) {
 app.controller('profileFounderCtrl', [
   '$scope',
   'founderProfileFactory',
+  'noteInfoFactory',
   'fullContactPersonFactory',
   '$stateParams',
-  function($scope, founderProfileFactory, fullContactPersonFactory, $stateParams) {
+  function($scope, founderProfileFactory, noteInfoFactory, fullContactPersonFactory, $stateParams) {
     var founderId = $stateParams.founderId;
 
     // callback for firebase set method
@@ -34,7 +35,6 @@ app.controller('profileFounderCtrl', [
       $scope.notesIndex.$save(update).then(function(ref) {
         ref.key() === update.$id; // true
       },
-
       function(error) {
         console.log('Error:', error);
       });
@@ -54,7 +54,9 @@ app.controller('profileFounderCtrl', [
     $scope.getProfile = function() {
       founderProfileFactory.getFounder(founderId).then(function(returnedData) {
 
+        // assign factory's founder obj & founder id to scope
         $scope.founder = returnedData;
+        $scope.founder.id = founderId;
 
         // Check if notes object exists within founder
         if ($scope.founder.notes) {
@@ -133,5 +135,14 @@ app.controller('profileFounderCtrl', [
         console.log(error);
       });
     };
+    
+    // controls Add Note on profile page; pass through info listed in the row
+    $scope.open = function(founderName, founderId, founder) {
+      noteInfoFactory.getRow(null, null, founderName, founderId);
+      console.log(founderName, founderId)
+      console.log(founder)
+    };
+
+
   },
 ]);
