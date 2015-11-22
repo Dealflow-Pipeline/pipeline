@@ -1,14 +1,18 @@
-
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">{{ founder.name }}</h3>
   </div>
   <div class="panel-body">
     <div class="row">
-      <div class="col-md-2">
-        <img src="assets/logo_blank.svg" alt="..." class="img-thumbnail">
+      <div class="col-md-2" ng-hide="fullContact.photos[0]">
+        <img src="assets/logo_blank.svg" alt="Startup Gravatar" class="img-thumbnail">
       </div>
+      <div class="col-md-2" ng-show="fullContact.photos[0]">
+        <img src="{{ fullContact.photos[0].url }}" class="img-thumbnail">
+      </div>
+
       <form editable-form name="tableform" onaftersave="updateFounder(founder)" oncancel="cancel()">
+
         <div class="col-md-4">
           <p><strong>Email: </strong><span editable-email="founder.email">{{ founder.email || 'empty'  }}</span></p>
           <p><strong>Phone: </strong><span editable-tel="founder.phone">{{ founder.phone || 'empty' }}</span></p>
@@ -19,6 +23,9 @@
         <div class="col-md-4">
           <p><strong>Social Profiles:</strong></p>
         </div>
+        <div class="col-md-4">
+          <p><strong>Intro Date:</strong> {{ founder.date | amDateFormat:'MM/DD/YYYY' }}</p>
+        </div>
         <div class="btn-edit">
           <button type="button" class="btn btn-default" ng-show="!tableform.$visible" ng-click="tableform.$show()">
             edit
@@ -28,66 +35,183 @@
           <button type="submit" ng-disabled="tableform.$waiting" class="btn btn-primary">save</button>
           <button type="button" ng-disabled="tableform.$waiting" ng-click="tableform.$cancel()" class="btn btn-default">cancel</button>
         </div>
+        <div>
       </form>
+      <div>
+        <button type="button" class="btn btn-default" ng-click="getFullContact(founder.email)">Get Profile</button>
+      </div>
     </div>
   </div>
-  <div class="panel panel-default">
+
+  <div class="table-margin">
+    <div ng-show="fullContact.status === 200" class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Social & Contact Info</h3>
+      </div>
+      <div class="panel-body">
+        <p>
+          <strong>AngelList Bio: </strong>{{ fullContactSocialProfiles.angellist.bio || 'Not Available'}}
+        </p>
+        <div class="row">
+          <div class="col-md-4">
+            <p>
+              <strong>Location: </strong>{{ fullContact.demographics.locationGeneral || 'Not Available' }}
+            </p>
+          </div>
+          <div class="col-md-4">
+            <p>
+              <strong>Websites:</strong>
+              <ul ng-repeat="website in fullContact.contactInfo.websites">
+                <li>
+                  <a href="{{ website.url }}">{{ website.url || 'Not Available' }}</a>
+                </li>
+              </ul>
+            </p>
+          </div>
+          <div class="col-md-4">
+            <p>
+              <strong>Social Profiles:</strong><br />
+
+              <a href="{{ fullContactSocialProfiles.twitter.url }}" ng-show="fullContactSocialProfiles.twitter" target="_blank"><i class="fa fa-twitter-square fa-lg"></i></a>
+
+              <a href="{{ fullContactSocialProfiles.angellist.url }}" ng-show="fullContactSocialProfiles.angellist" target="_blank"><i class="fa fa-angellist fa-lg"></i></a>
+
+              <a href="{{ fullContactSocialProfiles.facebook.url }}" ng-show="fullContactSocialProfiles.facebook" target="_blank"><i class="fa fa-facebook-square fa-lg"></i></a>
+
+              <a href="{{ fullContactSocialProfiles.linkedin.url }}" ng-show="fullContactSocialProfiles.linkedin" target="_blank"><i class="fa fa-linkedin-square fa-lg"></i></a>
+
+              <a href="{{ fullContactSocialProfiles.github.url }}" ng-show="fullContactSocialProfiles.github" target="_blank"><i class="fa fa-github-square fa-lg"></i></a>
+
+              <a href="{{ fullContactSocialProfiles.googleplus.url }}" ng-show="fullContactSocialProfiles.googleplus" target="_blank"><i class="fa fa-google-plus-square fa-lg"></i></a>
+
+              <a href="{{ fullContactSocialProfiles.youtube.url }}" ng-show="fullContactSocialProfiles.youtube" target="_blank"><i class="fa fa-youtube-square fa-lg"></i></a>
+
+              <a href="{{ fullContactSocialProfiles.flickr.url }}" ng-show="fullContactSocialProfiles.flickr" target="_blank"><i class="fa fa-flickr fa-lg"></i></a>
+
+              <a href="{{ fullContactSocialProfiles.foursquare.url }}" ng-show="fullContactSocialProfiles.foursquare" target="_blank"><i class="fa fa-foursquare fa-lg"></i></a>
+
+              <a href="{{ fullContactSocialProfiles.instagram.url }}" ng-show="fullContactSocialProfiles.instagram" target="_blank"><i class="fa fa-instagram fa-lg"></i></a>
+
+              <a href="{{ fullContactSocialProfiles.pinterest.url }}" ng-show="fullContactSocialProfiles.pinterest" target="_blank"><i class="fa fa-pinterest-square fa-lg"></i></a>
+
+              <a href="{{ fullContactSocialProfiles.xing.url }}" ng-show="fullContactSocialProfiles.xing" target="_blank"><i class="fa fa-xing-square fa-lg"></i></a>
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <p>
+              <strong>Gender:</strong>
+              {{ fullContact.demographics.gender || 'Not Available' }}
+            </p>
+          </div>
+          <div class="col-md-4">
+            <p>
+              <strong>Job History: </strong>
+              <ul ng-repeat="job in fullContact.organizations">
+                <li>
+                  {{ job.title }}, {{ job.name }}
+                </li>
+              </ul>
+            </p>
+          </div>
+          <div class="col-md-4">
+            <p>
+              <strong>Twitter Stats: </strong>
+              <ul>
+                <li><strong>Bio: </strong> {{ fullContactSocialProfiles.twitter.bio}}</li>
+                <li><strong>Followers: </strong> {{ fullContactSocialProfiles.twitter.followers}}</li>
+                <li><strong>Following: </strong> {{ fullContactSocialProfiles.twitter.following}}</li>
+              </ul>
+            </p>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-4">
+            <p>
+              <strong>Skills: </strong>
+              <span ng-repeat="skill in fullContact.digitalFootprint.topics">
+                <ul><li>{{ skill.value || 'Not Available' }}</li></ul>
+              </span>
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <p>
+              <strong>Social Avatars: </strong><br />
+              <span ng-repeat="picUrl in fullContact.photos">
+                <img src="{{ picUrl.url }}" class="profile-pic" />
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="table-margin">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Startups</h3>
+      </div>
+      <div class="panel-body">
+        <p>{{ founder.name }} is associated with {{ startups.length }} startup(s). They are:</p>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Startup</th>
+              <th>Website</th>
+              <th>Location</th>
+              <th>Pipeline</th>
+            </tr>
+          </thead>
+          <tbody ng-repeat="startup in startups">
+            <tr>
+              <td><a ui-sref="startup({ startupId: startup.$id })">{{ startup.name }}</a></td>
+              <td>{{ startup.website }}</td>
+              <td>{{ startup.location }}</td>
+              <td>{{ startup.pipeline }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
     <div class="panel-heading">
-      <h3 class="panel-title">Startups</h3>
+      <h3 class="panel-title">Notes</h3>
     </div>
     <div class="panel-body">
-      <p>{{ founder.name }} has founded {{ startups.length }} startup(s). They are:</p>
+      <p>You currently have {{ notes.length || 0 }} notes related to {{ founder.name }}. They are:</p>
     </div>
     <div class="table-responsive">
       <table class="table table-bordered table-hover">
         <thead>
           <tr>
-            <th>Startup</th>
-            <th>Website</th>
-            <th>Location</th>
-            <th>Pipeline</th>
+            <th>Status</th>
+            <th>Note</th>
+            <th>Date Entered</th>
+            <th>Action</th>
           </tr>
         </thead>
-        <tbody ng-repeat="startup in startups">
+        <tbody ng-repeat="note in notes">
           <tr>
-            <td><a ui-sref="startup({ startupId: startup.$id })">{{ startup.name }}</a></td>
-            <td>{{ startup.website }}</td>
-            <td>{{ startup.location }}</td>
-            <td>{{ startup.pipeline }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <div class="panel-heading">
-    <h3 class="panel-title">Notes</h3>
-  </div>
-  <div class="panel-body">
-    <p>You currently have {{ notes.length || 0 }} notes related to {{ founder.name }}. They are:</p>
-  </div>
-  <div class="table-responsive">
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr>
-          <th>Status</th>
-          <th>Note</th>
-          <th>Date Entered</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody ng-repeat="note in notes">
-        <tr>
-          <td>
-            <span editable-select="note.status" e-name="status" e-form="rowform" e-ng-options="s.text as s.text for s in statuses">
-              {{ note.status }}
-            </span>
-          </td>
-          <td>
-            <span editable-text="note.note" e-name="note" e-form="rowform" e-required>
-              {{ note.note }}
-            </span>
-          </td>
-          <td am-time-ago="note.date"</td>
+            <td>
+              <span editable-select="note.status" e-name="status" e-form="rowform" e-ng-options="s.text as s.text for s in statuses">
+                {{ note.status }}
+              </span>
+            </td>
+            <td>
+              <span editable-text="note.note" e-name="note" e-form="rowform" e-required>
+                {{ note.note }}
+              </span>
+            </td>
+            <td am-time-ago="note.date"></td>
             <td style="white-space: nowrap">
               <!-- form -->
               <form editable-form name="rowform" ng-show="rowform.$visible" onaftersave="updateNotes(note)" class="form-buttons form-inline">
@@ -108,3 +232,4 @@
       </table>
     </div>
   </div>
+</div>

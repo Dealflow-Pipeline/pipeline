@@ -8,8 +8,9 @@ app.run(function(editableOptions) {
 app.controller('profileFounderCtrl', [
   '$scope',
   'founderProfileFactory',
+  'fullContactPersonFactory',
   '$stateParams',
-  function($scope, founderProfileFactory, $stateParams) {
+  function($scope, founderProfileFactory, fullContactPersonFactory, $stateParams) {
     var founderId = $stateParams.founderId;
 
     // callback for firebase set method
@@ -111,5 +112,25 @@ app.controller('profileFounderCtrl', [
 
     // Invoke inital method to get founder info
     $scope.getProfile();
+
+    // here we will store the persons social profiles as an object
+    $scope.fullContactSocialProfiles = {};
+
+    // GET req for FullContact Person API (by email address)
+    $scope.getFullContact = function(personEmail) {
+      fullContactPersonFactory.getPerson(personEmail)
+      .then(function(returnedData) {
+        // assign returned data to $scope
+        $scope.fullContact = returnedData;
+
+        // convert person's social profile list from an array to object
+        returnedData.socialProfiles.forEach(function(profile, index) {
+          $scope.fullContactSocialProfiles[profile.type] = profile;
+          console.log($scope.fullContactSocialProfiles)
+        })
+      }).catch(function(error) {
+        console.log(error);
+      });
+    };
   },
 ]);

@@ -1,4 +1,4 @@
-var app = angular.module('angelListFactory', ['firebase']);
+ var app = angular.module('angelListFactory', ['firebase']);
 
 app.factory('searchAngelListStartups', [
   '$q',
