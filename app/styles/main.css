@@ -50,3 +50,10 @@
 .table-margin {
   margin: 0px 8px;
 }
+
+/* profile avatars */
+
+.profile-pic {
+  width: 140px;
+  height: 140px;
+}
