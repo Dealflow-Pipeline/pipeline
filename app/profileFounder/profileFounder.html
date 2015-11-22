@@ -28,7 +28,11 @@
           <button type="submit" ng-disabled="tableform.$waiting" class="btn btn-primary">save</button>
           <button type="button" ng-disabled="tableform.$waiting" ng-click="tableform.$cancel()" class="btn btn-default">cancel</button>
         </div>
+        <div>
       </form>
+      <div>
+        <button type="button" class="btn btn-default" ng-click="getFullContact(founder.email)">Get Profile</button>
+      </div>
     </div>
   </div>
   <div class="panel panel-default">

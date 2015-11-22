@@ -8,8 +8,9 @@ app.run(function(editableOptions) {
 app.controller('profileFounderCtrl', [
   '$scope',
   'founderProfileFactory',
+  'fullContactPersonFactory',
   '$stateParams',
-  function($scope, founderProfileFactory, $stateParams) {
+  function($scope, founderProfileFactory, fullContactPersonFactory, $stateParams) {
     var founderId = $stateParams.founderId;
 
     // callback for firebase set method
@@ -111,5 +112,17 @@ app.controller('profileFounderCtrl', [
 
     // Invoke inital method to get founder info
     $scope.getProfile();
+
+    $scope.getFullContact = function(personEmail) {
+      console.log(personEmail)
+      var personEmail = '' + personEmail
+      fullContactPersonFactory.getPerson(personEmail)
+      .then(function(returnedData) {
+        $scope.fullContact = returnedData;
+        console.log($scope.fullContact)
+      }).catch(function(error) {
+        console.log(error);
+      });
+    };
   },
 ]);
