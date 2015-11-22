@@ -17,13 +17,9 @@ app.factory('fullContactPersonFactory', [
         }
       }).success(function(data) {
         defer.resolve(data)
+      }).error(function(errro) {
+        console.log(error);
       });
-      // $http.get(url)
-      // .success(function(data) {
-      //   defer.resolve(data);
-      // }).error(function(errro) {
-      //   console.log(error);
-      // });
 
       return defer.promise;
     }
