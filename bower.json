@@ -25,6 +25,7 @@
     "angular-route": "~1.4.7",
     "angular-ui-router": "~0.2.15",
     "angular-xeditable": "~0.1.9",
+    "angularUtils-pagination": "angular-utils-pagination#~0.9.2",
     "bootstrap": "~3.3.5",
     "firebase": "~2.3.1",
     "font-awesome": "fontawesome#~4.4.0",

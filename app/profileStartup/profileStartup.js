@@ -135,8 +135,6 @@ app.controller('profileStartupCtrl', [
       });
     };
 
-    // console.log($scope.noteIndex);
-
     // Get founders via factory
     $scope.getFounders = function(founders) {
       startupProfileFactory.getFounders(founders).then(function(returnedData) {

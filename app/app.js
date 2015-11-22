@@ -112,6 +112,6 @@ var app = angular.module('pipeline', [
       //       });
       //   }]
       // });
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/dashboard');
   },
 ]);
