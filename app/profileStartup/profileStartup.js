@@ -10,7 +10,8 @@ app.controller('profileStartupCtrl', [
   'startupProfileFactory',
   '$stateParams',
   'searchAngelListStartups',
-  function($scope, startupProfileFactory, $stateParams) {
+  '$http',
+  function($scope, startupProfileFactory, $stateParams, searchAngelListStartups, $http) {
     var startupId = $stateParams.startupId;
 
     // callback for firebase set method
@@ -146,23 +147,20 @@ app.controller('profileStartupCtrl', [
     $scope.getProfile();
 
     // Search AL's database for match
-    $scope.getAngelList = function(startupName) {
-      console.log()
-      // searchAngelListStartups
-      // invoke the http GET req in angelListFactory.js
-      //   this will return an array matching the search query
-      //   choose the first one (index 0)
-      //   return the object response from AL
-      //   display on the page via profileStartup.js
-
+    $scope.getAngelList = function(startup) {
+      searchAngelListStartups.searchAngel(startup).then(function(returnedData) {
+        $scope.angelList = returnedData;
+        console.log($scope.angelList);
+        $scope.getAngelCompany($scope.angelList);
+      });
     };
 
-    // $scope.updateStartup = function(startupId) {
-    //   ref = new Firebase('https://pipeline8.firebaseio.com/startup/' + startupId);
-    //   var sync = $firebase(ref);
-    //
-    //   $scope.startup = sync.$asArray();
-    // };
-
+    $scope.getAngelCompany = function(startup) {
+      console.log(startup[0].id);
+      searchAngelListStartups.getAngel(startup[0].id).then(function(returnedData) {
+        $scope.angelCompany = returnedData;
+        console.log($scope.angelCompany);
+      });
+    };
   },
 ]);
