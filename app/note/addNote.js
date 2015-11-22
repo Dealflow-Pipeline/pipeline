@@ -94,8 +94,6 @@ app.controller('addNoteCtrl', ['$scope', '$firebaseObject', 'noteInfoFactory', '
 
             // if this note's date is more recent, set the founder's lastContact date to same date as the note
             if (Date.parse(note.date) > Date.parse(date.val())) {
-              console.log('Date.parse(note.date) > Date.parse(date.val())')
-              console.log(note.date.toISOString())
               founderObjLastContact.set(note.date.toISOString());
             }
 
