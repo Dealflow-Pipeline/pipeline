@@ -6,6 +6,7 @@ app.controller('addNoteCtrl', ['$scope', '$firebaseObject', 'noteInfoFactory', '
   // set our initial note object
   $scope.note = {
     "date": new Date(),
+    "status": "No status",
     "startup": entity.startupName || null,
     "startupId": entity.startupId || null,
     "founder": entity.founderName || null,
