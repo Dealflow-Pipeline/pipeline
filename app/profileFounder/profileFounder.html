@@ -86,7 +86,7 @@
               <strong>Websites:</strong>
               <ul ng-repeat="website in fullContact.contactInfo.websites">
                 <li>
-                  <a href="{{ website.url }}">{{ website.url || 'Not Available' }}</a>
+                  <a href="{{ website.url }}" target="_blank">{{ website.url || 'Not Available' }}</a>
                 </li>
               </ul>
             </p>
