@@ -72,11 +72,9 @@ app.controller('addNoteCtrl', ['$scope', '$firebaseObject', 'noteInfoFactory', '
             if (Date.parse(note.date) > Date.parse(date.val())) {
               startupObjLastContact.set(note.date.toISOString());
             }
-
           }, function(errorObj) {
             console.log('Read Failed: ' + errorObj.code);
           });
-
         }
 
         if (!!entity.founderId) {
@@ -96,7 +94,6 @@ app.controller('addNoteCtrl', ['$scope', '$firebaseObject', 'noteInfoFactory', '
             if (Date.parse(note.date) > Date.parse(date.val())) {
               founderObjLastContact.set(note.date.toISOString());
             }
-
           }, function(errorObj) {
             console.log('Read Failed: ' + errorObj.code);
           });

@@ -137,7 +137,7 @@ app.controller('profileFounderCtrl', [
     };
     
     // controls Add Note on profile page; pass through info listed in the row
-    $scope.open = function(founderName, founderId, founder) {
+    $scope.open = function(founderName, founderId) {
       noteInfoFactory.getRow(null, null, founderName, founderId);
     };
 
