@@ -1,112 +1,119 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <div class="panel-title"><h3>Maven Venture's Portfolio & Pipeline Snapshot</h3></div>
+    <div class="panel-title"><h3>VC Venture's Portfolio & Pipeline Snapshot</h3></div>
   </div>
   <div class="panel-body">
-
-<!-- Filter for startups or founders -->
-  <div class="panel">
-    <form>
-      <div class="form-group">
-        <div class="input-group">
-          <label class="sr-only" for="dashboard-filter">Filter for startup or founder</label>
-          <div class="input-group-addon"><i class="fa fa-search-plus"></i></div>
-          <input type="search" ng-model="q" class="form-control input-lg" id="dashboard-filter" placeholder="Filter for startup or founder">
+    <!-- Filter for startups or founders -->
+    <div class="panel">
+      <form>
+        <div class="form-group">
+          <div class="input-group">
+            <label class="sr-only" for="dashboard-filter">Filter for startup or founder</label>
+            <div class="input-group-addon"><i class="fa fa-search-plus"></i></div>
+            <input type="search" ng-model="q" class="form-control input-lg" id="dashboard-filter" placeholder="Filter for startup or founder">
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 
 <!-- Funnel pie charts -->
-  <div class="panel panel-default panel-success" ng-controller="dashboardCtrl">
-  <div class="panel-heading">Your Pipeline</div>
-  <div class="panel-body">
-    <div class="row">
-      <div id="content" class="col-md-12">
-        <div class="row circleStats">
-          <div class="col-md-2 col-sm-4 col-xs-6">
-            <div class="dashboard-pipeline">
-              <i class="fa fa-thumbs-up"></i>
-              <span class="plus">{{pipelineCount['1. Introduced']}}  ></span>
-            </div>
-            <div class="box-small-title ">Introduced</div>
-          </div><!--/col-->
-          <div class="col-md-2 col-sm-4 col-xs-6">
-            <div class="dashboard-pipeline">
-              <i class="fa fa-bullhorn"></i>
-              <span class="plus">{{pipelineCount['2. Spoke with Team']}}  ></span>
-            </div>
-            <div class="box-small-title">Spoke with Team</div>
-          </div><!--/col-->
-          <div class="col-md-2 col-sm-4 col-xs-6">
-            <div class="dashboard-pipeline">
-              <i class="fa fa-user"></i>
-              <span class="plus">{{pipelineCount['3. Met Team']}}  ></span>
-            </div>
-            <div class="box-small-title">Met Team</div>
-          </div><!--/col-->
+  <div class="table-margin">
+    <div class="panel panel-default" ng-controller="dashboardCtrl">
+      <div class="panel-heading">
+        <h3 class="panel-title">Your Pipeline</h3>
+      </div>
+      <div class="panel-body">
+        <div class="circle col-md-2 circle1">
+          <div class="circle__inner">
+            <div class="circle__wrapper">
+              <div class="circle__content"><span style="font-size:45px">{{pipelineCount['1. Introduced']}}</span></br>Introduced</div>
+              </div>
+          </div>
+        </div>
 
-          <div class="col-md-2 col-sm-4 col-xs-6">
-            <div class="dashboard-pipeline">
-              <i class="fa fa-globe"></i>
-              <span class="plus">{{pipelineCount['4. Due Diligence']}}  ></span>
-            </div>
-            <div class="box-small-title">Due Diligence</div>
-          </div><!--/col-->
+        <div class="circle col-md-2 circle2">
+          <div class="circle__inner">
+            <div class="circle__wrapper">
+              <div class="circle__content"><span style="font-size:45px">{{pipelineCount['2. Spoke with Team']}}</span></br>Spoke with Team</div>
+              </div>
+          </div>
+        </div>
 
-          <div class="col-md-2 col-sm-4 col-xs-6">
-            <div class="dashboard-pipeline">
-              <i class="fa fa-bar-chart-o"></i>
-              <span class="plus">{{pipelineCount['5. Invested']}}  ></span>
-            </div>
-            <div class="box-small-title">Invested</div>
-          </div><!--/col-->
+        <div class="circle col-md-2 circle3">
+          <div class="circle__inner">
+            <div class="circle__wrapper">
+              <div class="circle__content"><span style="font-size:45px">{{pipelineCount['3. Met Team']}}</span></br>Met Team</div>
+              </div>
+          </div>
+        </div>
 
-          <div class="col-md-2 col-sm-4 col-xs-6">
-            <div class="dashboard-pipeline">
-              <i class="fa fa-shopping-cart"></i>
-              <span class="plus">{{pipelineCount['6. Passed']}}</span>
-            </div>
-            <div class="box-small-title">Passed</div>
-          </div><!--/col-->
+        <div class="circle col-md-2 circle4">
+          <div class="circle__inner">
+            <div class="circle__wrapper">
+              <div class="circle__content"><span style="font-size:45px">{{pipelineCount['4. Due Diligence']}}</span></br>Due Dilligence</div>
+              </div>
+          </div>
+        </div>
 
-        </div><!--/row-->
+        <div class="circle col-md-2 circle5">
+          <div class="circle__inner">
+            <div class="circle__wrapper">
+              <div id=""class="circle__content"><span style="font-size:45px">{{pipelineCount['5. Invested']}}</span></br>Invested</div>
+              </div>
+          </div>
+        </div>
+
+        <div class="circle col-md-2 circle6">
+          <div class="circle__inner">
+            <div class="circle__wrapper">
+              <div class="circle__content"><span style="font-size:45px">{{pipelineCount['6. Passed']}}</span></br>Passed</div>
+              </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  </div>
 
 <!-- Startups Table -->
-  <div class="panel panel-default" ng-controller="dashboardCtrl">
-    <div class="panel-heading">Startups</div>
-    <div class="panel-body"><p>You currently have {{ startups.length }} startups in your pipeline. They are:</p></div>
-    <div class="table-margin">
+  <div class="table-margin">
+    <div class="panel panel-default" ng-controller="dashboardCtrl">
+      <div class="panel-heading">
+        <h3 class="panel-title">Startups</h3>
+      </div>
+      <div class="panel-body">
+        <p>You currently have {{ startups.length }} startups in your pipeline. They are:</p>
+      </div>
       <table class="table table-bordered table-hover">
-        <tr>
-          <th><a href="#" ng-click="sortType.startups='lastContact'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Last Contact <span ng-show="sortType.startups === 'lastContact' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'lastContact' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
-          
-          <th><a href="#" ng-click="sortType.startups='name'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Name <span ng-show="sortType.startups === 'name' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'name' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
+        <thead>
+          <tr>
+            <th><a href="#" ng-click="sortType.startups='lastContact'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Last Contact <span ng-show="sortType.startups === 'lastContact' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'lastContact' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
 
-          <th><a href="#" ng-click="sortType.startups='pipeline'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Pipeline <span ng-show="sortType.startups === 'pipeline' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'pipeline' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
+            <th><a href="#" ng-click="sortType.startups='name'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Name <span ng-show="sortType.startups === 'name' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'name' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
 
-          <th><a href="#" ng-click="sortType.startups='partner'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Partner <span ng-show="sortType.startups === 'partner' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'partner' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
+            <th><a href="#" ng-click="sortType.startups='pipeline'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Pipeline <span ng-show="sortType.startups === 'pipeline' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'pipeline' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
 
-          <th><a href="#" ng-click="sortType.startups='tagline'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Tagline <span ng-show="sortType.startups === 'tagline' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'tagline' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
+            <th><a href="#" ng-click="sortType.startups='partner'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Partner <span ng-show="sortType.startups === 'partner' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'partner' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
 
-          <th><a href="#" ng-click="sortType.startups='source'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Intro Source <span ng-show="sortType.startups === 'source' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'source' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
+            <th><a href="#" ng-click="sortType.startups='tagline'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Tagline <span ng-show="sortType.startups === 'tagline' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'tagline' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
+
+            <th><a href="#" ng-click="sortType.startups='source'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Intro Source <span ng-show="sortType.startups === 'source' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'source' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
 
 
-          <th><a href="#" ng-click="sortType.startups='industry'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Industry <span ng-show="sortType.startups === 'industry' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'industry' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
+            <th><a href="#" ng-click="sortType.startups='industry'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Industry <span ng-show="sortType.startups === 'industry' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'industry' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
 
-          <th><a href="#" ng-click="sortType.startups='location'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Location <span ng-show="sortType.startups === 'location' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'location' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
+            <th><a href="#" ng-click="sortType.startups='location'; sortReverse.startups = !sortReverse.startups; $event.preventDefault()">Location <span ng-show="sortType.startups === 'location' && !sortReverse.startups" class="fa fa-caret-down"></span><span ng-show="sortType.startups === 'location' && sortReverse.startups" class="fa fa-caret-up"></span></a></th>
 
-          <th>Add Note</th>
-        </tr>
+            <th>Add Note</th>
+          </tr>
+        </thead>
 
         <tbody ng-repeat="(key, startup) in startups | orderBy : sortType.startups : sortReverse.startups | filter: q as results">
           <tr>
             <td am-time-ago="startup.lastContact"></td>
-            <td><a href="#/startup/{{startup.$id}}/profile">{{startup.name}}</a></td>
+            <td>
+              <a href="#/startup/{{startup.$id}}/profile">{{startup.name}}</a>
+            </td>
             <td>
               <span editable-select="startup.pipeline" e-name="pipeline" e-form="rowform" e-ng-options="s.text as s.text for s in pipelines">
                 {{ startup.pipeline }}
@@ -134,6 +141,7 @@
               <span editable-text="startup.location" e-name="location" e-form="rowform">{{ startup.location }}</span>
             </td>
             <td style="white-space: nowrap">
+
               <form editable-form name="rowform" ng-show="rowform.$visible" onaftersave="updateStartup(startup)" class="form-buttons form-inline">
                 <button type="submit" ng-disabled="rowform.$waiting" class="glyphicon-button">
                   <span class="glyphicon glyphicon-save"></span>
@@ -142,6 +150,7 @@
                   <span class="glyphicon glyphicon-step-backward"></span>
                 </button>
               </form>
+
               <div class="buttons" ng-show="!rowform.$visible">
                 <span ng-click="open(startup.name, startup.$id, null, null); $event.preventDefault()" class="glyphicon glyphicon-plus-sign"></span>
                 <span  ng-click="rowform.$show()" class="glyphicon glyphicon-edit"></span>
@@ -154,12 +163,14 @@
   </div>
 
 <!-- Founders Table -->
-  <div class="panel panel-default" ng-controller="dashboardCtrl">
-    <div class="panel-heading">Founders</div>
-    <div class="panel-body">
-      <p>You currently have {{ founders.length }} in your pipeline. They are:</p>
-    </div>
-    <div class="table-margin">
+  <div class="table-margin">
+    <div class="panel panel-default" ng-controller="dashboardCtrl">
+      <div class="panel-heading">
+        <h3 class="panel-title">Founders</h3>
+      </div>
+      <div class="panel-body">
+        <p>You currently have {{ founders.length }} in your pipeline. They are:</p>
+      </div>
       <table class="table table-bordered table-hover">
         <tr>
           <th><a href="#" ng-click="sortType.founders='lastContact'; sortReverse.founders = !sortReverse.founders; $event.preventDefault()">Last Contact <span ng-show="sortType.founders === 'lastContact' && !sortReverse.founders" class="fa fa-caret-down"></span><span ng-show="sortType.founders === 'lastContact' && sortReverse.founders" class="fa fa-caret-up"></span></a></th>
@@ -186,65 +197,46 @@
   </div>
 
 <!-- Notes Table -->
-  <div class="panel panel-default" ng-controller="dashboardCtrl">
-    <div class="panel-heading">Notes</div>
-    <div class="panel-body">
-      <span class="col-xs-14 col-md-10">You currently have {{notes.length}} notes. They are:</span>
-      <span class="col-xs-4 col-md-2">Rows: <input type="text" ng-model="rowCount.notes" maxlength="4" size="4" /></span>
-    </div>
-    <div class="table-margin">
+  <div class="table-margin">
+    <div class="panel panel-default" ng-controller="dashboardCtrl">
+      <div class="panel-heading">
+        <h3 class="panel-title">Notes</h3>
+      </div>
+      <div class="panel-body">
+        <span class="col-xs-14 col-md-8">You currently have {{notes.length}} notes. They are:</span>
+        <span class="col-xs-4 col-md-2" style="text-align:right">Rows: <input type="text" ng-model="rowCount.notes" maxlength="4" size="4" /></span>
+        <span class="col-md-2">
+          <dir-pagination-controls></dir-pagination-controls>
+        </span>
+      </div>
       <table class="table table-bordered table-hover">
-        <tr>
-          <th><a href="#" ng-click="sortType.notes='date'; sortReverse.notes = !sortReverse.notes; $event.preventDefault()">Date <span ng-show="sortType.notes === 'date' && !sortReverse.notes" class="fa fa-caret-down"></span><span ng-show="sortType.notes === 'date' && sortReverse.notes" class="fa fa-caret-up"></span></a></th>
+        <thead>
+          <tr>
+            <th><a href="#" ng-click="sortType.notes='date'; sortReverse.notes = !sortReverse.notes; $event.preventDefault()">Date <span ng-show="sortType.notes === 'date' && !sortReverse.notes" class="fa fa-caret-down"></span><span ng-show="sortType.notes === 'date' && sortReverse.notes" class="fa fa-caret-up"></span></a></th>
 
-          <th><a href="#" ng-click="sortType.notes='startup'; sortReverse.notes = !sortReverse.notes; $event.preventDefault()">Startup <span ng-show="sortType.notes === 'startup' && !sortReverse.notes" class="fa fa-caret-down"></span><span ng-show="sortType.notes === 'startup' && sortReverse.notes" class="fa fa-caret-up"></span></a></th>
+            <th><a href="#" ng-click="sortType.notes='startup'; sortReverse.notes = !sortReverse.notes; $event.preventDefault()">Startup <span ng-show="sortType.notes === 'startup' && !sortReverse.notes" class="fa fa-caret-down"></span><span ng-show="sortType.notes === 'startup' && sortReverse.notes" class="fa fa-caret-up"></span></a></th>
 
-          <th><a href="#" ng-click="sortType.notes='founder'; sortReverse.notes = !sortReverse.notes; $event.preventDefault()">Founder <span ng-show="sortType.notes === 'founder' && !sortReverse.notes" class="fa fa-caret-down"></span><span ng-show="sortType.notes === 'founder' && sortReverse.notes" class="fa fa-caret-up"></span></a></th>
+            <th><a href="#" ng-click="sortType.notes='founder'; sortReverse.notes = !sortReverse.notes; $event.preventDefault()">Founder <span ng-show="sortType.notes === 'founder' && !sortReverse.notes" class="fa fa-caret-down"></span><span ng-show="sortType.notes === 'founder' && sortReverse.notes" class="fa fa-caret-up"></span></a></th>
 
-          <th><a href="#" ng-click="sortType.notes='status'; sortReverse.notes = !sortReverse.notes; $event.preventDefault()">Status <span ng-show="sortType.notes === 'status' && !sortReverse.notes" class="fa fa-caret-down"></span><span ng-show="sortType.notes === 'status' && sortReverse.notes" class="fa fa-caret-up"></span></a></th>
+            <th><a href="#" ng-click="sortType.notes='status'; sortReverse.notes = !sortReverse.notes; $event.preventDefault()">Status <span ng-show="sortType.notes === 'status' && !sortReverse.notes" class="fa fa-caret-down"></span><span ng-show="sortType.notes === 'status' && sortReverse.notes" class="fa fa-caret-up"></span></a></th>
 
-          <th><a href="#" ng-click="sortType.notes='note'; sortReverse.notes = !sortReverse.notes; $event.preventDefault()">Note <span ng-show="sortType.notes === 'note' && !sortReverse.notes" class="fa fa-caret-down"></span><span ng-show="sortType.notes === 'note' && sortReverse.notes" class="fa fa-caret-up"></span></a></th>
-          <!-- <th>Action</th> -->
-        </tr>
+            <th><a href="#" ng-click="sortType.notes='note'; sortReverse.notes = !sortReverse.notes; $event.preventDefault()">Note <span ng-show="sortType.notes === 'note' && !sortReverse.notes" class="fa fa-caret-down"></span><span ng-show="sortType.notes === 'note' && sortReverse.notes" class="fa fa-caret-up"></span></a></th>
+          </tr>
+        </thead>
 
         <tbody dir-paginate="note in notes | orderBy : sortType.notes : sortReverse.notes | itemsPerPage: rowCount.notes | filter: q as results">
           <tr>
             <td am-time-ago="note.date"></td>
             <td><a href="#/startup/{{note.startupId}}/profile">{{ note.startup }}</a></td>
             <td><a href="#/founder/{{note.founderId}}/profile">{{ note.founder }}</a></td>
-            <td>
-              <!-- <span editable-select="note.status" e-name="status" e-form="rowform" e-ng-options="s.text as s.text for s in statuses"> -->
-              <a href="#" editable-select="note.status" e-ng-options="s.value as s.text for s in statuses">
-                {{ note.status }}
-              </a>
-              <!-- </span> -->
+            <td><a href="#" editable-select="note.status" e-ng-options="s.text as s.text for s in statuses" onaftersave="updateNotes(note)">{{ note.status }}</a>
             </td>
             <td>
               {{ note.note }}
-            <!-- <span editable-text="note.note" e-name="note" e-form="rowform" e-required>{{ note.note }}</span> -->
             </td>
-            <!-- <td style="white-space: nowrap"> -->
-
-              <!-- form -->
-              <!-- <form editable-form name="rowform" ng-show="rowform.$visible" onaftersave="updateNotes(note)" class="form-buttons form-inline">
-                <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">save</button>
-                <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">cancel</button>
-              </form>
-              <div class="buttons" ng-show="!rowform.$visible">
-                <button class="btn btn-default" ng-click="rowform.$show()">edit</button> -->
-                <!-- <button class="btn btn-danger" ng-click="removeUser($index)">del</button> -->
-              <!-- </div> -->
-
-
-
-            <!-- </td> -->
           </tr>
         </tbody>
       </table>
-      <div class="text-right">
-        <dir-pagination-controls></dir-pagination-controls>
-      </div>
     </div>
   </div>
-
 </div>

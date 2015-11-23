@@ -51,10 +51,6 @@
   margin: 0px 8px;
 }
 
-.dashboard-pipeline {
-  font-size: 48px
-}
-
 
 /* profile page */
 
@@ -71,4 +67,78 @@
 
 .warning-box {
   margin: 5px;
+}
+
+.circle {
+  position: relative;
+  display: block;
+  margin: 2em 0;
+  background-color: transparent;
+  color: #5c5c5c;
+  text-align: center;
+  font-size: 16px;
+}
+
+.circle:after {
+  display: block;
+  padding-bottom: 100%;
+  width: 100%;
+  height: 0;
+  border-radius: 50%;
+  /*background-color: #ddd;*/
+  content: "";
+}
+
+.circle__inner {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.circle__wrapper {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.circle__content {
+  display: table-cell;
+  padding: 1em;
+  vertical-align: middle;
+}
+
+.circle1:after {
+  background-color: #daefec;
+}
+
+.circle2:after {
+  background-color: #bde7e2;
+}
+
+.circle3:after {
+  background-color: #88dacf;
+}
+
+.circle4:after {
+  background-color: #5ed0c0;
+}
+
+.circle5:after {
+  background-color: #2ac3ae;
+}
+
+.circle6:after {
+  background-color: #03b9a0;
+}
+
+.pagination {
+  margin: 0px;
+  float:right;
+}
+
+.pagination > li > a {
+  padding: 4px 10px;
 }
