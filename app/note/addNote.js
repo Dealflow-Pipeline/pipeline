@@ -6,6 +6,7 @@ app.controller('addNoteCtrl', ['$scope', '$firebaseObject', 'noteInfoFactory', '
   // set our initial note object
   $scope.note = {
     "date": new Date(),
+    "status": "No status",
     "startup": entity.startupName || null,
     "startupId": entity.startupId || null,
     "founder": entity.founderName || null,
@@ -72,11 +73,9 @@ app.controller('addNoteCtrl', ['$scope', '$firebaseObject', 'noteInfoFactory', '
             if (Date.parse(note.date) > Date.parse(date.val())) {
               startupObjLastContact.set(note.date.toISOString());
             }
-
           }, function(errorObj) {
             console.log('Read Failed: ' + errorObj.code);
           });
-
         }
 
         if (!!entity.founderId) {
@@ -96,7 +95,6 @@ app.controller('addNoteCtrl', ['$scope', '$firebaseObject', 'noteInfoFactory', '
             if (Date.parse(note.date) > Date.parse(date.val())) {
               founderObjLastContact.set(note.date.toISOString());
             }
-
           }, function(errorObj) {
             console.log('Read Failed: ' + errorObj.code);
           });
