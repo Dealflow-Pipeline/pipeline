@@ -69,6 +69,7 @@
   margin: 5px;
 }
 
+/* CSS for Pipeline */
 .circle {
   position: relative;
   display: block;
@@ -85,7 +86,6 @@
   width: 100%;
   height: 0;
   border-radius: 50%;
-  /*background-color: #ddd;*/
   content: "";
 }
 
@@ -130,10 +130,48 @@
   background-color: #2ac3ae;
 }
 
-.circle6:after {
-  background-color: #03b9a0;
+.col-lg-5ths {
+  position: relative;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
+@media (min-width: 1000px) {
+  .col-lg-1st {
+      width: 24%;
+      float: left;
+  }
+  .col-lg-2nd {
+      width: 22%;
+      float: left;
+  }
+  .col-lg-3rd {
+      width: 20%;
+      float: left;
+  }
+  .col-lg-4th {
+      width: 18%;
+      float: left;
+  }
+  .col-lg-5th {
+      width: 16%;
+      float: left;
+  }
+  .vertical-align {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .vertical-align > [class^="col-"],
+  .vertical-align > [class*=" col-"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Pagination */
 .pagination {
   margin: 0px;
   float:right;
@@ -141,4 +179,28 @@
 
 .pagination > li > a {
   padding: 4px 10px;
+}
+
+.pagination > .active > a {
+  background-color: #03b9a0;
+  border-color: #03b9a0;
+}
+
+.pagination > li > a {
+  color: #03b9a0;
+}
+
+/* font awesome icon size */
+.fa-icon {
+  font-size: 1.5em;
+}
+
+/* Table heading color */
+th, th a {
+  color: #03b9a0;
+}
+
+/* Link color */
+a, .editable-click, a.editable-click{
+  color: #03b9a0;
 }
