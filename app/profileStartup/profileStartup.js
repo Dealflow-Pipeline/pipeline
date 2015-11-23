@@ -13,7 +13,7 @@ app.controller('profileStartupCtrl', [
   'searchAngelListStartups',
   '$http',
   function($scope, startupProfileFactory, noteInfoFactory, $stateParams, searchAngelListStartups, $http) {
-    
+
   var startupId = $stateParams.startupId;
 
   // callback for firebase set method
@@ -113,7 +113,7 @@ app.controller('profileStartupCtrl', [
 
       // Check if founders object exists within startup
       if ($scope.startup.founders) {
-        
+
         // assign founders key's within startup to own variable
         var foundersArr = Object.keys($scope.startup.founders);
 
@@ -190,10 +190,10 @@ app.controller('profileStartupCtrl', [
       $scope.angelCompany = returnedData;
     });
   };
-  
+
   $scope.open = function(startupName, startupId) {
     noteInfoFactory.getRow(startupName, startupId);
     console.log(startupName, startupId)
   };
-  
+
 }]);
