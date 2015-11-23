@@ -1,4 +1,4 @@
-var app = angular.module('startup', ['ui.bootstrap', 'xeditable', 'firebase']);
+var app = angular.module('startup', ['ui.bootstrap', 'xeditable', 'firebase', 'angular-growl']);
 
 // sets theme for xeditable
 app.run(function(editableOptions) {
@@ -12,7 +12,8 @@ app.controller('profileStartupCtrl', [
   '$stateParams',
   'searchAngelListStartups',
   '$http',
-  function($scope, startupProfileFactory, noteInfoFactory, $stateParams, searchAngelListStartups, $http) {
+  'growl',
+  function($scope, startupProfileFactory, noteInfoFactory, $stateParams, searchAngelListStartups, $http, growl) {
 
   var startupId = $stateParams.startupId;
 
@@ -21,6 +22,7 @@ app.controller('profileStartupCtrl', [
     if (error) {
       console.log('Error: ' + error);
     } else {
+      growl.success($scope.name + ' updated', {ttl: 3000 });
       console.log('Synchronization succeeded');
     }
   };
