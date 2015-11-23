@@ -1,4 +1,4 @@
-var app = angular.module('dashboard', ['firebase', 'ui.bootstrap', 'xeditable', 'angularUtils.directives.dirPagination']);
+var app = angular.module('dashboard', ['firebase', 'ui.bootstrap', 'xeditable', 'angularUtils.directives.dirPagination', 'angular-growl']);
 
 // sets theme for xeditable
 app.run(function(editableOptions) {
@@ -12,7 +12,8 @@ app.controller('dashboardCtrl', [
   'notesTableFactory',
   'noteInfoFactory',
   '$uibModal',
-  function($scope, startupsTableFactory, foundersTableFactory, notesTableFactory, noteInfoFactory, $uibModal) {
+  'growl',
+  function($scope, startupsTableFactory, foundersTableFactory, notesTableFactory, noteInfoFactory, $uibModal, growl) {
 
     // presets number of rows to 10 (pagination)
     $scope.rowCount = {
@@ -49,22 +50,28 @@ app.controller('dashboardCtrl', [
     // set the default search/filter term
     $scope.searchTable = '';
 
-    // update individual notes object via x-editable
-    $scope.updateNotes = function(update) {
-      $scope.notes.$save(update).then(function(ref) {
+    // update startup object via x-editable
+    $scope.updateStartup = function(update) {
+      $scope.startups.$save(update).then(function(ref) {
         ref.key() === update.$id; // true
-      },
 
+        // show success message
+        growl.success('Pipeline step updated for <b>' + update.name + '</b>', {ttl: 3000 });
+      },
       function(error) {
         console.log('Error:', error);
       });
     };
 
-    // update startup object via x-editable
-    $scope.updateStartup = function(update) {
-      console.log($scope.startups);
-      $scope.startups.$save(update).then(function(ref) {
+    // update individual notes object via x-editable
+    $scope.updateNotes = function(update) {
+      $scope.notes.$save(update).then(function(ref) {
         ref.key() === update.$id; // true
+
+        // show success message
+        growl.success('Note status updated', {ttl: 3000 });
+
+
       },
 
       function(error) {
