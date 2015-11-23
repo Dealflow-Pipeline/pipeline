@@ -1,6 +1,13 @@
 var app = angular.module('addNote', ['firebase', 'ui.bootstrap']);
 
-app.controller('addNoteCtrl', ['$scope', '$firebaseObject', 'noteInfoFactory', '$uibModalInstance', 'entity', function($scope, $firebaseObject, noteInfoFactory, $uibModalInstance, entity) {
+app.controller('addNoteCtrl', [
+  '$scope', 
+  '$firebaseObject', 
+  'noteInfoFactory', 
+  '$uibModalInstance', 
+  'entity', 
+  function($scope, $firebaseObject, noteInfoFactory, $uibModalInstance, entity) {
+  
   var noteRef = new Firebase('https://pipeline8.firebaseio.com/notes');
 
   // set our initial note object

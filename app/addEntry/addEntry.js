@@ -1,9 +1,10 @@
-var app = angular.module('addEntry', [
-  'ui.bootstrap',
-  ]);
+var app = angular.module('addEntry', ['ui.bootstrap']);
 
-app.controller('addEntryCtrl',
-  function($scope, $firebaseObject) {
+app.controller('addEntryCtrl', [
+  '$scope', 
+  '$firebaseObject', 
+  '$state',
+  function($scope, $firebaseObject, $state) {
 
   // restricts the city autocomplete to USA only
   $scope.options = {
@@ -13,7 +14,7 @@ app.controller('addEntryCtrl',
 
   $scope.date = new Date();
 
-  // pre-populate form field & startup object with today's date
+  // pre-populate form field & startup object
   $scope.startup = {
     "date": $scope.date,
     "lastContact": $scope.date,
@@ -21,7 +22,7 @@ app.controller('addEntryCtrl',
     "founders": {}
   };
 
-  // pre-populate form field & founder object with today's date
+  // pre-populate form field & founder object
   $scope.founder = {
     "date": $scope.date,
     "lastContact": $scope.date,
@@ -32,6 +33,12 @@ app.controller('addEntryCtrl',
   $scope.entry = {
     startup: true,
     founder: false,
+  };
+
+  // if you change the "pre-populate form fields" above, you must also update this object
+  var objectLength = {
+    startup: 4,
+    founder: 3
   };
 
   // gets invoked on form submission
@@ -45,40 +52,52 @@ app.controller('addEntryCtrl',
 
     // Check whether we are adding a startup, a founder, or both
     function setAddEntry() {
-      if ((Object.keys(founder).length > 3) && (Object.keys(startup).length > 3)) {
+      if ((Object.keys(startup).length > objectLength.startup) && (Object.keys(founder).length > objectLength.founder)) {
 
         // newStartupAndFounder(startup, founder);
         return {
           then: function(callback) {
 
-            // create a new Startup and Founder
+            // create a new startup and founder
             callback(newStartup(startup), newFounder(founder));
+
+            // on submit, redirect use to newly-created startup profile page
+            $state.go('startup', {startupId: $scope.startupId});
           },
         };
-      } else if (Object.keys(startup).length > 3) {
+      } else if (Object.keys(startup).length > objectLength.startup) {
         return {
           then: function(callback) {
 
             // create a new startup
             callback(newStartup(startup));
+
+            console.log('startup fired')
+            // on submit, redirect use to newly-created startup profile page
+            $state.go('startup', {startupId: $scope.startupId});
           },
         };
-      } else if (Object.keys(founder).length > 3) {
+      } else if (Object.keys(founder).length > objectLength.founder) {
         return {
           then: function(callback) {
 
             // create a new founder
             callback(null, newFounder(founder));
+            
+            console.log('founder fired')
+            // on submit, redirect use to newly-created startup profile page
+            $state.go('founder', {founderId: $scope.founderId});
+
           },
         };
       } else {
-        console.log('Errror');
+        console.log('Error');
       }
     };
 
-    // Invoke setAddEtnry with a promise
+    // Invoke setAddEntry with a promise
     setAddEntry().then(function(startupId, founderId) {
-      if ((Object.keys(founder).length > 3) && (Object.keys(startup).length > 3)) {
+      if ((Object.keys(startup).length > objectLength.startup) && (Object.keys(founder).length > objectLength.founder)) {
 
         // add startupId and founderId reference to each others record
         pushStartupIdToFounder(startupId, founderId);
@@ -86,10 +105,8 @@ app.controller('addEntryCtrl',
       } else {
         return;
       }
-
       return;
     },
-
     function(error) {
       console.log(error);
     });
@@ -104,17 +121,19 @@ app.controller('addEntryCtrl',
     var newStartupRef = startupRef.push(startup);
 
     // grab unique reference id for startup
-    var startUpRefId = newStartupRef.key();
+    var startupRefId = newStartupRef.key();
 
-    // newStartupRef.on('value', function(dataSnapshot) {
-      // console.log('Success');
-    // },
+    newStartupRef.on('value', function(dataSnapshot) {
+      console.log('Success');
+    },
 
-    // function(error) {
-    //   console.log('Error :' + error);
-    // });
+    function(error) {
+      console.log('Error :' + error);
+    });
 
-    return startUpRefId;
+    // assign the new startup ID to $scope and return it
+    $scope.startupId = startupRefId;
+    return startupRefId;
   };
 
   // create a new founder in the database
@@ -127,14 +146,15 @@ app.controller('addEntryCtrl',
     // grab founders unique reference id
     var founderRefId = newFounderRef.key();
 
-    // newFounderRef.on('value', function(dataSnapshot) {
-      // console.log('Success');
-    // },
+    newFounderRef.on('value', function(dataSnapshot) {
+      console.log('Success');
+    },
+    function(error) {
+      console.log('Error :' + error);
+    });
 
-    // function(error) {
-    //   console.log('Error :' + error);
-    // });
-
+    // assign the new founder ID to $scope and return it
+    $scope.founderId = founderRefId;
     return founderRefId;
   };
 
@@ -166,4 +186,4 @@ app.controller('addEntryCtrl',
     $scope.addEntry.$setUntouched();
     $scope.addEntry.$setPristine();
   };
-});
+}]);

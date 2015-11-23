@@ -98,7 +98,7 @@
   <div class="table-margin">
     <div class="panel panel-default" ng-show="angelListSelection" ng-hide="angelCompany.id || angelListSelection == null">
       <div class="panel-heading">
-        <h3 class="panel-title">Confirm AngelList Company:</h3>
+        <h3 class="panel-title">Multiple results... click the correct logo below:</h3>
       </div>
       <div class="panel-body">
         <div class="col-xs-12 col-sm-6 col-md-2" ng-repeat="company in angelListSelection">
@@ -113,10 +113,10 @@
       </div>
       <div class="panel-body">
         <p>
-          <strong>Website: </strong><a href="{{ angelCompany.company_url }}">{{ angelCompany.company_url || "Not Available" }}</a>
+          <strong>Website: </strong><a href="{{ angelCompany.company_url }}" target="_blank">{{ angelCompany.company_url || "Not Available" }}</a>
         </p>
         <p>
-          <strong>Crunchbase: </strong><a href="{{ angelCompany.crunchbase_url }}">{{ angelCompany.crunchbase_url || "Not Available" }}</a>
+          <strong>Crunchbase: </strong><a href="{{ angelCompany.crunchbase_url }}" target="_blank">{{ angelCompany.crunchbase_url || "Not Available" }}</a>
         </p>
         <div class="row">
           <div class="col-md-4">
@@ -131,10 +131,10 @@
           </div>
           <div class="col-md-4">
             <p>
-              <a href="{{ angelCompany.angellist_url }}" ng-show="angelCompany.angellist_url"><i class="fa fa-angellist fa-lg"></i></a>
-              <a href="{{ angelCompany.facebook_url }}" ng-show="angelCompany.facebook_url"><i class="fa fa-facebook-official fa-lg"></i></a>
-              <a href="{{ angelCompany.linkedin_url }}" ng-show="angelCompany.linkedin_url"><i class="fa fa-linkedin-square fa-lg"></i></a>
-              <a href="{{ angelCompany.twitter_url }}" ng-show="angelCompany.twitter_url"><i class="fa fa-twitter-square fa-lg"></i></a>
+              <a href="{{ angelCompany.angellist_url }}" ng-show="angelCompany.angellist_url" target="_blank"><i class="fa fa-angellist fa-lg"></i></a>
+              <a href="{{ angelCompany.facebook_url }}" ng-show="angelCompany.facebook_url" target="_blank"><i class="fa fa-facebook-official fa-lg"></i></a>
+              <a href="{{ angelCompany.linkedin_url }}" ng-show="angelCompany.linkedin_url" target="_blank"><i class="fa fa-linkedin-square fa-lg"></i></a>
+              <a href="{{ angelCompany.twitter_url }}" ng-show="angelCompany.twitter_url" target="_blank"><i class="fa fa-twitter-square fa-lg"></i></a>
             </p>
           </div>
         </div>
