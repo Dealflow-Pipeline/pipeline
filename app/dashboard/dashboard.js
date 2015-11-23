@@ -70,10 +70,7 @@ app.controller('dashboardCtrl', [
 
         // show success message
         growl.success('Note status updated', {ttl: 3000 });
-
-
       },
-
       function(error) {
         console.log('Error:', error);
       });
