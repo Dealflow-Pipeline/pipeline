@@ -45,6 +45,7 @@ app.controller('profileFounderCtrl', [
 
   // update individual notes object via x-editable
   $scope.updateNotes = function(update) {
+    console.log(update);
     $scope.notesIndex.$save(update).then(function(ref) {
       ref.key() === update.$id; // true
       growl.success('Note updated!', {ttl: 3000});
@@ -142,11 +143,10 @@ app.controller('profileFounderCtrl', [
       console.log(error);
     });
   };
-  
+
   // controls 'Add Note' on profile page; pass through info listed in the row
   $scope.open = function(founderName, founderId) {
     noteInfoFactory.getRow(null, null, founderName, founderId);
   };
 
 }]);
-
