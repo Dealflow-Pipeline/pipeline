@@ -9,20 +9,21 @@
 
 /* Navbar pill button */
 #btn-pill {
-	text-decoration: none;
-	color: #5c5c5c;
-	font-size: 16px;
-	font-weight: bold;
-	padding: 8px 30px !important;
-	line-height: 32px;
-	height: auto;
-	display: inline-block;
-	text-align: center;
-	background-color: #f8f8f8;
+	font-size: 14px;
+  font-weight: bold;
+  margin: 5px 0;
+  padding: 8px 30px !important;
+  line-height: 32px;
+  height: auto;
+  display: inline-block;
+  text-align: center;
+  background-color: #f8f8f8;
   border: 2px solid #03b9a0;
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   border-radius: 30px;
+  text-decoration: none;
+  color: #5c5c5c;
 }
 
 #btn-pill:hover {
@@ -38,14 +39,19 @@
   cursor: pointer;
 }
 
+.nav-col {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 @media (min-width: 768px) {
   .logo {
     max-width: 235px;
   }
-}
-
-.navbar {
-  min-height: 80px;
+  #btn-pill {
+  	font-size: 16px;
+    margin: 15px 0;
+  }
 }
 
 @media (min-width: 768px) {
@@ -55,6 +61,10 @@
 
   .navbar-right {
     margin-right: 0px;
+  }
+
+  .navbar {
+    min-height: 80px;
   }
 }
 

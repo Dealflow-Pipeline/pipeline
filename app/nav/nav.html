@@ -1,32 +1,15 @@
 <nav class="navbar navbar-default">
 
-  <div class="container" style="display:flex; justify-content:space-between" ng-init="currTab = 'dashboard'">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-left">
+  <div class="container" ng-init="currTab = 'dashboard'">
+    <div class="col-md-6 col-sm-6 col-xs-6 nav-col">
       <a ui-sref="dashboard">
         <img src="assets/venture-route-logo-small.png" class="logo" />
       </a>
     </div>
-    <span class="navbar-text navbar-right">
+    <span class="col-md-6 col-sm-6 col-xs-6 nav-col" style="text-align:right">
       <a ui-sref="addEntry" id="btn-pill" aria-hidden="true">
         Add New
       </a>
     </span>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-
-    <!-- <ul class="nav navbar-nav navbar-right">
-      <li>
-        <a ui-sref="addEntry" id="btn-pill" aria-hidden="true">
-          Add New
-        </a>
-      </li> -->
-      <!-- <li ng-click="logout()">
-        <a ui-sref="login">
-          <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-          Logout
-        </a>
-      </li> -->
-    <!-- </ul> -->
   </div>
 </nav>
