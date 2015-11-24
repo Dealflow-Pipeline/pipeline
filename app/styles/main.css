@@ -7,30 +7,71 @@
   background-color: #78FA89;
 }
 
+/* Navbar pill button */
+#btn-pill {
+	font-size: 14px;
+  font-weight: bold;
+  margin: 5px 0;
+  padding: 8px 30px !important;
+  line-height: 32px;
+  height: auto;
+  display: inline-block;
+  text-align: center;
+  background-color: #f8f8f8;
+  border: 2px solid #03b9a0;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: #5c5c5c;
+}
+
+#btn-pill:hover {
+  color: #f8f8f8 !important;
+	background-color: #03b9a0 !important;
+}
+
+/* Navbar styling */
+
 .logo {
-  max-width: 235px;
-  margin-top: -10px;
-  margin-left: 10px;
+  max-width: 150px;
+  margin-top: 5px;
   cursor: pointer;
 }
 
-.navbar {
-  min-height: 80px;
+.nav-col {
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
-.navbar-form {
-  margin-top: 18px;
-  margin-bottom: 18px;
+@media (min-width: 768px) {
+  .logo {
+    max-width: 235px;
+  }
+  #btn-pill {
+  	font-size: 16px;
+    margin: 15px 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-text {
+    margin-right: 0px;
+  }
+
+  .navbar-right {
+    margin-right: 0px;
+  }
+
+  .navbar {
+    min-height: 80px;
+  }
 }
 
 /* Full height background color for active tab */
 .navbar-nav > li > a {
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-
-.navbar-right > li {
-  font-size: 16px;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 
 /* Cursor override for removed href's */
@@ -51,7 +92,17 @@
   margin: 0px 8px;
 }
 
+/* Dashboard main panel heading */
+.panel-heading-main {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 
+/* Dashboard search bar */
+.input-group {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 /* profile page */
 
 .profile-pic {
@@ -197,7 +248,7 @@
 
 /* Table heading color */
 th, th a {
-  color: #03b9a0;
+  color: #5c5c5c;
 }
 
 /* Link color */
