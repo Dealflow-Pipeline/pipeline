@@ -255,3 +255,13 @@ th, th a {
 a, .editable-click, a.editable-click{
   color: #03b9a0;
 }
+
+/* Angellist social icons */
+p.social-angel > a {
+  color: #333333;
+}
+
+p.social-angel > a > img {
+  max-width: 18px;
+  border-radius: 3px;
+}
