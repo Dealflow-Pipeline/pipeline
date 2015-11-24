@@ -1,4 +1,4 @@
-var app = angular.module('founder', ['ui.bootstrap']);
+var app = angular.module('founder', ['ui.bootstrap', 'angular-growl']);
 
 // sets theme for xeditable
 app.run(function(editableOptions) {
@@ -11,7 +11,8 @@ app.controller('profileFounderCtrl', [
   'noteInfoFactory',
   'fullContactPersonFactory',
   '$stateParams',
-  function($scope, founderProfileFactory, noteInfoFactory, fullContactPersonFactory, $stateParams) {
+  'growl',
+  function($scope, founderProfileFactory, noteInfoFactory, fullContactPersonFactory, $stateParams, growl) {
     var founderId = $stateParams.founderId;
 
     // callback for firebase set method
@@ -19,6 +20,7 @@ app.controller('profileFounderCtrl', [
       if (error) {
         console.log('Error: ' + error);
       } else {
+        growl.success($scope.name + ' updated', {ttl: 3000});
         console.log('Synchronization succeeded');
       }
     };
@@ -27,6 +29,7 @@ app.controller('profileFounderCtrl', [
     $scope.updateFounder = function(update) {
       var founderRef = new Firebase('https://pipeline8.firebaseio.com/founder/');
       var founder = founderRef.child(founderId);
+      $scope.name = update.name;
       founder.set(update, onComplete);
     };
 

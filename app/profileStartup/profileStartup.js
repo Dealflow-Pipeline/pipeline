@@ -22,7 +22,7 @@ app.controller('profileStartupCtrl', [
     if (error) {
       console.log('Error: ' + error);
     } else {
-      growl.success($scope.name + ' updated', {ttl: 3000 });
+      growl.success($scope.name + ' updated', {ttl: 3000});
       console.log('Synchronization succeeded');
     }
   };
@@ -31,6 +31,7 @@ app.controller('profileStartupCtrl', [
   $scope.updateStartup = function(update) {
     var startupRef = new Firebase('https://pipeline8.firebaseio.com/startup/');
     var startup = startupRef.child(startupId);
+    $scope.name = update.name;
     startup.set(update, onComplete);
   };
 
@@ -62,7 +63,7 @@ app.controller('profileStartupCtrl', [
     {text: '-'},
     {text: 'Agriculture'},
     {text: 'Clean Technology'},
-    {text: 'Consumer"'},
+    {text: 'Consumer'},
     {text: 'Cryptocurrency'},
     {text: 'Design'},
     {text: 'Education'},
