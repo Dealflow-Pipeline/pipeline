@@ -9,21 +9,10 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.css">
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.css">
+    <link rel="stylesheet" href="bower_components/angular-growl-v2/build/angular-growl.min.css">
     <link rel="stylesheet" href="styles/main.css">
-
-
-
-    <!-- page css files -->
-    <!-- <link href="assets/charts/css/font-awesome.min.css" rel="stylesheet">
-    <link href="assets/charts/css/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
-    <link href="assets/charts/css/fullcalendar.css" rel="stylesheet">
-    <link href="assets/charts/css/jquery.gritter.css" rel="stylesheet">     -->
-
-    <!-- main style -->
-    <!-- <link href="assets/charts/css/style2.css" rel="stylesheet"> -->
-
 
     <!-- Dependencies -->
     <script src="bower_components/lodash/lodash.js"></script>
@@ -34,6 +23,7 @@
     <script src="bower_components/firebase/firebase.js"></script>
     <script src="bower_components/angularfire/dist/angularfire.js"></script>
     <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
+    <script src="bower_components/angular-growl-v2/build/angular-growl.min.js"></script>
     <script src="bower_components/moment/moment.js"></script>
     <script src="bower_components/angular-moment/angular-moment.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
@@ -46,6 +36,7 @@
 
     <div ng-include="'nav/nav.html'"></div>
 
+    <div growl></div>
     <div class="container">
       <div ui-view></div>
     </div>
