@@ -3,17 +3,16 @@
     <h4>VC Venture's Portfolio & Pipeline Snapshot</h4>
   </div>
   <div class="panel-body">
-    <!-- Filter for startups or founders -->
 
+    <!-- Filter for startups or founders -->
     <div class="input-group">
       <span class="input-group-addon"><i class="fa fa-search-plus"></i></span>
       <input type="search" ng-model="q" class="form-control input-lg" id="dashboard-filter" placeholder="Filter for startup, founder, or note">
     </div>
-
   </div>
 
 <!-- Funnel pie charts -->
-  <div class="table-margin">
+  <div class="table-margin" ng-hide="q.length > 0">
     <div class="panel panel-default" ng-controller="dashboardCtrl">
       <div class="panel-heading">
         <h3 class="panel-title">Your Pipeline</h3>

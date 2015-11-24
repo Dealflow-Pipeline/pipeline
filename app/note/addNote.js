@@ -61,7 +61,7 @@ app.controller('addNoteCtrl', [
         $uibModalInstance.close();
 
         // show success message
-        growl.success('Note successfully been added!', {title: entity.startupName || entity.founderName, ttl: 3000 });
+        growl.success('Note successfully added!', {title: entity.startupName || entity.founderName, ttl: 3000 });
         // growl.globalTimeToLive(1000);
 
         // read the data located at our newly-created startup
