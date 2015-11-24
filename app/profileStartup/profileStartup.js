@@ -29,7 +29,7 @@ app.controller('profileStartupCtrl', [
 
   // update startup object via x-editable
   $scope.updateStartup = function(update) {
-    
+
     // set all fields that have no values to null so we don't send undefined to firebase
     for (key in update) {
       if (update[key] === undefined) {
@@ -45,6 +45,7 @@ app.controller('profileStartupCtrl', [
 
   // update individual notes object via x-editable
   $scope.updateNotes = function(update) {
+    console.log(update);
     $scope.notesIndex.$save(update).then(function(ref) {
       ref.key() === update.$id; // true
       growl.success('Note updated!', {ttl: 3000});

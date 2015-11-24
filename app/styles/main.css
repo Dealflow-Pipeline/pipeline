@@ -8,7 +8,7 @@
 }
 
 /* Navbar pill button */
-#btn-pill {
+.btn.pill {
 	font-size: 14px;
   font-weight: bold;
   margin: 5px 0;
@@ -26,9 +26,20 @@
   color: #5c5c5c;
 }
 
-#btn-pill:hover {
+.btn.pill:hover {
   color: #f8f8f8 !important;
 	background-color: #03b9a0 !important;
+}
+
+.btn.btn-profile {
+	font-size: 14px;
+  font-weight: bold;
+  margin: 3px 0;
+  padding: 5px 10px !important;
+  line-height: 28px;
+  height: auto;
+  text-align: center;
+  text-decoration: none;
 }
 
 /* Navbar styling */
@@ -48,7 +59,7 @@
   .logo {
     max-width: 235px;
   }
-  #btn-pill {
+  .btn.pill {
   	font-size: 16px;
     margin: 15px 0;
   }
@@ -264,4 +275,9 @@ p.social-angel > a {
 p.social-angel > a > img {
   max-width: 18px;
   border-radius: 3px;
+}
+
+.notes-table-form > button {
+  border: none;
+  background: transparent;
 }
