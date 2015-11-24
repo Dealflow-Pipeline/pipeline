@@ -18,17 +18,17 @@
         <div class="col-xs-12 col-sm-6 col-md-4">
           <dl class="dl-horizontal">
             <dt>Tagline:</dt>
-            <dd editable-text="startup.tagline">{{ startup.tagline }}</dd>
+            <dd editable-text="startup.tagline">{{ startup.tagline || 'empty' }}</dd>
           </dl>
 
           <dl class="dl-horizontal">
             <dt>Industry:</dt>
-            <dd editable-select="startup.industry" e-ng-options="s.text as s.text for s in industries">{{ startup.industry }}</dd>
+            <dd editable-select="startup.industry" e-ng-options="s.text as s.text for s in industries">{{ startup.industry || 'empty' }}</dd>
           </dl>
 
           <dl class="dl-horizontal">
             <dt>Location:</dt>
-            <dd editable-text="startup.location">{{ startup.location }}</dd>
+            <dd editable-text="startup.location">{{ startup.location || 'empty' }}</dd>
           </dl>
 
           <dl class="dl-horizontal">
@@ -40,15 +40,15 @@
         <div class="col-xs-12 col-sm-6 col-md-4">
           <p>
             <strong>Lead Partner: </strong>
-            <span editable-text="startup.partner">{{ startup.partner }}</span>
+            <span editable-text="startup.partner">{{ startup.partner || 'empty' }}</span>
           </p>
           <p>
             <strong>Pipeline Step: </strong>
-            <span editable-select="startup.pipeline" e-ng-options="s.text as s.text for s in pipelines">{{ startup.pipeline }}</span>
+            <span editable-select="startup.pipeline" e-ng-options="s.text as s.text for s in pipelines">{{ startup.pipeline || 'empty' }}</span>
           </p>
           <p>
             <strong>Intro Source: </strong>
-            <span editable-text="startup.source">{{ startup.source }}</span>
+            <span editable-text="startup.source">{{ startup.source || 'empty' }}</span>
           </p>
           <p>
             <strong>Intro Date:</strong> {{ startup.date | amDateFormat:'MM/DD/YYYY' }}

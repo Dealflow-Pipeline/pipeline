@@ -1,4 +1,4 @@
-var app = angular.module('startup', ['ui.bootstrap', 'xeditable', 'firebase', 'angular-growl']);
+var app = angular.module('startup', ['ui.bootstrap', 'angular-growl']);
 
 // sets theme for xeditable
 app.run(function(editableOptions) {
@@ -29,6 +29,14 @@ app.controller('profileStartupCtrl', [
 
   // update startup object via x-editable
   $scope.updateStartup = function(update) {
+    
+    // set all fields that have no values to null so we don't send undefined to firebase
+    for (key in update) {
+      if (update[key] === undefined) {
+        update[key] = null;
+      }
+    }
+
     var startupRef = new Firebase('https://pipeline8.firebaseio.com/startup/');
     var startup = startupRef.child(startupId);
     $scope.name = update.name;
@@ -39,8 +47,8 @@ app.controller('profileStartupCtrl', [
   $scope.updateNotes = function(update) {
     $scope.notesIndex.$save(update).then(function(ref) {
       ref.key() === update.$id; // true
+      growl.success('Note updated!', {ttl: 3000});
     },
-
     function(error) {
       console.log('Error:', error);
     });
