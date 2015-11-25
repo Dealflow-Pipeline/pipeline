@@ -8,7 +8,6 @@ app.factory('fullContactPersonFactory', [
 
   return {
     getPerson: function(personEmail) {
-      // var  url = "https://api.fullcontact.com/v2/person.json?email=" + personEmail + "&apiKey=" + apiKeys.fullContact;
       var url = 'https://api.fullcontact.com/v2/person.json?email=bart@fullcontact.com&apiKey=' + apiKeys.fullContact;
       var defer = $q.defer();
       var url = url;
@@ -18,7 +17,7 @@ app.factory('fullContactPersonFactory', [
         }
       }).success(function(data) {
         defer.resolve(data)
-      }).error(function(errro) {
+      }).error(function(error) {
         console.log(error);
       });
 
