@@ -158,8 +158,8 @@
               <th>Phone</th>
             </tr>
           </thead>
-          <tbody ng-repeat="founder in founders">
-            <tr>
+          <tbody>
+            <tr ng-repeat="founder in founders">
               <td>{{ founder.lastContact | amDateFormat:'MM/DD/YYYY' }}</td>
               <td><a ui-sref="founder({ founderId: founder.$id })">{{ founder.name }}</a></td>
               <td>{{ founder.email }}</td>
