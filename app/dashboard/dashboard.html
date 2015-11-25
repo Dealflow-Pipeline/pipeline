@@ -70,7 +70,17 @@
         <h3 class="panel-title">Startups</h3>
       </div>
       <div class="panel-body">
-        <p>You currently have {{ startups.length }} startups in your pipeline. They are:</p>
+        <span class="col-xs-12 col-md-6 col-sm-6">There are currently {{startups.length}} startups in your pipeline.</span>
+        <span class="col-sm-6 col-md-6" style="text-align:right">Rows: <input type="text" class="pagination-rows" ng-model="rowCount.startups" maxlength="4" size="4" />
+          <dir-pagination-controls 
+            boundary-links="true" 
+            max-size="5" 
+            direction-links="false" 
+            boundary-links="true" 
+            auto-hide="true" 
+            pagination-id="dashboard.startups">
+          </dir-pagination-controls>
+        </span>
       </div>
 
       <div class="table-responsive">
@@ -96,8 +106,9 @@
             </tr>
           </thead>
 
-          <tbody ng-repeat="(key, startup) in startups | orderBy : sortType.startups : sortReverse.startups | filter: q as results">
-            <tr>
+
+          <tbody>
+            <tr dir-paginate="startup in startups | orderBy : sortType.startups : sortReverse.startups | itemsPerPage: rowCount.startups | filter: q as results" pagination-id="dashboard.startups">
               <td class="col-sm-2" am-time-ago="startup.lastContact"></td>
               <td class="col-sm-2">
                 <a href="#/startup/{{startup.$id}}/profile">{{startup.name}}</a>
@@ -136,7 +147,17 @@
         <h3 class="panel-title">Founders</h3>
       </div>
       <div class="panel-body">
-        <p>You currently have {{ founders.length }} in your pipeline. They are:</p>
+        <span class="col-xs-12 col-md-6 col-sm-6">There are currently {{founders.length}} founders in your pipeline.</span>
+        <span class="col-sm-6 col-md-6" style="text-align:right">Rows: <input type="text" ng-model="rowCount.founders" maxlength="4" size="4" class="pagination-rows" />
+          <dir-pagination-controls 
+            boundary-links="true" 
+            max-size="5" 
+            direction-links="false" 
+            boundary-links="true" 
+            auto-hide="true" 
+            pagination-id="dashboard.founders">
+          </dir-pagination-controls>
+        </span>
       </div>
 
       <div class="table-responsive">
@@ -153,7 +174,7 @@
             <th class="col-sm-1" style="text-align: center">Note</th>
           </tr>
           <tbody>
-            <tr ng-repeat="(key, founder) in founders | orderBy : sortType : sortReverse.founders | filter : q as results">
+            <tr dir-paginate="founder in founders | orderBy : sortType.founders : sortReverse.founders | itemsPerPage: rowCount.founders | filter: q as results" pagination-id="dashboard.founders">
               <td class="col-sm-2" am-time-ago="founder.lastContact"></td>
               <td class="col-sm-3"><a href="#/founder/{{founder.$id}}/profile">{{ founder.name }}</a></td>
               <td class="col-sm-3">{{ founder.startup }}</td>
@@ -175,10 +196,16 @@
         <h3 class="panel-title">Notes</h3>
       </div>
       <div class="panel-body">
-        <span class="col-xs-14 col-md-8">You currently have {{notes.length}} notes. They are:</span>
-        <span class="col-xs-4 col-md-2" style="text-align:right">Rows: <input type="text" ng-model="rowCount.notes" maxlength="4" size="4" /></span>
-        <span class="col-md-2">
-          <dir-pagination-controls></dir-pagination-controls>
+        <span class="col-xs-12 col-md-6 col-sm-6">You currently have {{notes.length}} notes. They are:</span>
+        <span class="col-sm-6 col-md-6" style="text-align:right">Rows: <input type="text" ng-model="rowCount.notes" maxlength="4" size="4" class="pagination-rows" />
+          <dir-pagination-controls 
+            boundary-links="true" 
+            max-size="5" 
+            direction-links="false" 
+            boundary-links="true" 
+            auto-hide="true" 
+            pagination-id="dashboard.notes">
+          </dir-pagination-controls>
         </span>
       </div>
       <div class="table-responsive">
@@ -196,9 +223,8 @@
               <th class="col-sm-4"><a href="#" ng-click="sortType.notes='note'; sortReverse.notes = !sortReverse.notes; $event.preventDefault()">Note <span ng-show="sortType.notes === 'note' && !sortReverse.notes" class="fa fa-caret-down"></span><span ng-show="sortType.notes === 'note' && sortReverse.notes" class="fa fa-caret-up"></span></a></th>
             </tr>
           </thead>
-
-          <tbody dir-paginate="note in notes | orderBy : sortType.notes : sortReverse.notes | itemsPerPage: rowCount.notes | filter: q as results">
-            <tr>
+          <tbody>
+            <tr dir-paginate="note in notes | orderBy : sortType.notes : sortReverse.notes | itemsPerPage: rowCount.notes | filter: q as results" pagination-id="dashboard.notes">
               <td class="col-sm-2" am-time-ago="note.date"></td>
               <td class="col-sm-2"><a href="#/startup/{{note.startupId}}/profile">{{ note.startup }}</a></td>
               <td class="col-sm-2"><a href="#/founder/{{note.founderId}}/profile">{{ note.founder }}</a></td>
@@ -213,4 +239,5 @@
       </div>
     </div>
   </div>
+
 </div>
