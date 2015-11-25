@@ -69,9 +69,9 @@
       <div class="panel-heading">
         <h3 class="panel-title">Startups</h3>
       </div>
-<div class="panel-body">
+      <div class="panel-body">
         <span class="col-xs-12 col-md-6 col-sm-6">There are currently {{startups.length}} startups in your pipeline.</span>
-        <span class="col-sm-6 col-md-6" style="text-align:right">Rows: <input type="text" ng-model="rowCount.startups" maxlength="4" size="4" style="margin-right:13px" />
+        <span class="col-sm-6 col-md-6" style="text-align:right">Rows: <input type="text" class="pagination-rows" ng-model="rowCount.startups" maxlength="4" size="4" />
           <dir-pagination-controls 
             boundary-links="true" 
             max-size="5" 
@@ -148,7 +148,7 @@
       </div>
       <div class="panel-body">
         <span class="col-xs-12 col-md-6 col-sm-6">There are currently {{founders.length}} founders in your pipeline.</span>
-        <span class="col-sm-6 col-md-6" style="text-align:right">Rows: <input type="text" ng-model="rowCount.founders" maxlength="4" size="4" style="margin-right:13px" />
+        <span class="col-sm-6 col-md-6" style="text-align:right">Rows: <input type="text" ng-model="rowCount.founders" maxlength="4" size="4" class="pagination-rows" />
           <dir-pagination-controls 
             boundary-links="true" 
             max-size="5" 
@@ -197,7 +197,7 @@
       </div>
       <div class="panel-body">
         <span class="col-xs-12 col-md-6 col-sm-6">You currently have {{notes.length}} notes. They are:</span>
-        <span class="col-sm-6 col-md-6" style="text-align:right">Rows: <input type="text" ng-model="rowCount.notes" maxlength="4" size="4" style="margin-right:13px" />
+        <span class="col-sm-6 col-md-6" style="text-align:right">Rows: <input type="text" ng-model="rowCount.notes" maxlength="4" size="4" class="pagination-rows" />
           <dir-pagination-controls 
             boundary-links="true" 
             max-size="5" 

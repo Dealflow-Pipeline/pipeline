@@ -252,6 +252,15 @@
   color: #03b9a0;
 }
 
+.pagination-rows {
+  margin-right: 13px;
+  border-radius: 3px;
+  border: .08em solid #DDD;
+  padding-bottom: 6px;
+  margin-top: 1px;
+  margin-right:13px
+}
+
 /* font awesome icon size */
 .fa-icon {
   font-size: 1.5em;
