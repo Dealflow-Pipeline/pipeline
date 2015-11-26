@@ -12,6 +12,7 @@ var app = angular.module('pipeline', [
   'angelListFactory',
   'fullContactFactory',
   'privateKeysFactory',
+  'phoneFilter',
   // 'auth',
   'ui.router',
   'ui.bootstrap',
