@@ -15,7 +15,7 @@
 
         <div class="col-md-4">
           <p><strong>Email: </strong><span editable-email="founder.email">{{ founder.email || 'empty' }}</span></p>
-          <p><strong>Phone: </strong><span editable-tel="founder.phone">{{ founder.phone || 'empty' }}</span></p>
+          <p><strong>Phone: </strong><span editable-tel="founder.phone">{{ founder.phone || 'empty' | tel }}</span></p>
           <p><strong>Intro Date:</strong> {{ founder.date | amDateFormat:'MM/DD/YYYY' }}</p>
           <p><strong>Last Contact:</strong> {{ founder.lastContact | amDateFormat:'MM/DD/YYYY' }}</p>
         </div>
