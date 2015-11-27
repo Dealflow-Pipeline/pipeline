@@ -5,93 +5,94 @@ app.factory('startupsTableFactory', [
   '$firebaseArray',
   function($q, $firebaseArray) {
 
-  // instantiate new firebase object
-  var startupRef = new Firebase('https://pipeline8.firebaseio.com/startup');
+    // instantiate new firebase object
+    var startupRef = new Firebase('https://pipeline8.firebaseio.com/startup');
 
-  var startups = [];
+    var startups = [];
 
-  return {
-    getStartups: function() {
+    return {
+      getStartups: function() {
 
-      var defer = $q.defer();
+        var defer = $q.defer();
 
-      // when the startup object changes or updates
-      startupRef.on("value", function(data) {
+        // when the startup object changes or updates
+        startupRef.on('value', function(data) {
 
-        // firebase snapshot of our startup database
-        startups = $firebaseArray(startupRef)
+          // firebase snapshot of our startup database
+          startups = $firebaseArray(startupRef);
 
-        // on resolve, pass the startups array to our controller
-        defer.resolve(startups);
-      });
+          // on resolve, pass the startups array to our controller
+          defer.resolve(startups);
+        });
 
-      // return the deferred object's promise property
-      return defer.promise;
-    }
-  }
-}]);
+        // return the deferred object's promise property
+        return defer.promise;
+      },
+    };
+  },
+]);
 
 app.factory('foundersTableFactory', [
   '$q',
   '$firebaseArray',
   function($q, $firebaseArray) {
 
-  // instantiate new firebase object
-  var founderRef = new Firebase('https://pipeline8.firebaseio.com/founder');
+    // instantiate new firebase object
+    var founderRef = new Firebase('https://pipeline8.firebaseio.com/founder');
 
-  var founders = [];
+    var founders = [];
 
-  return {
+    return {
 
-    getFounders: function() {
+      getFounders: function() {
 
-      var defer = $q.defer();
+        var defer = $q.defer();
 
-      // when the founder object changes or updates
-      founderRef.on("value", function(data) {
+        // when the founder object changes or updates
+        founderRef.on('value', function(data) {
 
-        // firebase snapshot of our founder database
-        founders = $firebaseArray(founderRef)
+          // firebase snapshot of our founder database
+          founders = $firebaseArray(founderRef);
 
-        // on resolve, pass the founders array to our controller
-        defer.resolve(founders)
-      });
+          // on resolve, pass the founders array to our controller
+          defer.resolve(founders);
+        });
 
-      // return the deferred object's promise property
-      return defer.promise;
-    }
-  }
-}]);
+        // return the deferred object's promise property
+        return defer.promise;
+      },
+    };
+  },
+]);
 
 app.factory('notesTableFactory', [
   '$q',
   '$firebaseArray',
   function($q, $firebaseArray) {
 
-  // instantiate new firebase object
-  var noteRef = new Firebase('https://pipeline8.firebaseio.com/notes');
+    // instantiate new firebase object
+    var noteRef = new Firebase('https://pipeline8.firebaseio.com/notes');
 
-  var notes = [];
+    var notes = [];
 
-  return {
-    getNotes: function() {
+    return {
+      getNotes: function() {
 
-      var defer = $q.defer();
+        var defer = $q.defer();
 
-      // when the startup object changes or updates
-      noteRef.on("value", function(data) {
+        // when the startup object changes or updates
+        noteRef.on('value', function(data) {
 
-        // firebase snapshot of our startup database
-        notes = $firebaseArray(noteRef)
+          // firebase snapshot of our startup database
+          notes = $firebaseArray(noteRef);
 
-        // on resolve, pass the startups array to our controller
-        defer.resolve(notes);
-      });
+          // on resolve, pass the startups array to our controller
+          defer.resolve(notes);
+        });
 
-      // return the deferred object's promise property
-      return defer.promise;
-    }
-  }
-}]);
-
-
+        // return the deferred object's promise property
+        return defer.promise;
+      },
+    };
+  },
+]);
