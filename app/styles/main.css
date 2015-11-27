@@ -76,6 +76,7 @@
 
   .navbar {
     min-height: 80px;
+    /*margin: 10px;*/
   }
 }
 
@@ -107,6 +108,10 @@
 .panel-heading-main {
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.panel-margin {
+  margin-top: 100px;
 }
 
 /* Dashboard search bar */
