@@ -94,7 +94,7 @@ app.factory('founderProfileFactory', [
         var profile = founderRef.child(founderId);
 
         profile.on('value', function(data) {
-          
+
           // assign data reponse to _founderData variable
           _founderData = data.val();
           defer.resolve(_founderData);
