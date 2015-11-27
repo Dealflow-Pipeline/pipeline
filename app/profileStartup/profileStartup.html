@@ -81,7 +81,7 @@
       </div>
       <div class="panel-body">
         <div class="col-xs-12 col-sm-6 col-md-2" ng-repeat="company in angelListSelection">
-          <img src="{{ company.pic }}" alt="No logo for: {{ company.name }}" class="img-thumbnail logo-pic" ng-click="getAngelCompany(company.id)" style="cursor:pointer">
+          <img ng-src="{{ company.pic }}" alt="No logo for: {{ company.name }}" class="img-thumbnail logo-pic" ng-click="getAngelCompany(company.id)" style="cursor:pointer">
         </div>
       </div>
     </div>
