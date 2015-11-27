@@ -160,8 +160,12 @@ app.controller('addEntryCtrl', [
 
   // sets startupId on founder record
   var pushStartupIdToFounder = function(startupId, founderRefId) {
-    var founderRef = new Firebase('https://pipeline8.firebaseio.com/founder/' + founderRefId + '/startups/' + startupId);
-    founderRef.set(true);
+    var founderRef = new Firebase('https://pipeline8.firebaseio.com/founder/' + founderRefId + '/startup');
+    founderRef.set($scope.startup.name);
+
+    // this code below is used in situations where a founder belongs to multiple startups; for our purposes (MVP), we assume a founder can belong to only one startup at a time
+    // var founderRef = new Firebase('https://pipeline8.firebaseio.com/founder/' + founderRefId + '/startups/' + startupId);
+    // founderRef2.set(true);
   };
 
   // sets founderId on startup record
