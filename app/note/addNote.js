@@ -1,147 +1,145 @@
 var app = angular.module('addNote', ['firebase', 'ui.bootstrap', 'angular-growl']);
 
 app.controller('addNoteCtrl', [
-  '$scope', 
-  '$firebaseObject', 
-  'noteInfoFactory', 
-  '$uibModalInstance', 
+  '$scope',
+  '$firebaseObject',
+  'noteInfoFactory',
+  '$uibModalInstance',
   'entity',
-  'growl', 
+  'growl',
   function($scope, $firebaseObject, noteInfoFactory, $uibModalInstance, entity, growl) {
-  
-  var noteRef = new Firebase('https://pipeline8.firebaseio.com/notes');
-  
-  // set our initial note object
-  $scope.note = {
-    "date": new Date(),
-    "status": "No status",
-    "startup": entity.startupName || null,
-    "startupId": entity.startupId || null,
-    "founder": entity.founderName || null,
-    "founderId": entity.founderId || null
-  };
+    var noteRef = new Firebase('https://pipeline8.firebaseio.com/notes');
 
-  // will determine whether the startup or founder form field gets displayed (and pre-populated)
-  $scope.entry = {
-    startup: false,
-    founder: false
-  };
-  if ($scope.note.startupId) {
-    $scope.entry.startup = true;
-  }
-  if ($scope.note.founderId) {
-    $scope.entry.founder = true;
-  }
-
-  // modal 'cancel' button
-  $scope.cancel = function() {
-    $uibModalInstance.dismiss('cancel');
-  };
-
-
-  // invoke on form submission
-  $scope.add = function(note) {
-
-    // if user submits a note, parse the form and submit the data
-    if (!!note.text) {
-      var newNoteRef = noteRef.push({
-        "date": note.date.toISOString(),
-        "note": note.text,
-        "status": note.status || null,
-        "startup": entity.startupName || null,
-        "startupId": entity.startupId || null,
-        "founder": entity.founderName || null,
-        "founderId": entity.founderId || null
-      }, 
-
-      // on success of data hitting the server
-      function () {
-
-        // close the modal
-        $uibModalInstance.close();
-
-        // show success message
-        growl.success('Note successfully added!', {title: entity.startupName || entity.founderName, ttl: 3000 });
-        // growl.globalTimeToLive(1000);
-
-        // read the data located at our newly-created startup
-        newNoteRef.once('value', function(noteSnapshot) {
-
-          // cache the note key
-          var noteId = noteSnapshot.key()
-
-          if (!!entity.startupId) {
-
-            // instantiate a reference to the nested notes object inside of startup
-            var startupObjNote = new Firebase('https://pipeline8.firebaseio.com/startup/' + entity.startupId + '/notes/' + noteId);
-
-            // set the nested noteId to true
-            startupObjNote.set(true);
-
-            // instantiate a reference to the lastContact key of the startup object
-            var startupObjLastContact = new Firebase('https://pipeline8.firebaseio.com/startup/' + entity.startupId + '/lastContact');
-
-            startupObjLastContact.once('value', function(date) {
-
-              // if this note's date is more recent, set the startup's lastContact date to same date as the note
-              if (Date.parse(note.date) > Date.parse(date.val())) {
-                startupObjLastContact.set(note.date.toISOString());
-              }
-            }, function(errorObj) {
-              console.log('Read Failed: ' + errorObj.code);
-            });
-          }
-
-          if (!!entity.founderId) {
-
-            // instantiate a reference to the nested notes object inside of founder
-            var founderObjNote = new Firebase('https://pipeline8.firebaseio.com/founder/' + entity.founderId + '/notes/' + noteId);
-
-            // set the noteId (thats inside this founder obj) to true
-            founderObjNote.set(true);
-
-            // instantiate a reference to lastContact property of the founder object
-            var founderObjLastContact = new Firebase('https://pipeline8.firebaseio.com/founder/' + entity.founderId + '/lastContact');
-
-            founderObjLastContact.once('value', function(date) {
-
-              // if this note's date is more recent, set the founder's lastContact date to same date as the note
-              if (Date.parse(note.date) > Date.parse(date.val())) {
-                founderObjLastContact.set(note.date.toISOString());
-              }
-            }, function(errorObj) {
-              console.log('Read Failed: ' + errorObj.code);
-            });
-
-          }
-
-          // clear the form upon submission
-          $scope.clear();
-        });
-      });
-    }
-  }
-
-  $scope.clear = function() {
-
-    // reset note object
+    // set our initial note object
     $scope.note = {
-      date: new Date(),
-      "status": "No status"
+      'date': new Date(),
+      'status': 'No status',
+      'startup': entity.startupName || null,
+      'startupId': entity.startupId || null,
+      'founder': entity.founderName || null,
+      'founderId': entity.founderId || null,
     };
 
-    // make form fields untouched and pristine
-    $scope.addNote.$setUntouched();
-    $scope.addNote.$setPristine();
-  };
+    // will determine whether the startup or founder form field gets displayed (and pre-populated)
+    $scope.entry = {
+      startup: false,
+      founder: false,
+    };
 
-}]);
+    if ($scope.note.startupId) {
+      $scope.entry.startup = true;
+    }
 
+    if ($scope.note.founderId) {
+      $scope.entry.founder = true;
+    }
 
+    // modal 'cancel' button
+    $scope.cancel = function() {
+      $uibModalInstance.dismiss('cancel');
+    };
 
+    // invoke on form submission
+    $scope.add = function(note) {
 
+      // if user submits a note, parse the form and submit the data
+      if (!!note.text) {
+        var newNoteRef = noteRef.push({
+          'date': note.date.toISOString(),
+          'note': note.text,
+          'status': note.status || null,
+          'startup': entity.startupName || null,
+          'startupId': entity.startupId || null,
+          'founder': entity.founderName || null,
+          'founderId': entity.founderId || null
+        },
 
+        // on success of data hitting the server
+        function() {
 
+          // close the modal
+          $uibModalInstance.close();
+
+          // show success message
+          growl.success('Note successfully added!', {title: entity.startupName || entity.founderName, ttl: 3000 });
+
+          // growl.globalTimeToLive(1000);
+
+          // read the data located at our newly-created startup
+          newNoteRef.once('value', function(noteSnapshot) {
+
+            // cache the note key
+            var noteId = noteSnapshot.key()
+
+            if (!!entity.startupId) {
+
+              // instantiate a reference to the nested notes object inside of startup
+              var startupObjNote = new Firebase('https://pipeline8.firebaseio.com/startup/' + entity.startupId + '/notes/' + noteId);
+
+              // set the nested noteId to true
+              startupObjNote.set(true);
+
+              // instantiate a reference to the lastContact key of the startup object
+              var startupObjLastContact = new Firebase('https://pipeline8.firebaseio.com/startup/' + entity.startupId + '/lastContact');
+
+              startupObjLastContact.once('value', function(date) {
+
+                // if this note's date is more recent, set the startup's lastContact date to same date as the note
+                if (Date.parse(note.date) > Date.parse(date.val())) {
+                  startupObjLastContact.set(note.date.toISOString());
+                }
+              },
+
+              function(errorObj) {
+                console.log('Read Failed: ' + errorObj.code);
+              });
+            }
+
+            if (!!entity.founderId) {
+
+              // instantiate a reference to the nested notes object inside of founder
+              var founderObjNote = new Firebase('https://pipeline8.firebaseio.com/founder/' + entity.founderId + '/notes/' + noteId);
+
+              // set the noteId (thats inside this founder obj) to true
+              founderObjNote.set(true);
+
+              // instantiate a reference to lastContact property of the founder object
+              var founderObjLastContact = new Firebase('https://pipeline8.firebaseio.com/founder/' + entity.founderId + '/lastContact');
+
+              founderObjLastContact.once('value', function(date) {
+
+                // if this note's date is more recent, set the founder's lastContact date to same date as the note
+                if (Date.parse(note.date) > Date.parse(date.val())) {
+                  founderObjLastContact.set(note.date.toISOString());
+                }
+              },
+
+              function(errorObj) {
+                console.log('Read Failed: ' + errorObj.code);
+              });
+            }
+
+            // clear the form upon submission
+            $scope.clear();
+          });
+        });
+      }
+    };
+
+    $scope.clear = function() {
+
+      // reset note object
+      $scope.note = {
+        date: new Date(),
+        'status': 'No status',
+      };
+
+      // make form fields untouched and pristine
+      $scope.addNote.$setUntouched();
+      $scope.addNote.$setPristine();
+    };
+  },
+]);
 
 // THE CODE BELOW WILL HANDLE SITUATIONS WHERE USER CREATES A NOTE BUT WE DONT YET KNOW THE STARTUP OR FOUNDER ID THUS WE MUST ITERATE OVER STARTUP/FOUNDER OBJECT UNTIL WE LOCATE THE CORRECT ENTRY... THEN WE UPDATE THE DATABASE... THIS CODE IS NO LONGER NEEDED BC WE KNOW THE IDS OF EACH TABLE ROW
 

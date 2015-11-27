@@ -122,7 +122,7 @@
           <p>
             <strong>Social Avatars: </strong><br />
             <span ng-repeat="picUrl in fullContact.photos">
-              <img src="{{ picUrl.url }}" class="img-thumbnail profile-pic" />
+              <img ng-src="{{ picUrl.url }}" class="img-thumbnail profile-pic" />
             </span>
           </p>
         </div>

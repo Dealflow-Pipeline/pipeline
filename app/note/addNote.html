@@ -1,69 +1,66 @@
-<!-- <div ng-controller="addNoteCtrl"> -->
-<div>
-  <div class="modal-header">
-    <h3 class="modal-title">Add Note to {{note.startup || note.founder}}</h3>
-  </div>
+<div class="modal-header">
+  <h3 class="modal-title">Add Note to {{note.startup || note.founder}}</h3>
+</div>
 
-  <div class="modal-body">
-    <form name="addNote" ng-submit="add(note)" novalidate class="css-form form-horizontal">
+<div class="modal-body">
+  <form name="addNote" ng-submit="add(note)" novalidate class="css-form form-horizontal">
 
-      <!-- Date of entry -->
-      <div class="form-group">
-        <label class="col-sm-3 control-label">Date *</label>
-        <div class="col-sm-9">
-          <input type="date" class="form-control" autocomplete="on" ng-model="note.date" autofocus />
-        </div>
+    <!-- Date of entry -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Date *</label>
+      <div class="col-sm-9">
+        <input type="date" class="form-control" autocomplete="on" ng-model="note.date" autofocus />
       </div>
+    </div>
 
-      <!-- Startup name -->
-      <div class="form-group" ng-show="entry.startup">
-        <label class="col-sm-3 control-label">Startup Name *</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" ng-model="note.startup" disabled />
-        </div>
+    <!-- Startup name -->
+    <div class="form-group" ng-show="entry.startup">
+      <label class="col-sm-3 control-label">Startup Name *</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" ng-model="note.startup" disabled />
       </div>
+    </div>
 
-      <!-- Founder name -->
-      <div class="form-group" ng-show="entry.founder">
-        <label class="col-sm-3 control-label">Founder Name *</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" ng-model="note.founder" disabled />
-        </div>
+    <!-- Founder name -->
+    <div class="form-group" ng-show="entry.founder">
+      <label class="col-sm-3 control-label">Founder Name *</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" ng-model="note.founder" disabled />
       </div>
+    </div>
 
-      <!-- Hidden fields: startupId & founderId -->
-      <input type="hidden" class="form-control" ng-model="note.startupId" value="note.startupId" disabled />
-      <input type="hidden" class="form-control" ng-model="note.founderId" value="note.founderId" disabled />
-  
-      <!-- Status -->
-      <div class="form-group">
-        <label class="col-sm-3 control-label">Status</label>
-        <div class="col-sm-9">
-          <select class="form-control" ng-model="note.status">
-            <option value="No status" selected>No status</option>
-            <option value="Past due">Past due</option>
-            <option value="Requires immediate action">Requires immediate action</option>
-            <option value="To do">To do</option>
-            <option value="Just a reminder">Just a reminder</option>
-            <option value="Completed">Completed</option>
-          </select>
-        </div>
+    <!-- Hidden fields: startupId & founderId -->
+    <input type="hidden" class="form-control" ng-model="note.startupId" value="note.startupId" disabled />
+    <input type="hidden" class="form-control" ng-model="note.founderId" value="note.founderId" disabled />
+
+    <!-- Status -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Status</label>
+      <div class="col-sm-9">
+        <select class="form-control" ng-model="note.status">
+          <option value="No status" selected>No status</option>
+          <option value="Past due">Past due</option>
+          <option value="Requires immediate action">Requires immediate action</option>
+          <option value="To do">To do</option>
+          <option value="Just a reminder">Just a reminder</option>
+          <option value="Completed">Completed</option>
+        </select>
       </div>
+    </div>
 
-      <!-- Note -->
-      <div class="form-group">
-        <label class="col-sm-3 control-label">Note *</label>
-        <div class="col-sm-9">
-          <textarea class="form-control" rows="3" ng-model="note.text"></textarea>
-        </div>
+    <!-- Note -->
+    <div class="form-group">
+      <label class="col-sm-3 control-label">Note *</label>
+      <div class="col-sm-9">
+        <textarea class="form-control" rows="3" ng-model="note.text"></textarea>
       </div>
+    </div>
 
-      <!-- Submit Button -->
-      <div class="form-group modal-footer">
-        <input type="button" class="btn btn-warning" value="Cancel" ng-click="cancel()" />
-        <input type="submit" class="btn btn-primary btn-lg" value="Add Note" />
-      </div>
+    <!-- Submit Button -->
+    <div class="form-group modal-footer">
+      <input type="button" class="btn btn-warning" value="Cancel" ng-click="cancel()" />
+      <input type="submit" class="btn btn-primary btn-lg" value="Add Note" />
+    </div>
 
-    </form>
-  </div>
+  </form>
 </div>
