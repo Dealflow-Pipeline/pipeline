@@ -1,18 +1,12 @@
 # pipeline
-Contact management tool for early stage investors
+Contact management tool for angel investors, venture capitalists, and early stage investors.
 
+Designed, architected, and developed by [Ryan](https://github.com/oggimusprime "Ryan Haase") and [Benjamin](https://github.com/benjaminhoffman "Benjamin Hoffman")
 
-
-BEN'S NOTES:
-* use this for addEntry... city, state: https://github.com/vskosp/vsGoogleAutocomplete
 
 
 TO DO HERE:
-* how to install and start server
-* clean up directory layout (below)
-* setup API route chart
-* add details of firebase
-* discuss tech stack
+* any details of firebase
 * link to any blog post
 * screenshots of product
 * screenshots of mockups
@@ -56,12 +50,16 @@ Getting Startup
 │   ├   ├── addNoteFactory.js
 │   ├   ├── angelListFactory.js
 │   ├   ├── dashboardFactory.js
+│   ├   ├── fullContactFactory.js
+│   ├   ├── phoneFilter.js
 │   ├   ├── profileFactory.js
 │   └── dashboard
 │   ├   ├── dashboard.html
 │   ├   ├── dashboard.js
 │   └── env
 │   ├   ├── config.js
+│   └── footer
+│   ├   ├── footer.html
 │   └── home
 │   ├   ├── home.html
 │   ├   ├── home.js
@@ -87,54 +85,88 @@ Getting Startup
 ├── .gitignore
 ├── bower.json
 ├── npm-debug.log
+├── pipeline8-export_nov27
 └── README.md
 ```
 
 Firebase Data Structure:
 
 ```
-  {
-    "startups": {
-      "unique_id": {
-        "name": "startup's name",
-        "date": "date_as_ISOstring",
-        "lastContact": "date_as_ISOstring",
-        "founders": {
-          "unique_id": true,
-          "unique_id": true
-        },
-        "notes": {
-          "unique_id": true,
-          "unique_id": true
-        },
-        ...
-      }
+"founder" : {
+  "-K46Np9acFe-4UWSGJp0" : {
+    "date" : "2015-11-27T05:20:03.509Z",
+    "email" : "bastien@postmates.com",
+    "lastContact" : "2015-11-27T05:20:03.509Z",
+    "name" : "Bastian Lehmann",
+    "notes" : {
+      "-K46VJQ9NIyS-sjAjbIP" : true
     },
-    "founders": {
-      "unique_id": {
-        "name": "founder's name",
-        "date": "date_as_ISOstring",
-        "lastContact": "date_as_ISOstring",
-        "startups": {
-          "unique_id": true,
-          "unique_id": true
-        },
-        "notes": {
-          "unique_id": true,
-          "unique_id": true
-        },
-        ...
-      }
+    "startup" : "Postmates"
+  },
+  "-K46P9wgKRnSZTUI15dn" : {
+    "date" : "2015-11-27T05:23:39.783Z",
+    "email" : "leah@taskrabbit.com",
+    "lastContact" : "2015-11-27T05:52:23.666Z",
+    "name" : "Leah Busque",
+    "notes" : {
+      "-K46V8WQnQ3Y5ZJ_X2rw" : true
     },
-    "notes": {
-      "unique_id": {
-        "note": "string",
-        "date": "date_as_ISOstring",
-        "startupId": true,
-        "founderId": true
-       },
-        ...
-    }
+    "startup" : "TaskRabbit"
   }
+},
+"notes" : {
+  "-K46TkcDa4oXAj9eX68j" : {
+    "date" : "2015-11-26T05:46:12.966Z",
+    "note" : "Met w/ founder.  Really nice guy.  Will sched follow up call later this month",
+    "startup" : "TaskRabbit",
+    "startupId" : "-K46P9w2sUZQ7-vqqpLi",
+    "status" : "No status"
+  },
+  "-K46TsSlShC0E7PO-4RB" : {
+    "date" : "2015-11-24T05:47:19.947Z",
+    "note" : "Schedule follow up call",
+    "startup" : "Thumbtack",
+    "startupId" : "-K46RgAMjpdnBdD2ZhJX",
+    "status" : "Past due"
+  }
+},
+"startup" : {
+  "-K46Np9B4_R_3U6UMIYH" : {
+    "date" : "2015-11-21T05:20:03.509Z",
+    "founders" : {
+      "-K46Np9acFe-4UWSGJp0" : true
+    },
+    "industry" : "On-Demand",
+    "lastContact" : "2015-11-27T05:48:13.007Z",
+    "location" : "San Francisco, CA, USA",
+    "name" : "Postmates",
+    "notes" : {
+      "-K46UGnviCIPTijJ2ryT" : true
+    },
+    "partner" : "Ben",
+    "pipeline" : "2. Spoke with Team",
+    "source" : "Spark",
+    "tagline" : "On-demand delivery from every restaurant and store in your city.",
+    "website" : "https://postmates.com/"
+  },
+  "-K46P9w2sUZQ7-vqqpLi" : {
+    "date" : "2015-11-26T05:23:39.783Z",
+    "founders" : {
+      "-K46P9wgKRnSZTUI15dn" : true
+    },
+    "industry" : "On-Demand",
+    "lastContact" : "2015-11-26T05:46:12.966Z",
+    "location" : "San Francisco, CA, USA",
+    "name" : "TaskRabbit",
+    "notes" : {
+      "-K46TkcDa4oXAj9eX68j" : true
+    },
+    "partner" : "Ryan",
+    "pipeline" : "4. Due Diligence",
+    "source" : "Lightspeed",
+    "tagline" : "Live smarter by outsourcing household errands and skilled tasks to trusted people in your community.",
+    "website" : "https://www.taskrabbit.com/"
+  }
+}
 ```
 

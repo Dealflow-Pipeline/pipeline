@@ -1,0 +1,220 @@
+{
+  "founder" : {
+    "-K46Np9acFe-4UWSGJp0" : {
+      "date" : "2015-11-27T05:20:03.509Z",
+      "email" : "bastien@postmates.com",
+      "lastContact" : "2015-11-27T05:20:03.509Z",
+      "name" : "Bastian Lehmann",
+      "notes" : {
+        "-K46VJQ9NIyS-sjAjbIP" : true
+      },
+      "startup" : "Postmates"
+    },
+    "-K46P9wgKRnSZTUI15dn" : {
+      "date" : "2015-11-27T05:23:39.783Z",
+      "email" : "leah@taskrabbit.com",
+      "lastContact" : "2015-11-27T05:52:23.666Z",
+      "name" : "Leah Busque",
+      "notes" : {
+        "-K46V8WQnQ3Y5ZJ_X2rw" : true
+      },
+      "startup" : "TaskRabbit"
+    },
+    "-K46QmLdxls_VYq6tasW" : {
+      "date" : "2015-11-27T05:28:00.345Z",
+      "email" : "apoorva@instacart.com",
+      "lastContact" : "2015-11-27T05:50:58.900Z",
+      "name" : "Apoorva Mehta",
+      "notes" : {
+        "-K46UoQH1kmdQqZB--4p" : true
+      },
+      "startup" : "Instacart"
+    },
+    "-K46RgB47MdZxqDCRJTk" : {
+      "date" : "2015-11-27T05:35:28.386Z",
+      "email" : "marco@thumbtack.com",
+      "lastContact" : "2015-11-27T05:35:28.386Z",
+      "name" : "Marco Zappacosta",
+      "notes" : {
+        "-K46UcY63WDdhtNXuGcb" : true
+      },
+      "startup" : "Thumbtack"
+    },
+    "-K46TPIsD0jfd_N1ma-B" : {
+      "date" : "2015-11-27T05:43:11.011Z",
+      "email" : "tony@doordash.com",
+      "lastContact" : "2015-11-27T05:43:11.011Z",
+      "name" : "Tony Xu",
+      "notes" : {
+        "-K46UV-vwVo_ToZ3BHq8" : true
+      },
+      "startup" : "DoorDash"
+    }
+  },
+  "notes" : {
+    "-K46TkcDa4oXAj9eX68j" : {
+      "date" : "2015-11-26T05:46:12.966Z",
+      "note" : "Met w/ founder.  Really nice guy.  Will sched follow up call later this month",
+      "startup" : "TaskRabbit",
+      "startupId" : "-K46P9w2sUZQ7-vqqpLi",
+      "status" : "No status"
+    },
+    "-K46TsSlShC0E7PO-4RB" : {
+      "date" : "2015-11-24T05:47:19.947Z",
+      "note" : "Schedule follow up call",
+      "startup" : "Thumbtack",
+      "startupId" : "-K46RgAMjpdnBdD2ZhJX",
+      "status" : "Past due"
+    },
+    "-K46Tz2QevyfyNQ7cAg5" : {
+      "date" : "2015-11-21T05:47:41.864Z",
+      "note" : "Need to try product.  Order din for fam",
+      "startup" : "DoorDash",
+      "startupId" : "-K46TPIgTdn1YUhtRf99",
+      "status" : "Just a reminder"
+    },
+    "-K46UGnviCIPTijJ2ryT" : {
+      "date" : "2015-11-27T05:48:13.007Z",
+      "note" : "Spoke with team.  Great convo... Asked for follow up with more info about unit economics.... waiting for email.",
+      "startup" : "Postmates",
+      "startupId" : "-K46Np9B4_R_3U6UMIYH",
+      "status" : "To do"
+    },
+    "-K46ULcksI8hdwt00WX4" : {
+      "date" : "2015-11-27T05:49:27.909Z",
+      "note" : "Schedule meeting in office asap",
+      "startup" : "Instacart",
+      "startupId" : "-K46QmL-INeLxmv6vd-x",
+      "status" : "Requires immediate action"
+    },
+    "-K46UV-vwVo_ToZ3BHq8" : {
+      "date" : "2015-11-21T05:49:53.140Z",
+      "founder" : "Tony Xu",
+      "founderId" : "-K46TPIsD0jfd_N1ma-B",
+      "note" : "Spoke w/ Tony. Solid background.  Great business sense.",
+      "status" : "Completed"
+    },
+    "-K46UcY63WDdhtNXuGcb" : {
+      "date" : "2015-11-23T05:50:24.823Z",
+      "founder" : "Marco Zappacosta",
+      "founderId" : "-K46RgB47MdZxqDCRJTk",
+      "note" : "Had to reschedule meeting.  Need to ping EA to schedule new meeting.",
+      "status" : "Past due"
+    },
+    "-K46UoQH1kmdQqZB--4p" : {
+      "date" : "2015-11-27T05:50:58.900Z",
+      "founder" : "Apoorva Mehta",
+      "founderId" : "-K46QmLdxls_VYq6tasW",
+      "note" : "Don't forget to ask about growth metrics during next meeting/call.",
+      "status" : "Just a reminder"
+    },
+    "-K46V8WQnQ3Y5ZJ_X2rw" : {
+      "date" : "2015-11-27T05:52:23.666Z",
+      "founder" : "Leah Busque",
+      "founderId" : "-K46P9wgKRnSZTUI15dn",
+      "note" : "Spoke w/ Leah.  Great story and pain point.  Next step... meeting at her office.",
+      "status" : "Completed"
+    },
+    "-K46VJQ9NIyS-sjAjbIP" : {
+      "date" : "2015-11-26T05:53:21.917Z",
+      "founder" : "Bastian Lehmann",
+      "founderId" : "-K46Np9acFe-4UWSGJp0",
+      "note" : "Promised to visit office asap.  Meet the exec team, etc.",
+      "status" : "Requires immediate action"
+    }
+  },
+  "startup" : {
+    "-K46Np9B4_R_3U6UMIYH" : {
+      "date" : "2015-11-21T05:20:03.509Z",
+      "founders" : {
+        "-K46Np9acFe-4UWSGJp0" : true
+      },
+      "industry" : "On-Demand",
+      "lastContact" : "2015-11-27T05:48:13.007Z",
+      "location" : "San Francisco, CA, USA",
+      "name" : "Postmates",
+      "notes" : {
+        "-K46UGnviCIPTijJ2ryT" : true
+      },
+      "partner" : "Ben",
+      "pipeline" : "2. Spoke with Team",
+      "source" : "Spark",
+      "tagline" : "On-demand delivery from every restaurant and store in your city.",
+      "website" : "https://postmates.com/"
+    },
+    "-K46P9w2sUZQ7-vqqpLi" : {
+      "date" : "2015-11-26T05:23:39.783Z",
+      "founders" : {
+        "-K46P9wgKRnSZTUI15dn" : true
+      },
+      "industry" : "On-Demand",
+      "lastContact" : "2015-11-26T05:46:12.966Z",
+      "location" : "San Francisco, CA, USA",
+      "name" : "TaskRabbit",
+      "notes" : {
+        "-K46TkcDa4oXAj9eX68j" : true
+      },
+      "partner" : "Ryan",
+      "pipeline" : "4. Due Diligence",
+      "source" : "Lightspeed",
+      "tagline" : "Live smarter by outsourcing household errands and skilled tasks to trusted people in your community.",
+      "website" : "https://www.taskrabbit.com/"
+    },
+    "-K46QmL-INeLxmv6vd-x" : {
+      "date" : "2015-11-25T05:28:00.345Z",
+      "founders" : {
+        "-K46QmLdxls_VYq6tasW" : true
+      },
+      "id" : "-K46QmL-INeLxmv6vd-x",
+      "industry" : "On-Demand",
+      "lastContact" : "2015-11-27T05:49:27.909Z",
+      "location" : "San Francisco, CA, USA",
+      "name" : "Instacart",
+      "notes" : {
+        "-K46ULcksI8hdwt00WX4" : true
+      },
+      "partner" : "Ben",
+      "pipeline" : "1. Introduced",
+      "source" : "Kleiner",
+      "tagline" : "Same-day grocery delivery company delivering groceries and home essentials from a variety of local stores.",
+      "website" : "https://www.instacart.com/"
+    },
+    "-K46RgAMjpdnBdD2ZhJX" : {
+      "date" : "2015-11-27T05:35:28.386Z",
+      "founders" : {
+        "-K46RgB47MdZxqDCRJTk" : true
+      },
+      "id" : "-K46RgAMjpdnBdD2ZhJX",
+      "industry" : "Marketplace",
+      "lastContact" : "2015-11-27T05:35:28.386Z",
+      "location" : "San Francisco, CA, USA",
+      "name" : "Thumbtack",
+      "notes" : {
+        "-K46TsSlShC0E7PO-4RB" : true
+      },
+      "partner" : "Ryan",
+      "pipeline" : "3. Met Team",
+      "source" : "Jason",
+      "tagline" : "A consumer service that helps people accomplish their personal projects by hiring experienced professionals.",
+      "website" : "https://www.thumbtack.com/"
+    },
+    "-K46TPIgTdn1YUhtRf99" : {
+      "date" : "2015-11-27T05:43:11.011Z",
+      "founders" : {
+        "-K46TPIsD0jfd_N1ma-B" : true
+      },
+      "industry" : "On-Demand",
+      "lastContact" : "2015-11-27T05:43:11.011Z",
+      "location" : "San Francisco, CA, USA",
+      "name" : "DoorDash",
+      "notes" : {
+        "-K46Tz2QevyfyNQ7cAg5" : true
+      },
+      "partner" : "Ben",
+      "pipeline" : "2. Spoke with Team",
+      "source" : "Sequoia",
+      "tagline" : "We enable small businesses to provide its customers with local delivery services.",
+      "website" : "https://www.doordash.com/"
+    }
+  }
+}
