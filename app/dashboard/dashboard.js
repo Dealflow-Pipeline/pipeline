@@ -19,33 +19,33 @@ app.controller('dashboardCtrl', [
     $scope.rowCount = {
       startups: 10,
       notes: 10,
-      founders: 10
+      founders: 10,
     };
 
     // sets the default sort column
     $scope.sortType = {
       startups: 'pipeline',
       founders: 'lastContact',
-      notes: 'date'
+      notes: 'date',
     };
 
     // sets the table sort to ascending
     $scope.sortReverse = {
       startups: true,
       founders: true,
-      notes: true
+      notes: true,
     };
 
     // cache the number of startups at each pipeline step for our dashboard funnel
     $scope.pipelineCount = {
-      "1. Introduced": 0,
-      "2. Spoke with Team": 0,
-      "3. Met Team": 0,
-      "4. Due Diligence": 0,
-      "5. Invested": 0,
-      "6. Passed": 0,
-      "7. Never Met": 0
-    }
+      '1. Introduced': 0,
+      '2. Spoke with Team': 0,
+      '3. Met Team': 0,
+      '4. Due Diligence': 0,
+      '5. Invested': 0,
+      '6. Passed': 0,
+      '7. Never Met': 0,
+    };
 
     // set the default search/filter term
     $scope.searchTable = '';
@@ -58,6 +58,7 @@ app.controller('dashboardCtrl', [
         // show success message
         growl.success('Pipeline step updated for <b>' + update.name + '</b>', {ttl: 3000 });
       },
+
       function(error) {
         console.log('Error:', error);
       });
@@ -71,6 +72,7 @@ app.controller('dashboardCtrl', [
         // show success message
         growl.success('Note status updated', {ttl: 3000 });
       },
+
       function(error) {
         console.log('Error:', error);
       });
@@ -143,13 +145,12 @@ app.controller('dashboardCtrl', [
         data.forEach(function(startup, index) {
 
           // increment the appropriate pipeline counter for each startup in that step
-          $scope.pipelineCount[startup.pipeline]++
-        })
+          $scope.pipelineCount[startup.pipeline]++;
+        });
       });
-
     };
-    $scope.getStartups();
 
+    $scope.getStartups();
 
     // GET req for all founders; to populate our founder table
     $scope.getFounders = function() {
@@ -159,6 +160,7 @@ app.controller('dashboardCtrl', [
 
       });
     };
+
     $scope.getFounders();
 
     // GET req for all notes; to populate our notes table
@@ -168,10 +170,12 @@ app.controller('dashboardCtrl', [
         $scope.notes = data;
       });
     };
+
     $scope.getNotes();
 
     // controls addNote (+) symbol; pass through info listed in the row
     $scope.open = function(startupName, startupId, founderName, founderId) {
       noteInfoFactory.getRow(startupName, startupId, founderName, founderId);
     };
-  }]);
+  },
+]);
