@@ -48,19 +48,19 @@ var app = angular.module('pipeline', [
           loadStartupsTable: ['startupsTableFactory',
             function(startupsTableFactory) {
               return startupsTableFactory.getStartups();
-            }
+            },
           ],
           loadFoundersTable: ['foundersTableFactory',
             function(foundersTableFactory) {
               return foundersTableFactory.getFounders();
-            }
+            },
           ],
           loadNotesTable: ['notesTableFactory',
             function(notesTableFactory) {
-              return notesTableFactory.getNotes()
-            }
+              return notesTableFactory.getNotes();
+            },
           ],
-        }
+        },
       })
       .state('founder', {
         url: '/founder/:founderId/profile',
@@ -70,9 +70,9 @@ var app = angular.module('pipeline', [
           founderProfile: ['$stateParams', 'founderProfileFactory',
             function($stateParams, founderProfileFactory) {
               return founderProfileFactory.getFounder($stateParams.founderId);
-            }
-          ]
-        }
+            },
+          ],
+        },
       })
       .state('startup', {
         url: '/startup/:startupId/profile',
@@ -82,9 +82,9 @@ var app = angular.module('pipeline', [
           startupProfile: ['$stateParams', 'startupProfileFactory',
             function($stateParams, startupProfileFactory) {
               return startupProfileFactory.getStartup($stateParams.startupId);
-            }
-          ]
-        }
+            },
+          ],
+        },
       })
       .state('addEntry', {
         url: '/new',
