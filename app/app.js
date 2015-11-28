@@ -6,6 +6,7 @@ var app = angular.module('pipeline', [
   'startup',
   'addEntry',
   'addNote',
+  'nav',
   'profileFactory',
   'dashboardFactory',
   'addNoteFactory',

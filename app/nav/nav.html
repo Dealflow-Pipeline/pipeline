@@ -1,15 +1,12 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-
-  <div class="container" ng-init="currTab = 'dashboard'">
+<nav class="navbar navbar-default">
+  <div class="container">
     <div class="col-md-6 col-sm-6 col-xs-6 nav-col">
       <a ui-sref="dashboard">
         <img src="assets/venture-route-logo-small.png" class="logo" />
       </a>
     </div>
-    <span class="col-md-6 col-sm-6 col-xs-6 nav-col" style="text-align:right">
-      <a class="btn pill" ui-sref="addEntry" aria-hidden="true">
-        Add New
-      </a>
-    </span>
+    <div class="col-md-6 col-sm-6 col-xs-6 nav-col" ng-controller="navCtrl" style="text-align:right">
+      <a class="btn pill" ng-click="open()" aria-hidden="true">Add New</a>
+    </div>
   </div>
 </nav>
