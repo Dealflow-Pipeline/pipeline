@@ -1,166 +1,164 @@
-<div>
-  <div class="modal-header">
-    <h3 class="modal-title">Add New Startup or Founder</h3>
-  </div>
+<div class="modal-header">
+  <h3 class="modal-title">Add New Startup or Founder</h3>
+</div>
 
-  <div class="modal-body">
-    <form name="addEntry" ng-submit="add(startup, founder)" novalidate class="css-form form-horizontal" id="addEntry">
+<div class="modal-body">
+  <form name="addEntry" ng-submit="add(startup, founder)" novalidate class="css-form form-horizontal" id="addEntry">
 
-      <!-- Startup, Entrepreneur, or both -->
-      <div class="btn-group">
-        <label class="btn btn-primary" ng-model="entry.startup" uib-btn-checkbox>Startup</label>
-        <label class="btn btn-primary" ng-model="entry.founder" uib-btn-checkbox>Founder</label>
+    <!-- Startup, Entrepreneur, or both -->
+    <div class="btn-group">
+      <label class="btn btn-primary" ng-model="entry.startup" uib-btn-checkbox>Startup</label>
+      <label class="btn btn-primary" ng-model="entry.founder" uib-btn-checkbox>Founder</label>
+    </div>
+
+    <!-- Startup name -->
+    <div class="form-group" ng-show="entry.startup">
+      <label for="startup-name" class="col-sm-3 control-label">Startup Name *</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" ng-model="startup.name" placeholder="What is the startup's name?" />
       </div>
+    </div>
 
-      <!-- Startup name -->
-      <div class="form-group" ng-show="entry.startup">
-        <label for="startup-name" class="col-sm-3 control-label">Startup Name *</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" ng-model="startup.name" placeholder="What is the startup's name?" />
-        </div>
+    <!-- Tagline -->
+    <div class="form-group" ng-show="entry.startup">
+      <label for="tagline" class="col-sm-3 control-label">Tagline</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" ng-model="startup.tagline" placeholder="What is the startup's tagline?" />
       </div>
+    </div>
 
-      <!-- Tagline -->
-      <div class="form-group" ng-show="entry.startup">
-        <label for="tagline" class="col-sm-3 control-label">Tagline</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" ng-model="startup.tagline" placeholder="What is the startup's tagline?" />
-        </div>
+    <!-- Website -->
+    <div class="form-group" ng-show="entry.startup">
+      <label for="tagline" class="col-sm-3 control-label">Website</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" ng-model="startup.website" placeholder="What is the startup's website?" />
       </div>
+    </div>
 
-      <!-- Website -->
-      <div class="form-group" ng-show="entry.startup">
-        <label for="tagline" class="col-sm-3 control-label">Website</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" ng-model="startup.website" placeholder="What is the startup's website?" />
-        </div>
+    <!-- Lead Partner -->
+    <div class="form-group" ng-show="entry.startup">
+      <label for="partner" class="col-sm-3 control-label">Lead Partner *</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" ng-model="startup.partner" placeholder="Who is the lead partner at your firm?" />
       </div>
+    </div>
 
-      <!-- Lead Partner -->
-      <div class="form-group" ng-show="entry.startup">
-        <label for="partner" class="col-sm-3 control-label">Lead Partner *</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" ng-model="startup.partner" placeholder="Who is the lead partner at your firm?" />
-        </div>
+    <!-- Location -->
+    <div class="form-group" ng-show="entry.startup">
+      <label for="startup-location" class="col-sm-3 control-label">Location</label>
+      <div class="col-sm-9">
+        <input type="text"
+          class="form-control"
+          ng-model="startup.location"
+          vs-google-autocomplete="options"
+          ng-model="address"
+          name="address"
+          type="text"
+        />
       </div>
+    </div>
 
-      <!-- Location -->
-      <div class="form-group" ng-show="entry.startup">
-        <label for="startup-location" class="col-sm-3 control-label">Location</label>
-        <div class="col-sm-9">
-          <input type="text"
-            class="form-control"
-            ng-model="startup.location"
-            vs-google-autocomplete="options"
-            ng-model="address"
-            name="address"
-            type="text"
-          />
-        </div>
+    <!-- Industry -->
+    <div class="form-group" ng-show="entry.startup">
+      <label for="industry" class="col-sm-3 control-label">Industry</label>
+      <div class="col-sm-9">
+        <select class="form-control" ng-model="startup.industry">
+          <option value="-" ng-selected="true">-</option>
+          <option value="Agriculture">Agriculture</option>
+          <option value="Clean Technology">Clean Technology</option>
+          <option value="Consumer">Consumer</option>
+          <option value="Cryptocurrency">Cryptocurrency</option>
+          <option value="Design">Design</option>
+          <option value="Education">Education</option>
+          <option value="Energy">Energy</option>
+          <option value="Enterprise">Enterprise</option>
+          <option value="Entertainment">Entertainment</option>
+          <option value="Events">Events</option>
+          <option value="Fashion">Fashion</option>
+          <option value="Finance">Finance</option>
+          <option value="Hardware">Hardware</option>
+          <option value="Health & Wellness">Health & Wellness</option>
+          <option value="Health Care">Health Care</option>
+          <option value="Internet of Things">Internet of Things</option>
+          <option value="Life Sciences">Life Sciences</option>
+          <option value="Media">Media</option>
+          <option value="Mobile">Mobile</option>
+          <option value="Real Estate">Real Estate</option>
+          <option value="Retail">Retail</option>
+          <option value="Sports">Sports</option>
+          <option value="Travel">Travel</option>
+          <option value="Venture for Good">Venture for Good</option>
+        </select>
       </div>
+    </div>
 
-      <!-- Industry -->
-      <div class="form-group" ng-show="entry.startup">
-        <label for="industry" class="col-sm-3 control-label">Industry</label>
-        <div class="col-sm-9">
-          <select class="form-control" ng-model="startup.industry">
-            <option value="-" ng-selected="true">-</option>
-            <option value="Agriculture">Agriculture</option>
-            <option value="Clean Technology">Clean Technology</option>
-            <option value="Consumer">Consumer</option>
-            <option value="Cryptocurrency">Cryptocurrency</option>
-            <option value="Design">Design</option>
-            <option value="Education">Education</option>
-            <option value="Energy">Energy</option>
-            <option value="Enterprise">Enterprise</option>
-            <option value="Entertainment">Entertainment</option>
-            <option value="Events">Events</option>
-            <option value="Fashion">Fashion</option>
-            <option value="Finance">Finance</option>
-            <option value="Hardware">Hardware</option>
-            <option value="Health & Wellness">Health & Wellness</option>
-            <option value="Health Care">Health Care</option>
-            <option value="Internet of Things">Internet of Things</option>
-            <option value="Life Sciences">Life Sciences</option>
-            <option value="Media">Media</option>
-            <option value="Mobile">Mobile</option>
-            <option value="Real Estate">Real Estate</option>
-            <option value="Retail">Retail</option>
-            <option value="Sports">Sports</option>
-            <option value="Travel">Travel</option>
-            <option value="Venture for Good">Venture for Good</option>
-          </select>
-        </div>
+    <!-- Pipeline Step -->
+    <div class="form-group" ng-show="entry.startup">
+      <label for="pipeline" class="col-sm-3 control-label">Pipeline Step *</label>
+      <div class="col-sm-9">
+        <select class="form-control" ng-model="startup.pipeline">
+          <option value="-" ng-selected="true">-</option>
+          <option value="1. Introduced" ng-selected="true">1. Introduced</option>
+          <option value="2. Spoke with Team">2. Spoke with Team</option>
+          <option value="3. Met Team">3. Met Team</option>
+          <option value="4. Due Diligence">4. Due Diligence</option>
+          <option value="5. Invested">5. Invested</option>
+          <option value="6. Passed">6. Passed</option>
+          <option value="7. Never Met">7. Never Met</option>
+        </select>
       </div>
+    </div>
 
-      <!-- Pipeline Step -->
-      <div class="form-group" ng-show="entry.startup">
-        <label for="pipeline" class="col-sm-3 control-label">Pipeline Step *</label>
-        <div class="col-sm-9">
-          <select class="form-control" ng-model="startup.pipeline">
-            <option value="-" ng-selected="true">-</option>
-            <option value="1. Introduced" ng-selected="true">1. Introduced</option>
-            <option value="2. Spoke with Team">2. Spoke with Team</option>
-            <option value="3. Met Team">3. Met Team</option>
-            <option value="4. Due Diligence">4. Due Diligence</option>
-            <option value="5. Invested">5. Invested</option>
-            <option value="6. Passed">6. Passed</option>
-            <option value="7. Never Met">7. Never Met</option>
-          </select>
-        </div>
+    <!-- Intro Source -->
+    <div class="form-group" ng-show="entry.startup">
+      <label for="source" class="col-sm-3 control-label">Intro Source</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" ng-model="startup.source" placeholder="Who made an intro to this startup?" />
       </div>
+    </div>
 
-      <!-- Intro Source -->
-      <div class="form-group" ng-show="entry.startup">
-        <label for="source" class="col-sm-3 control-label">Intro Source</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" ng-model="startup.source" placeholder="Who made an intro to this startup?" />
-        </div>
+    <!-- Date of Introduction -->
+    <div class="form-group">
+      <label for="date" class="col-sm-3 control-label">Date of Intro *</label>
+      <div class="col-sm-9">
+        <input type="date" class="form-control" autocomplete="on" ng-model="startup.date" autofocus />
       </div>
+    </div>
 
-      <!-- Date of Introduction -->
-      <div class="form-group">
-        <label for="date" class="col-sm-3 control-label">Date of Intro *</label>
-        <div class="col-sm-9">
-          <input type="date" class="form-control" autocomplete="on" ng-model="startup.date" autofocus />
-        </div>
+    <!-- Date of Last Contact -->
+    <input type="hidden" class="form-control" autocomplete="on" ng-model="startup.lastContact" />
+
+
+    <h2 ng-show="entry.entrepreneur">Founder Information</h2>
+
+    <!-- Founder Name -->
+    <div class="form-group" ng-show="entry.founder">
+      <label for="founder-name" class="col-sm-3 control-label">Founder Name *</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" ng-model="founder.name" placeholder="What is the founder's name?" />
       </div>
+    </div>
 
-      <!-- Date of Last Contact -->
-      <input type="hidden" class="form-control" autocomplete="on" ng-model="startup.lastContact" />
-
-
-      <h2 ng-show="entry.entrepreneur">Founder Information</h2>
-
-      <!-- Founder Name -->
-      <div class="form-group" ng-show="entry.founder">
-        <label for="founder-name" class="col-sm-3 control-label">Founder Name *</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" ng-model="founder.name" placeholder="What is the founder's name?" />
-        </div>
+    <!-- Founder Email -->
+    <div class="form-group" ng-show="entry.founder">
+      <label for="founder-email" class="col-sm-3 control-label">Founder Email</label>
+      <div class="col-sm-9">
+        <input type="email" class="form-control" ng-model="founder.email" placeholder="What is the founder's email address?" />
       </div>
+    </div>
 
-      <!-- Founder Email -->
-      <div class="form-group" ng-show="entry.founder">
-        <label for="founder-email" class="col-sm-3 control-label">Founder Email</label>
-        <div class="col-sm-9">
-          <input type="email" class="form-control" ng-model="founder.email" placeholder="What is the founder's email address?" />
-        </div>
+    <!-- Founder Phone -->
+    <div class="form-group" ng-show="entry.founder">
+      <label for="founder-phone" class="col-sm-3 control-label">Founder Phone</label>
+      <div class="col-sm-9">
+        <input type="tel" class="form-control" ng-model="founder.phone" placeholder="What is the founder's phone number?" />
       </div>
+    </div>
 
-      <!-- Founder Phone -->
-      <div class="form-group" ng-show="entry.founder">
-        <label for="founder-phone" class="col-sm-3 control-label">Founder Phone</label>
-        <div class="col-sm-9">
-          <input type="tel" class="form-control" ng-model="founder.phone" placeholder="What is the founder's phone number?" />
-        </div>
-      </div>
-
-      <!-- Submit Button -->
-      <div class="form-group modal-footer">
-        <input type="button" class="btn btn-warning" value="Cancel" ng-click="cancel()" />
-        <input type="submit" class="btn btn-primary btn-lg" value="Add New" />
-      </div>
-    </form>
-  </div>
+    <!-- Submit Button -->
+    <div class="form-group modal-footer">
+      <input type="button" class="btn btn-warning" value="Cancel" ng-click="cancel()" />
+      <input type="submit" class="btn btn-primary btn-lg" value="Add New" />
+    </div>
+  </form>
 </div>
