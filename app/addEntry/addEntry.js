@@ -4,7 +4,8 @@ app.controller('addEntryCtrl', [
   '$scope',
   '$firebaseObject',
   '$state',
-  function($scope, $firebaseObject, $state) {
+  '$uibModalInstance',
+  function($scope, $firebaseObject, $state, $uibModalInstance) {
 
     // restricts the city autocomplete to USA only
     $scope.options = {
@@ -41,6 +42,12 @@ app.controller('addEntryCtrl', [
       founder: 3,
     };
 
+    // modal 'cancel' button
+    $scope.cancel = function() {
+      $uibModalInstance.dismiss('cancel');
+    };
+
+
     // gets invoked on form submission
     $scope.add = function(startup, founder) {
 
@@ -72,8 +79,6 @@ app.controller('addEntryCtrl', [
               // create a new startup
               callback(newStartup(startup));
 
-              console.log('startup fired');
-
               // on submit, redirect use to newly-created startup profile page
               $state.go('startup', {startupId: $scope.startupId});
             },
@@ -84,8 +89,6 @@ app.controller('addEntryCtrl', [
 
               // create a new founder
               callback(null, newFounder(founder));
-
-              console.log('founder fired');
 
               // on submit, redirect use to newly-created startup profile page
               $state.go('founder', {founderId: $scope.founderId});
@@ -116,6 +119,9 @@ app.controller('addEntryCtrl', [
 
       // on submit, clear the form
       $scope.clear();
+
+      // close the modal
+      $uibModalInstance.close();
     };
 
     // create a new startup in the database

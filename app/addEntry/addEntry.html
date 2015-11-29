@@ -1,7 +1,9 @@
-<div class="container">
-  <h1>Add Entry</h1>
-  <hr>
-  <div ng-controller="addEntryCtrl">
+<div>
+  <div class="modal-header">
+    <h3 class="modal-title">Add New Startup or Founder</h3>
+  </div>
+
+  <div class="modal-body">
     <form name="addEntry" ng-submit="add(startup, founder)" novalidate class="css-form form-horizontal" id="addEntry">
 
       <!-- Startup, Entrepreneur, or both -->
@@ -80,10 +82,8 @@
             <option value="Health Care">Health Care</option>
             <option value="Internet of Things">Internet of Things</option>
             <option value="Life Sciences">Life Sciences</option>
-            <option value="Marketplace">Marketplace</option>
             <option value="Media">Media</option>
             <option value="Mobile">Mobile</option>
-            <option value="On-Demand">On-Demand</option>
             <option value="Real Estate">Real Estate</option>
             <option value="Retail">Retail</option>
             <option value="Sports">Sports</option>
@@ -157,14 +157,10 @@
       </div>
 
       <!-- Submit Button -->
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <input type="submit" class="btn btn-primary btn-lg" value="Submit" />
-        </div>
+      <div class="form-group modal-footer">
+        <input type="button" class="btn btn-warning" value="Cancel" ng-click="cancel()" />
+        <input type="submit" class="btn btn-primary btn-lg" value="Add New" />
       </div>
-
-      <pre>startup = {{ startup | json }}</pre>
-      <pre>founder = {{ founder | json }}</pre>
     </form>
   </div>
 </div>
