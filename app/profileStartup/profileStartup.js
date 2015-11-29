@@ -154,24 +154,6 @@ app.controller('profileStartupCtrl', [
       });
     };
 
-    // Get notes via factory
-    $scope.getNotes = function(notes) {
-      startupProfileFactory.getNotes(notes).then(function(returnedData) {
-        $scope.notesIndex = returnedData;
-
-        // array to store notes specific to this startup
-        $scope.notes = [];
-
-        // search notesIndex for keys stored in notesArr and
-        // push associated record to $scope.notes
-        $scope.notesArr.forEach(function(name) {
-          if ($scope.notesIndex.$getRecord(name)) {
-            $scope.notes.push($scope.notesIndex.$getRecord(name));
-          }
-        });
-      });
-    };
-
     // Get founders via factory
     $scope.getFounders = function(founders) {
       startupProfileFactory.getFounders(founders).then(function(returnedData) {
