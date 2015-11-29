@@ -47,7 +47,6 @@ app.controller('addEntryCtrl', [
       $uibModalInstance.dismiss('cancel');
     };
 
-
     // gets invoked on form submission
     $scope.add = function(startup, founder) {
 
