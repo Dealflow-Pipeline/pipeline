@@ -45,11 +45,10 @@
 
     <!-- Location -->
     <div class="form-group" ng-show="entry.startup">
-      <label for="startup-location" class="col-sm-3 control-label">Location</label>
+      <label for="startup.location" class="col-sm-3 control-label">Location</label>
       <div class="col-sm-9">
         <input vs-google-autocomplete="options"
           ng-model="startup.location"
-          ng-model="address"
           name="address"
           type="text"
           class="form-control"/>
