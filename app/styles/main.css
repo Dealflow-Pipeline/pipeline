@@ -102,8 +102,9 @@
   padding-bottom: 10px;
 }
 
-.panel-margin {
-  margin-top: 100px;
+/* Prevent overlap of navbar over main content */
+body {
+  padding-top: 100px;
 }
 
 /* Dashboard search bar */
