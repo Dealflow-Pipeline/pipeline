@@ -1,4 +1,4 @@
-<div class="panel panel-default panel-margin">
+<div class="panel panel-default">
   <div class="panel-heading panel-heading-main">
     <h4>VC Venture's Portfolio & Pipeline Snapshot</h4>
   </div>
@@ -72,12 +72,12 @@
       <div class="panel-body">
         <span class="col-xs-12 col-md-6 col-sm-6">There are currently {{startups.length}} startups in your pipeline.</span>
         <span class="col-sm-6 col-md-6" style="text-align:right">Rows: <input type="text" class="pagination-rows" ng-model="rowCount.startups" maxlength="4" size="4" />
-          <dir-pagination-controls 
-            boundary-links="true" 
-            max-size="5" 
-            direction-links="false" 
-            boundary-links="true" 
-            auto-hide="true" 
+          <dir-pagination-controls
+            boundary-links="true"
+            max-size="5"
+            direction-links="false"
+            boundary-links="true"
+            auto-hide="true"
             pagination-id="dashboard.startups">
           </dir-pagination-controls>
         </span>
@@ -149,12 +149,12 @@
       <div class="panel-body">
         <span class="col-xs-12 col-md-6 col-sm-6">There are currently {{founders.length}} founders in your pipeline.</span>
         <span class="col-sm-6 col-md-6" style="text-align:right">Rows: <input type="text" ng-model="rowCount.founders" maxlength="4" size="4" class="pagination-rows" />
-          <dir-pagination-controls 
-            boundary-links="true" 
-            max-size="5" 
-            direction-links="false" 
-            boundary-links="true" 
-            auto-hide="true" 
+          <dir-pagination-controls
+            boundary-links="true"
+            max-size="5"
+            direction-links="false"
+            boundary-links="true"
+            auto-hide="true"
             pagination-id="dashboard.founders">
           </dir-pagination-controls>
         </span>
@@ -198,12 +198,12 @@
       <div class="panel-body">
         <span class="col-xs-12 col-md-6 col-sm-6">You currently have {{notes.length}} notes. They are:</span>
         <span class="col-sm-6 col-md-6" style="text-align:right">Rows: <input type="text" ng-model="rowCount.notes" maxlength="4" size="4" class="pagination-rows" />
-          <dir-pagination-controls 
-            boundary-links="true" 
-            max-size="5" 
-            direction-links="false" 
-            boundary-links="true" 
-            auto-hide="true" 
+          <dir-pagination-controls
+            boundary-links="true"
+            max-size="5"
+            direction-links="false"
+            boundary-links="true"
+            auto-hide="true"
             pagination-id="dashboard.notes">
           </dir-pagination-controls>
         </span>
@@ -239,5 +239,4 @@
       </div>
     </div>
   </div>
-
 </div>
