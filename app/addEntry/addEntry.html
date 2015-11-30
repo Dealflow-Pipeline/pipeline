@@ -45,16 +45,13 @@
 
     <!-- Location -->
     <div class="form-group" ng-show="entry.startup">
-      <label for="startup-location" class="col-sm-3 control-label">Location</label>
+      <label for="startup.location" class="col-sm-3 control-label">Location</label>
       <div class="col-sm-9">
-        <input type="text"
-          class="form-control"
+        <input vs-google-autocomplete="options"
           ng-model="startup.location"
-          vs-google-autocomplete="options"
-          ng-model="address"
           name="address"
           type="text"
-        />
+          class="form-control"/>
       </div>
     </div>
 
@@ -121,7 +118,7 @@
     <div class="form-group">
       <label for="date" class="col-sm-3 control-label">Date of Intro *</label>
       <div class="col-sm-9">
-        <input type="date" class="form-control" autocomplete="on" ng-model="startup.date" autofocus />
+        <input type="date" class="form-control" autocomplete="on" ng-model="startup.date" />
       </div>
     </div>
 
