@@ -7,43 +7,55 @@
   background-color: #78FA89;
 }
 
-/* Navbar pill button */
-.btn.pill {
-	font-size: 14px;
+/* Buttons */
+.btn {
+  font-size: 14px;
   font-weight: bold;
-  margin: 5px 0;
-  padding: 8px 30px;
-  line-height: 32px;
   height: auto;
-  display: inline-block;
-  text-align: center;
+  text-decoration: none;
+  background-color: #f8f8f8;
+  border: 2px solid #03b9a0;
+  color: #5c5c5c
+}
+
+.btn-success {
+  color: #ffffff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+
+.btn-danger {
+  color: #ffffff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+
+/* Navbar pill button */
+.pill {
+  margin: 6px 0;
+  padding: 8px 20px;
+  line-height: 24px;
   background-color: #f8f8f8;
   border: 2px solid #03b9a0;
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   border-radius: 30px;
-  text-decoration: none;
   color: #5c5c5c;
 }
 
-.btn.pill:hover {
+.pill:hover {
   color: #f8f8f8;
-	background-color: #03b9a0;
+  background-color: #03b9a0;
 }
 
-.btn.btn-profile {
-	font-size: 14px;
-  font-weight: bold;
+/* Profile buttons */
+.btn-profile {
   margin: 3px 0;
   padding: 5px 10px;
   line-height: 28px;
-  height: auto;
-  text-align: center;
-  text-decoration: none;
 }
 
 /* Navbar styling */
-
 .logo {
   max-width: 150px;
   margin-top: 5px;
@@ -53,31 +65,6 @@
 .nav-col {
   padding-left: 0;
   padding-right: 0;
-}
-
-@media (min-width: 768px) {
-  .logo {
-    max-width: 235px;
-  }
-  .btn.pill {
-  	font-size: 16px;
-    margin: 15px 0;
-  }
-}
-
-@media (min-width: 768px) {
-  .navbar-text {
-    margin-right: 0;
-  }
-
-  .navbar-right {
-    margin-right: 0;
-  }
-
-  .navbar {
-    min-height: 80px;
-    /*margin: 10px;*/
-  }
 }
 
 /* Full height background color for active tab */
@@ -112,8 +99,8 @@ body {
   margin-top: 5px;
   margin-bottom: 5px;
 }
-/* profile page */
 
+/* profile page */
 .profile-pic {
   width: 140px;
   height: 140px;
@@ -197,40 +184,6 @@ body {
   padding-left: 10px;
 }
 
-@media (min-width: 1000px) {
-  .col-lg-1st {
-      width: 24%;
-      float: left;
-  }
-  .col-lg-2nd {
-      width: 22%;
-      float: left;
-  }
-  .col-lg-3rd {
-      width: 20%;
-      float: left;
-  }
-  .col-lg-4th {
-      width: 18%;
-      float: left;
-  }
-  .col-lg-5th {
-      width: 16%;
-      float: left;
-  }
-  .vertical-align {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .vertical-align > [class^="col-"],
-  .vertical-align > [class*=" col-"] {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-}
-
 /* Pagination */
 .pagination {
   margin: 0;
@@ -290,5 +243,70 @@ p.social-angel > a > img {
 
 /* Puts the google places autocomplete dropdown results above the bootstrap modal 1050 zindex.*/
 .pac-container {
-    z-index: 1051 !important;
+  z-index: 1051 !important;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+  .logo {
+    max-width: 235px;
+  }
+
+  .pill {
+    font-size: 16px;
+    margin: 15px 0;
+    line-height: 32px;
+    padding: 8px 30px;
+  }
+
+  .navbar-text {
+    margin-right: 0;
+  }
+
+  .navbar-right {
+    margin-right: 0;
+  }
+
+  .navbar {
+    min-height: 80px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .col-lg-1st {
+    width: 24%;
+    float: left;
+  }
+
+  .col-lg-2nd {
+    width: 22%;
+    float: left;
+  }
+
+  .col-lg-3rd {
+    width: 20%;
+    float: left;
+  }
+
+  .col-lg-4th {
+    width: 18%;
+    float: left;
+  }
+
+  .col-lg-5th {
+    width: 16%;
+    float: left;
+  }
+
+  .vertical-align {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .vertical-align > [class^="col-"],
+  .vertical-align > [class*=" col-"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
