@@ -29,11 +29,11 @@
         <div class="col-xs-12 col-sm-3 col-md-2">
           <nav>
             <ul class="nav nav-stacked span2">
-              <li><button type="button" class="btn btn-profile btn-block" ng-show="!tableform.$visible" ng-click="tableform.$show()" style="background-color: #f8f8f8;border: 2px solid #03b9a0; color: #5c5c5c">Edit Profile</button></li>
+              <li><button type="button" class="btn btn-profile btn-block" ng-show="!tableform.$visible" ng-click="tableform.$show()">Edit Profile</button></li>
               <li><button type="submit" class="btn btn-profile btn-success btn-block" ng-show="tableform.$visible" ng-disabled="tableform.$waiting">Save</button></li>
               <li><button type="button" class="btn btn-profile btn-danger btn-block" ng-show="tableform.$visible" ng-disabled="tableform.$waiting" ng-click="tableform.$cancel()">Cancel</button></li>
-              <li ng-show="founder.email"><button type="button" class="btn btn-profile btn-block" ng-click="getFullContact(founder.email)" style="background-color: #f8f8f8;border: 2px solid #03b9a0; color: #5c5c5c">Get Profile</button></li>
-              <li><button type="button" class="btn btn-profile btn-block" ng-click="open(startup.name, startup.id)" style="background-color: #f8f8f8;border: 2px solid #03b9a0; color: #5c5c5c">Add Note</button></li>
+              <li ng-show="founder.email"><button type="button" class="btn btn-profile btn-block" ng-click="getFullContact(founder.email)">Get Profile</button></li>
+              <li><button type="button" class="btn btn-profile btn-block" ng-click="open(startup.name, startup.id)">Add Note</button></li>
             </ul>
           </nav>
         </div>
