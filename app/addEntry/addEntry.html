@@ -5,11 +5,27 @@
 <div class="modal-body">
   <form name="addEntry" ng-submit="add(startup, founder)" novalidate class="css-form form-horizontal" id="addEntry">
 
+
     <!-- Startup, Entrepreneur, or both -->
-    <div class="btn-group">
-      <label class="btn btn-primary" ng-model="entry.startup" uib-btn-checkbox>Startup</label>
-      <label class="btn btn-primary" ng-model="entry.founder" uib-btn-checkbox>Founder</label>
+    <div class="form-group">
+      <label for="type" class="col-sm-3 control-label"></label>
+      <div class="col-sm-9 btn-group">
+        <label class="btn btn-primary" ng-model="entry.startup" uib-btn-checkbox>Startup</label>
+        <label class="btn btn-primary" ng-model="entry.founder" uib-btn-checkbox>Founder</label>
+      </div>
     </div>
+
+    <!-- Date of Introduction -->
+    <div class="form-group">
+      <label for="date" class="col-sm-3 control-label">Date of Intro *</label>
+      <div class="col-sm-9">
+        <input type="date" class="form-control" autocomplete="on" ng-model="startup.date" />
+      </div>
+    </div>
+
+    <!-- [hidden] Date of Last Contact -->
+    <input type="hidden" class="form-control" autocomplete="on" ng-model="startup.lastContact" />
+
 
     <!-- Startup name -->
     <div class="form-group" ng-show="entry.startup">
@@ -29,7 +45,7 @@
 
     <!-- Website -->
     <div class="form-group" ng-show="entry.startup">
-      <label for="tagline" class="col-sm-3 control-label">Website</label>
+      <label for="website" class="col-sm-3 control-label">Website</label>
       <div class="col-sm-9">
         <input type="text" class="form-control" ng-model="startup.website" placeholder="What is the startup's website?" />
       </div>
@@ -114,19 +130,19 @@
       </div>
     </div>
 
-    <!-- Date of Introduction -->
-    <div class="form-group">
-      <label for="date" class="col-sm-3 control-label">Date of Intro *</label>
+    <!-- Start Founder Form -->
+
+    <hr ng-show="entry.founder">
+    <h2 ng-show="entry.founder">Founder Information</h2>
+
+    <!-- Startup name -->
+    <div class="form-group" ng-show="!entry.startup && entry.founder">
+      <label for="startup-name" class="col-sm-3 control-label">Startup Name *</label>
       <div class="col-sm-9">
-        <input type="date" class="form-control" autocomplete="on" ng-model="startup.date" />
+        <input type="text" class="form-control" ng-model="startup.name" placeholder="Which startup is this founder associated with?" />
       </div>
     </div>
 
-    <!-- Date of Last Contact -->
-    <input type="hidden" class="form-control" autocomplete="on" ng-model="startup.lastContact" />
-
-
-    <h2 ng-show="entry.entrepreneur">Founder Information</h2>
 
     <!-- Founder Name -->
     <div class="form-group" ng-show="entry.founder">
@@ -136,22 +152,28 @@
       </div>
     </div>
 
-    <!-- Founder Email -->
-    <div class="form-group" ng-show="entry.founder">
-      <label for="founder-email" class="col-sm-3 control-label">Founder Email</label>
-      <div class="col-sm-9">
-        <input type="email" class="form-control" ng-model="founder.email" placeholder="What is the founder's email address?" />
+    <!-- Founder Email & Phone -->
+    <div class="form-inline" ng-show="entry.founder">
+      <label for="founder-email" class="col-md-3">Email & Phone</label>
+      <div class="col-md-4">
+        <input type="email" class="form-control" ng-model="founder.email" placeholder="Email Address" />
+      </div>
+
+      <label for="founder-phone" class="sr-only">Founder Phone</label>
+      <div class="col-md-4">
+        <input type="tel" class="form-control" ng-model="founder.phone" placeholder="Phone Number" />
       </div>
     </div>
 
     <!-- Founder Phone -->
-    <div class="form-group" ng-show="entry.founder">
-      <label for="founder-phone" class="col-sm-3 control-label">Founder Phone</label>
-      <div class="col-sm-9">
+    <!-- <div class="form-inline" ng-show="entry.founder">
+      <label for="founder-phone" class="sr-only">Founder Phone</label>
+      <div class="">
         <input type="tel" class="form-control" ng-model="founder.phone" placeholder="What is the founder's phone number?" />
       </div>
-    </div>
+    </div> -->
 
+  <hr>
     <!-- Submit Button -->
     <div class="form-group modal-footer">
       <input type="button" class="btn btn-warning" value="Cancel" ng-click="cancel()" />
