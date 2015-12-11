@@ -3,16 +3,10 @@ Portfolio and contact management tool for angel investors, venture capitalists, 
 
 Designed, architected, and developed by [Ryan](https://github.com/oggimusprime "Ryan Haase") and [Benjamin](https://github.com/benjaminhoffman "Benjamin Hoffman")
 
+For screenshots & mockups, read the blog posts that accompany this repo:
+* [From Zero to Product in 14 Days](https://medium.com/life-learning/from-zero-to-product-in-14-days-b8a0c109c8cb "We gave ourselves two weeks to build a feature-rich MVP for the VC community. Here’s how we did it.") 
 
-
-TO DO HERE:
-* any details of firebase
-* link to any blog post
-* screenshots of product
-* screenshots of mockups
-
-
-database stores dates as ISOStrings in UTC time
+* [Code a Feature-Rich Web App in 14 Days...](https://medium.com/@OggimusPrime/code-a-fully-functional-web-app-in-14-days-e247f536772d#.lordrelz9 "Challenge Accepted")
 
 Getting Startup
 * Fork the repo, in terminal:
@@ -24,6 +18,8 @@ Getting Startup
 * Head to your browser:
   * navigate to `http://localhost:8080/app/#/dashboard`
 
+  
+Note, database stores dates as ISOStrings in UTC time
 
 # Directory Layout
 
