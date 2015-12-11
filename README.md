@@ -1,5 +1,5 @@
 # pipeline
-Contact management tool for angel investors, venture capitalists, and early stage investors.
+Portfolio and contact management tool for angel investors, venture capitalists, and early stage startup investors.
 
 Designed, architected, and developed by [Ryan](https://github.com/oggimusprime "Ryan Haase") and [Benjamin](https://github.com/benjaminhoffman "Benjamin Hoffman")
 
